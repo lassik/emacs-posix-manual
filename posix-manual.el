@@ -25,7 +25,7 @@
 Interactively, ask which PAGE to visit in the minibuffer with tab
 completion. The `browse-url' function is used to open the page."
   (interactive
-   (list (completing-read "Posix manual entry: " posix-manual-data nil t)))
+   (list (completing-read "POSIX manual entry: " posix-manual-data nil t)))
   (let ((url (concat posix-manual-data-base-url
                      (cdr (or (assoc page posix-manual-data)
                               (error "No such POSIX manual page"))))))
