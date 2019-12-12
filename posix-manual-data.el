@@ -195,7 +195,9 @@
    ("Execution Time" . "basedefs/V1_chap03.html#tag_03_156")
    ("Execution Time Monitoring" . "basedefs/V1_chap03.html#tag_03_157")
    ("Expand" . "basedefs/V1_chap03.html#tag_03_158")
-   ("Extended Regular Expression (ERE)" . "basedefs/V1_chap03.html#tag_03_159")
+   ("Extended Regular Expression (ERE)"
+    .
+    "basedefs/V1_chap03.html#tag_03_159")
    ("Extended Regular Expressions" . "basedefs/V1_chap09.html#tag_09_04")
    ("Extended Security Controls" . "basedefs/V1_chap03.html#tag_03_160")
    ("Extended Security Controls" . "basedefs/V1_chap04.html#tag_04_04")
@@ -236,7 +238,9 @@
     .
     "basedefs/V1_chap03.html#tag_03_184")
    ("Foreground Process Group ID" . "basedefs/V1_chap03.html#tag_03_185")
-   ("Form-Feed Character (<form-feed>)" . "basedefs/V1_chap03.html#tag_03_186")
+   ("Form-Feed Character (<form-feed>)"
+    .
+    "basedefs/V1_chap03.html#tag_03_186")
    ("General" . "basedefs/V1_chap07.html#tag_07_01")
    ("General Concepts" . "basedefs/V1_chap04.html#tag_04")
    ("General Terminal Interface" . "basedefs/V1_chap11.html#tag_11")
@@ -297,7 +301,9 @@
    ("Mode" . "basedefs/V1_chap03.html#tag_03_227")
    ("Monotonic Clock" . "basedefs/V1_chap03.html#tag_03_228")
    ("Mount Point" . "basedefs/V1_chap03.html#tag_03_229")
-   ("Multi-Character Collating Element" . "basedefs/V1_chap03.html#tag_03_230")
+   ("Multi-Character Collating Element"
+    .
+    "basedefs/V1_chap03.html#tag_03_230")
    ("Multi-Threaded Library" . "basedefs/V1_chap03.html#tag_03_231")
    ("Multi-Threaded Process" . "basedefs/V1_chap03.html#tag_03_232")
    ("Multi-Threaded Program" . "basedefs/V1_chap03.html#tag_03_233")
@@ -1344,7 +1350,9 @@
     "functions/posix_spawn_file_actions_init.html")
    ("posix_spawnattr_destroy()" . "functions/posix_spawnattr_destroy.html")
    ("posix_spawnattr_getflags()" . "functions/posix_spawnattr_getflags.html")
-   ("posix_spawnattr_getpgroup()" . "functions/posix_spawnattr_getpgroup.html")
+   ("posix_spawnattr_getpgroup()"
+    .
+    "functions/posix_spawnattr_getpgroup.html")
    ("posix_spawnattr_getschedparam()"
     .
     "functions/posix_spawnattr_getschedparam.html")
@@ -1359,7 +1367,9 @@
     "functions/posix_spawnattr_getsigmask.html")
    ("posix_spawnattr_init()" . "functions/posix_spawnattr_init.html")
    ("posix_spawnattr_setflags()" . "functions/posix_spawnattr_setflags.html")
-   ("posix_spawnattr_setpgroup()" . "functions/posix_spawnattr_setpgroup.html")
+   ("posix_spawnattr_setpgroup()"
+    .
+    "functions/posix_spawnattr_setpgroup.html")
    ("posix_spawnattr_setschedparam()"
     .
     "functions/posix_spawnattr_setschedparam.html")
@@ -1435,7 +1445,9 @@
     .
     "functions/posix_trace_create_withlog.html")
    ("posix_trace_event()" . "functions/posix_trace_event.html")
-   ("posix_trace_eventid_equal()" . "functions/posix_trace_eventid_equal.html")
+   ("posix_trace_eventid_equal()"
+    .
+    "functions/posix_trace_eventid_equal.html")
    ("posix_trace_eventid_get_name()"
     .
     "functions/posix_trace_eventid_get_name.html")
@@ -1445,7 +1457,9 @@
    ("posix_trace_eventset_empty()"
     .
     "functions/posix_trace_eventset_empty.html")
-   ("posix_trace_eventset_fill()" . "functions/posix_trace_eventset_fill.html")
+   ("posix_trace_eventset_fill()"
+    .
+    "functions/posix_trace_eventset_fill.html")
    ("posix_trace_eventset_ismember()"
     .
     "functions/posix_trace_eventset_ismember.html")
@@ -1459,7 +1473,9 @@
    ("posix_trace_get_attr()" . "functions/posix_trace_get_attr.html")
    ("posix_trace_get_filter()" . "functions/posix_trace_get_filter.html")
    ("posix_trace_get_status()" . "functions/posix_trace_get_status.html")
-   ("posix_trace_getnext_event()" . "functions/posix_trace_getnext_event.html")
+   ("posix_trace_getnext_event()"
+    .
+    "functions/posix_trace_getnext_event.html")
    ("posix_trace_open()" . "functions/posix_trace_open.html")
    ("posix_trace_rewind()" . "functions/posix_trace_rewind.html")
    ("posix_trace_set_filter()" . "functions/posix_trace_set_filter.html")
@@ -1495,7 +1511,9 @@
    ("pthread_attr_getdetachstate()"
     .
     "functions/pthread_attr_getdetachstate.html")
-   ("pthread_attr_getguardsize()" . "functions/pthread_attr_getguardsize.html")
+   ("pthread_attr_getguardsize()"
+    .
+    "functions/pthread_attr_getguardsize.html")
    ("pthread_attr_getinheritsched()"
     .
     "functions/pthread_attr_getinheritsched.html")
@@ -1507,12 +1525,16 @@
     "functions/pthread_attr_getschedpolicy.html")
    ("pthread_attr_getscope()" . "functions/pthread_attr_getscope.html")
    ("pthread_attr_getstack()" . "functions/pthread_attr_getstack.html")
-   ("pthread_attr_getstacksize()" . "functions/pthread_attr_getstacksize.html")
+   ("pthread_attr_getstacksize()"
+    .
+    "functions/pthread_attr_getstacksize.html")
    ("pthread_attr_init()" . "functions/pthread_attr_init.html")
    ("pthread_attr_setdetachstate()"
     .
     "functions/pthread_attr_setdetachstate.html")
-   ("pthread_attr_setguardsize()" . "functions/pthread_attr_setguardsize.html")
+   ("pthread_attr_setguardsize()"
+    .
+    "functions/pthread_attr_setguardsize.html")
    ("pthread_attr_setinheritsched()"
     .
     "functions/pthread_attr_setinheritsched.html")
@@ -1524,7 +1546,9 @@
     "functions/pthread_attr_setschedpolicy.html")
    ("pthread_attr_setscope()" . "functions/pthread_attr_setscope.html")
    ("pthread_attr_setstack()" . "functions/pthread_attr_setstack.html")
-   ("pthread_attr_setstacksize()" . "functions/pthread_attr_setstacksize.html")
+   ("pthread_attr_setstacksize()"
+    .
+    "functions/pthread_attr_setstacksize.html")
    ("pthread_barrier_destroy()" . "functions/pthread_barrier_destroy.html")
    ("pthread_barrier_init()" . "functions/pthread_barrier_init.html")
    ("pthread_barrier_wait()" . "functions/pthread_barrier_wait.html")
@@ -1548,12 +1572,16 @@
    ("pthread_cond_timedwait()" . "functions/pthread_cond_timedwait.html")
    ("pthread_cond_wait()" . "functions/pthread_cond_wait.html")
    ("pthread_condattr_destroy()" . "functions/pthread_condattr_destroy.html")
-   ("pthread_condattr_getclock()" . "functions/pthread_condattr_getclock.html")
+   ("pthread_condattr_getclock()"
+    .
+    "functions/pthread_condattr_getclock.html")
    ("pthread_condattr_getpshared()"
     .
     "functions/pthread_condattr_getpshared.html")
    ("pthread_condattr_init()" . "functions/pthread_condattr_init.html")
-   ("pthread_condattr_setclock()" . "functions/pthread_condattr_setclock.html")
+   ("pthread_condattr_setclock()"
+    .
+    "functions/pthread_condattr_setclock.html")
    ("pthread_condattr_setpshared()"
     .
     "functions/pthread_condattr_setpshared.html")
@@ -1582,7 +1610,9 @@
    ("pthread_mutex_timedlock()" . "functions/pthread_mutex_timedlock.html")
    ("pthread_mutex_trylock()" . "functions/pthread_mutex_trylock.html")
    ("pthread_mutex_unlock()" . "functions/pthread_mutex_unlock.html")
-   ("pthread_mutexattr_destroy()" . "functions/pthread_mutexattr_destroy.html")
+   ("pthread_mutexattr_destroy()"
+    .
+    "functions/pthread_mutexattr_destroy.html")
    ("pthread_mutexattr_getprioceiling()"
     .
     "functions/pthread_mutexattr_getprioceiling.html")
@@ -1595,7 +1625,9 @@
    ("pthread_mutexattr_getrobust()"
     .
     "functions/pthread_mutexattr_getrobust.html")
-   ("pthread_mutexattr_gettype()" . "functions/pthread_mutexattr_gettype.html")
+   ("pthread_mutexattr_gettype()"
+    .
+    "functions/pthread_mutexattr_gettype.html")
    ("pthread_mutexattr_init()" . "functions/pthread_mutexattr_init.html")
    ("pthread_mutexattr_setprioceiling()"
     .
@@ -1609,7 +1641,9 @@
    ("pthread_mutexattr_setrobust()"
     .
     "functions/pthread_mutexattr_setrobust.html")
-   ("pthread_mutexattr_settype()" . "functions/pthread_mutexattr_settype.html")
+   ("pthread_mutexattr_settype()"
+    .
+    "functions/pthread_mutexattr_settype.html")
    ("pthread_once()" . "functions/pthread_once.html")
    ("pthread_rwlock_destroy()" . "functions/pthread_rwlock_destroy.html")
    ("pthread_rwlock_init()" . "functions/pthread_rwlock_init.html")
