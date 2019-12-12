@@ -4,9 +4,6 @@
 ;; SPDX-License-Identifier: ISC
 ;; Author: Lassi Kortela <lassi@lassi.io>
 ;; URL: https://github.com/lassik/emacs-posix-manual
-;; Version: 0.1.0
-;; Package-Requires: ((emacs "24"))
-;; Keywords: languages util
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
