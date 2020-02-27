@@ -4,8 +4,8 @@
 
 (require net/url)
 
-(require scrapyard)
-(require sxml)
+;; raco pkg install --batch --skip-installed --deps search-auto scrapyard sxml
+(require scrapyard sxml)
 
 (define (join-url base rel)
   (url->string (combine-url/relative (string->url base) rel)))
