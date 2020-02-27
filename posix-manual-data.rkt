@@ -43,7 +43,8 @@
    "posix-manual-data.el"
    (lambda (out _)
      (parameterize ((current-output-port out) (pretty-print-columns 78))
-       (displayln ";;; posix-manual-data.el --- POSIX manual page data")
+       (display ";;; posix-manual-data.el --- POSIX manual page data")
+       (displayln " -*- lexical-binding: t -*-")
        (displayln ";;")
        (displayln ";;; Commentary:")
        (displayln ";;")

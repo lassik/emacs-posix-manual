@@ -1,4 +1,4 @@
-;;; posix-manual-data.el --- POSIX manual page data
+;;; posix-manual-data.el --- POSIX manual page data -*- lexical-binding: t -*-
 ;;
 ;;; Commentary:
 ;;

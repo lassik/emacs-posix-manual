@@ -1,4 +1,4 @@
-;;; posix-manual.el --- POSIX manual page lookup -*- lexical-binding: t; -*-
+;;; posix-manual.el --- POSIX manual page lookup -*- lexical-binding: t -*-
 ;;
 ;; Copyright 2019 Lassi Kortela
 ;; SPDX-License-Identifier: ISC
