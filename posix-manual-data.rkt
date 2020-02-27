@@ -1,5 +1,8 @@
 #! /usr/bin/env racket
 
+;; Copyright 2019 Lassi Kortela
+;; SPDX-License-Identifier: ISC
+
 #lang racket
 
 (require net/url)

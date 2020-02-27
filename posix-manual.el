@@ -1,6 +1,6 @@
 ;;; posix-manual.el --- POSIX manual page lookup -*- lexical-binding: t; -*-
 ;;
-;; SPDX-FileCopyrightText: 2019 Lassi Kortela
+;; Copyright 2019 Lassi Kortela
 ;; SPDX-License-Identifier: ISC
 ;; Author: Lassi Kortela <lassi@lassi.io>
 ;; URL: https://github.com/lassik/emacs-posix-manual
