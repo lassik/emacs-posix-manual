@@ -51,9 +51,11 @@
        (displayln ";;")
        (displayln ";;; Code:")
        (newline)
-       (pretty-write `(defconst posix-manual-data-base-url ,posix-base-url))
+       (pretty-write `(defconst posix-manual-data-base-url ,posix-base-url
+                                "POSIX manual page base URL."))
        (newline)
-       (pretty-write `(defconst posix-manual-data ',(all-pairs)))
+       (pretty-write `(defconst posix-manual-data ',(all-pairs)
+                                "POSIX manual page data."))
        (newline)
        (pretty-write `(provide 'posix-manual-data))
        (newline)

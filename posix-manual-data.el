@@ -8,7 +8,8 @@
 
 (defconst
  posix-manual-data-base-url
- "https://pubs.opengroup.org/onlinepubs/9699919799/")
+ "https://pubs.opengroup.org/onlinepubs/9699919799/"
+ "POSIX manual page base URL.")
 
 (defconst
  posix-manual-data
@@ -2180,7 +2181,8 @@
    ("y1()" . "functions/y1.html")
    ("yacc" . "utilities/yacc.html")
    ("yn()" . "functions/yn.html")
-   ("zcat" . "utilities/zcat.html")))
+   ("zcat" . "utilities/zcat.html"))
+ "POSIX manual page data.")
 
 (provide 'posix-manual-data)
 
