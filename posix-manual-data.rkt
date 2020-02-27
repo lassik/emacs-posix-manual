@@ -49,6 +49,8 @@
        (newline)
        (pretty-write `(defconst posix-manual-data ',(all-pairs)))
        (newline)
-       (pretty-write `(provide 'posix-manual-data))))))
+       (pretty-write `(provide 'posix-manual-data))
+       (newline)
+       (displayln ";;; posix-manual-data.el ends here")))))
 
 (write-emacs-lisp-file)

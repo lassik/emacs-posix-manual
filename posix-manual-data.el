@@ -2177,3 +2177,5 @@
    ("zcat" . "utilities/zcat.html")))
 
 (provide 'posix-manual-data)
+
+;;; posix-manual-data.el ends here
