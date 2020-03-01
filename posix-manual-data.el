@@ -6,2183 +6,3931 @@
 ;;
 ;;; Code:
 
-(defconst
- posix-manual-data-base-url
- "https://pubs.opengroup.org/onlinepubs/9699919799/"
- "POSIX manual page base URL.")
+(defconst posix-manual-data-base-url
+  "https://pubs.opengroup.org/onlinepubs/9699919799/"
+  "POSIX manual page base URL.")
 
-(defconst
- posix-manual-data
- '(("Abortive Release" . "basedefs/V1_chap03.html#tag_03_01")
-   ("Absolute Pathname" . "basedefs/V1_chap03.html#tag_03_02")
-   ("Access Mode" . "basedefs/V1_chap03.html#tag_03_03")
-   ("Additional File Access Control Mechanism"
-    .
-    "basedefs/V1_chap03.html#tag_03_04")
-   ("Address Space" . "basedefs/V1_chap03.html#tag_03_05")
-   ("Advisory Information" . "basedefs/V1_chap03.html#tag_03_06")
-   ("Affirmative Response" . "basedefs/V1_chap03.html#tag_03_07")
-   ("Alert" . "basedefs/V1_chap03.html#tag_03_08")
-   ("Alert Character (<alert>)" . "basedefs/V1_chap03.html#tag_03_09")
-   ("Alias Name" . "basedefs/V1_chap03.html#tag_03_10")
-   ("Alignment" . "basedefs/V1_chap03.html#tag_03_11")
-   ("Alternate File Access Control Mechanism"
-    .
-    "basedefs/V1_chap03.html#tag_03_12")
-   ("Alternate Signal Stack" . "basedefs/V1_chap03.html#tag_03_13")
-   ("Ancillary Data" . "basedefs/V1_chap03.html#tag_03_14")
-   ("Angle Brackets" . "basedefs/V1_chap03.html#tag_03_15")
-   ("Apostrophe Character (<apostrophe>)"
-    .
-    "basedefs/V1_chap03.html#tag_03_16")
-   ("Application" . "basedefs/V1_chap03.html#tag_03_17")
-   ("Application Address" . "basedefs/V1_chap03.html#tag_03_18")
-   ("Application Conformance" . "basedefs/V1_chap02.html#tag_02_02")
-   ("Application Program Interface (API)"
-    .
-    "basedefs/V1_chap03.html#tag_03_19")
-   ("Appropriate Privileges" . "basedefs/V1_chap03.html#tag_03_20")
-   ("Argument" . "basedefs/V1_chap03.html#tag_03_21")
-   ("Arm (a Timer)" . "basedefs/V1_chap03.html#tag_03_22")
-   ("Asterisk Character (<asterisk>)" . "basedefs/V1_chap03.html#tag_03_23")
-   ("Async-Cancel-Safe Function" . "basedefs/V1_chap03.html#tag_03_24")
-   ("Async-Signal-Safe Function" . "basedefs/V1_chap03.html#tag_03_27")
-   ("Asynchronous Events" . "basedefs/V1_chap03.html#tag_03_25")
-   ("Asynchronous I/O Completion" . "basedefs/V1_chap03.html#tag_03_29")
-   ("Asynchronous I/O Operation" . "basedefs/V1_chap03.html#tag_03_30")
-   ("Asynchronous Input and Output" . "basedefs/V1_chap03.html#tag_03_26")
-   ("Asynchronously-Generated Signal" . "basedefs/V1_chap03.html#tag_03_28")
-   ("Authentication" . "basedefs/V1_chap03.html#tag_03_31")
-   ("Authorization" . "basedefs/V1_chap03.html#tag_03_32")
-   ("Background Job" . "basedefs/V1_chap03.html#tag_03_33")
-   ("Background Process" . "basedefs/V1_chap03.html#tag_03_34")
-   ("Background Process Group (or Background Job)"
-    .
-    "basedefs/V1_chap03.html#tag_03_35")
-   ("Backquote Character" . "basedefs/V1_chap03.html#tag_03_36")
-   ("Backslash Character (<backslash>)" . "basedefs/V1_chap03.html#tag_03_37")
-   ("Backspace Character (<backspace>)" . "basedefs/V1_chap03.html#tag_03_38")
-   ("Barrier" . "basedefs/V1_chap03.html#tag_03_39")
-   ("Basename" . "basedefs/V1_chap03.html#tag_03_40")
-   ("Basic Regular Expression (BRE)" . "basedefs/V1_chap03.html#tag_03_41")
-   ("Basic Regular Expressions" . "basedefs/V1_chap09.html#tag_09_03")
-   ("Batch Access List" . "basedefs/V1_chap03.html#tag_03_42")
-   ("Batch Administrator" . "basedefs/V1_chap03.html#tag_03_43")
-   ("Batch Client" . "basedefs/V1_chap03.html#tag_03_44")
-   ("Batch Destination" . "basedefs/V1_chap03.html#tag_03_45")
-   ("Batch Destination Identifier" . "basedefs/V1_chap03.html#tag_03_46")
-   ("Batch Directive" . "basedefs/V1_chap03.html#tag_03_47")
-   ("Batch Job" . "basedefs/V1_chap03.html#tag_03_48")
-   ("Batch Job Attribute" . "basedefs/V1_chap03.html#tag_03_49")
-   ("Batch Job Identifier" . "basedefs/V1_chap03.html#tag_03_50")
-   ("Batch Job Name" . "basedefs/V1_chap03.html#tag_03_51")
-   ("Batch Job Owner" . "basedefs/V1_chap03.html#tag_03_52")
-   ("Batch Job Priority" . "basedefs/V1_chap03.html#tag_03_53")
-   ("Batch Job State" . "basedefs/V1_chap03.html#tag_03_54")
-   ("Batch Name Service" . "basedefs/V1_chap03.html#tag_03_55")
-   ("Batch Name Space" . "basedefs/V1_chap03.html#tag_03_56")
-   ("Batch Node" . "basedefs/V1_chap03.html#tag_03_57")
-   ("Batch Operator" . "basedefs/V1_chap03.html#tag_03_58")
-   ("Batch Queue" . "basedefs/V1_chap03.html#tag_03_59")
-   ("Batch Queue Attribute" . "basedefs/V1_chap03.html#tag_03_60")
-   ("Batch Queue Position" . "basedefs/V1_chap03.html#tag_03_61")
-   ("Batch Queue Priority" . "basedefs/V1_chap03.html#tag_03_62")
-   ("Batch Rerunability" . "basedefs/V1_chap03.html#tag_03_63")
-   ("Batch Restart" . "basedefs/V1_chap03.html#tag_03_64")
-   ("Batch Server" . "basedefs/V1_chap03.html#tag_03_65")
-   ("Batch Server Name" . "basedefs/V1_chap03.html#tag_03_66")
-   ("Batch Service" . "basedefs/V1_chap03.html#tag_03_67")
-   ("Batch Service Request" . "basedefs/V1_chap03.html#tag_03_68")
-   ("Batch Submission" . "basedefs/V1_chap03.html#tag_03_69")
-   ("Batch System" . "basedefs/V1_chap03.html#tag_03_70")
-   ("Batch Target User" . "basedefs/V1_chap03.html#tag_03_71")
-   ("Batch User" . "basedefs/V1_chap03.html#tag_03_72")
-   ("Bind" . "basedefs/V1_chap03.html#tag_03_73")
-   ("Blank Character (<blank>)" . "basedefs/V1_chap03.html#tag_03_74")
-   ("Blank Line" . "basedefs/V1_chap03.html#tag_03_75")
-   ("Block Special File" . "basedefs/V1_chap03.html#tag_03_79")
-   ("Block-Mode Terminal" . "basedefs/V1_chap03.html#tag_03_78")
-   ("Blocked Process (or Thread)" . "basedefs/V1_chap03.html#tag_03_76")
-   ("Blocking" . "basedefs/V1_chap03.html#tag_03_77")
-   ("Braces" . "basedefs/V1_chap03.html#tag_03_80")
-   ("Brackets" . "basedefs/V1_chap03.html#tag_03_81")
-   ("Broadcast" . "basedefs/V1_chap03.html#tag_03_82")
-   ("Built-In Utility (or Built-In)" . "basedefs/V1_chap03.html#tag_03_83")
-   ("Byte" . "basedefs/V1_chap03.html#tag_03_84")
-   ("Byte Input/Output Functions" . "basedefs/V1_chap03.html#tag_03_85")
-   ("C Language Wide-Character Codes" . "basedefs/V1_chap06.html#tag_06_03")
-   ("CPU Time (Execution Time)" . "basedefs/V1_chap03.html#tag_03_118")
-   ("CPU-Time Clock" . "basedefs/V1_chap03.html#tag_03_119")
-   ("CPU-Time Timer" . "basedefs/V1_chap03.html#tag_03_120")
-   ("Carriage-Return Character (<carriage-return>)"
-    .
-    "basedefs/V1_chap03.html#tag_03_86")
-   ("Character" . "basedefs/V1_chap03.html#tag_03_87")
-   ("Character Array" . "basedefs/V1_chap03.html#tag_03_88")
-   ("Character Class" . "basedefs/V1_chap03.html#tag_03_89")
-   ("Character Encoding" . "basedefs/V1_chap06.html#tag_06_02")
-   ("Character Set" . "basedefs/V1_chap03.html#tag_03_90")
-   ("Character Set" . "basedefs/V1_chap06.html#tag_06")
-   ("Character Set Description File" . "basedefs/V1_chap06.html#tag_06_04")
-   ("Character Special File" . "basedefs/V1_chap03.html#tag_03_91")
-   ("Character String" . "basedefs/V1_chap03.html#tag_03_92")
-   ("Child Process" . "basedefs/V1_chap03.html#tag_03_93")
-   ("Circumflex Character (<circumflex>)"
-    .
-    "basedefs/V1_chap03.html#tag_03_94")
-   ("Clock" . "basedefs/V1_chap03.html#tag_03_95")
-   ("Clock Jump" . "basedefs/V1_chap03.html#tag_03_96")
-   ("Clock Tick" . "basedefs/V1_chap03.html#tag_03_97")
-   ("Coded Character Set" . "basedefs/V1_chap03.html#tag_03_98")
-   ("Codeset" . "basedefs/V1_chap03.html#tag_03_99")
-   ("Collating Element" . "basedefs/V1_chap03.html#tag_03_100")
-   ("Collation" . "basedefs/V1_chap03.html#tag_03_101")
-   ("Collation Sequence" . "basedefs/V1_chap03.html#tag_03_102")
-   ("Column Position" . "basedefs/V1_chap03.html#tag_03_103")
-   ("Command" . "basedefs/V1_chap03.html#tag_03_104")
-   ("Command Language Interpreter" . "basedefs/V1_chap03.html#tag_03_105")
-   ("Composite Graphic Symbol" . "basedefs/V1_chap03.html#tag_03_106")
-   ("Concurrent Execution" . "basedefs/V1_chap04.html#tag_04_01")
-   ("Condition Variable" . "basedefs/V1_chap03.html#tag_03_107")
-   ("Conformance" . "basedefs/V1_chap02.html#tag_02")
-   ("Connected Socket" . "basedefs/V1_chap03.html#tag_03_108")
-   ("Connection" . "basedefs/V1_chap03.html#tag_03_109")
-   ("Connection Mode" . "basedefs/V1_chap03.html#tag_03_110")
-   ("Connectionless Mode" . "basedefs/V1_chap03.html#tag_03_111")
-   ("Control Character" . "basedefs/V1_chap03.html#tag_03_112")
-   ("Control Operator" . "basedefs/V1_chap03.html#tag_03_113")
-   ("Controlling Process" . "basedefs/V1_chap03.html#tag_03_114")
-   ("Controlling Terminal" . "basedefs/V1_chap03.html#tag_03_115")
-   ("Conversion Descriptor" . "basedefs/V1_chap03.html#tag_03_116")
-   ("Core File" . "basedefs/V1_chap03.html#tag_03_117")
-   ("Current Job" . "basedefs/V1_chap03.html#tag_03_121")
-   ("Current Working Directory" . "basedefs/V1_chap03.html#tag_03_122")
-   ("Cursor Position" . "basedefs/V1_chap03.html#tag_03_123")
-   ("Data Segment" . "basedefs/V1_chap03.html#tag_03_125")
-   ("Datagram" . "basedefs/V1_chap03.html#tag_03_124")
-   ("Default Initialization" . "basedefs/V1_chap04.html#tag_04_02")
-   ("Deferred Batch Service" . "basedefs/V1_chap03.html#tag_03_126")
-   ("Definitions" . "basedefs/V1_chap03.html#tag_03")
-   ("Device" . "basedefs/V1_chap03.html#tag_03_127")
-   ("Device ID" . "basedefs/V1_chap03.html#tag_03_128")
-   ("Directory" . "basedefs/V1_chap03.html#tag_03_129")
-   ("Directory Entry (or Link)" . "basedefs/V1_chap03.html#tag_03_130")
-   ("Directory Protection" . "basedefs/V1_chap04.html#tag_04_03")
-   ("Directory Stream" . "basedefs/V1_chap03.html#tag_03_131")
-   ("Directory Structure and Devices" . "basedefs/V1_chap10.html#tag_10")
-   ("Directory Structure and Files" . "basedefs/V1_chap10.html#tag_10_01")
-   ("Disarm (a Timer)" . "basedefs/V1_chap03.html#tag_03_132")
-   ("Display" . "basedefs/V1_chap03.html#tag_03_133")
-   ("Display Line" . "basedefs/V1_chap03.html#tag_03_134")
-   ("Dollar-Sign Character (<dollar-sign>)"
-    .
-    "basedefs/V1_chap03.html#tag_03_135")
-   ("Dot" . "basedefs/V1_chap03.html#tag_03_136")
-   ("Dot-Dot" . "basedefs/V1_chap03.html#tag_03_137")
-   ("Double-Quote Character" . "basedefs/V1_chap03.html#tag_03_138")
-   ("Downshifting" . "basedefs/V1_chap03.html#tag_03_139")
-   ("Driver" . "basedefs/V1_chap03.html#tag_03_140")
-   ("Effective Group ID" . "basedefs/V1_chap03.html#tag_03_141")
-   ("Effective User ID" . "basedefs/V1_chap03.html#tag_03_142")
-   ("Eight-Bit Transparency" . "basedefs/V1_chap03.html#tag_03_143")
-   ("Empty Directory" . "basedefs/V1_chap03.html#tag_03_144")
-   ("Empty Line" . "basedefs/V1_chap03.html#tag_03_145")
-   ("Empty String (or Null String)" . "basedefs/V1_chap03.html#tag_03_146")
-   ("Empty Wide-Character String" . "basedefs/V1_chap03.html#tag_03_147")
-   ("Encoding Rule" . "basedefs/V1_chap03.html#tag_03_148")
-   ("Entire Regular Expression" . "basedefs/V1_chap03.html#tag_03_149")
-   ("Environment Variable Definition" . "basedefs/V1_chap08.html#tag_08_01")
-   ("Environment Variables" . "basedefs/V1_chap08.html#tag_08")
-   ("Epoch" . "basedefs/V1_chap03.html#tag_03_150")
-   ("Equivalence Class" . "basedefs/V1_chap03.html#tag_03_151")
-   ("Era" . "basedefs/V1_chap03.html#tag_03_152")
-   ("Event Management" . "basedefs/V1_chap03.html#tag_03_153")
-   ("Executable File" . "basedefs/V1_chap03.html#tag_03_154")
-   ("Execute" . "basedefs/V1_chap03.html#tag_03_155")
-   ("Execution Time" . "basedefs/V1_chap03.html#tag_03_156")
-   ("Execution Time Monitoring" . "basedefs/V1_chap03.html#tag_03_157")
-   ("Expand" . "basedefs/V1_chap03.html#tag_03_158")
-   ("Extended Regular Expression (ERE)"
-    .
-    "basedefs/V1_chap03.html#tag_03_159")
-   ("Extended Regular Expressions" . "basedefs/V1_chap09.html#tag_09_04")
-   ("Extended Security Controls" . "basedefs/V1_chap03.html#tag_03_160")
-   ("Extended Security Controls" . "basedefs/V1_chap04.html#tag_04_04")
-   ("FD_CLR()" . "functions/FD_CLR.html")
-   ("FD_ISSET()" . "functions/FD_ISSET.html")
-   ("FD_SET()" . "functions/FD_SET.html")
-   ("FD_ZERO()" . "functions/FD_ZERO.html")
-   ("FIFO Special File (or FIFO)" . "basedefs/V1_chap03.html#tag_03_163")
-   ("Feature Test Macro" . "basedefs/V1_chap03.html#tag_03_161")
-   ("Field" . "basedefs/V1_chap03.html#tag_03_162")
-   ("File" . "basedefs/V1_chap03.html#tag_03_164")
-   ("File Access Permissions" . "basedefs/V1_chap04.html#tag_04_05")
-   ("File Description" . "basedefs/V1_chap03.html#tag_03_165")
-   ("File Descriptor" . "basedefs/V1_chap03.html#tag_03_166")
-   ("File Format Notation" . "basedefs/V1_chap05.html#tag_05")
-   ("File Group Class" . "basedefs/V1_chap03.html#tag_03_167")
-   ("File Hierarchy" . "basedefs/V1_chap04.html#tag_04_06")
-   ("File Mode" . "basedefs/V1_chap03.html#tag_03_168")
-   ("File Mode Bits" . "basedefs/V1_chap03.html#tag_03_169")
-   ("File Offset" . "basedefs/V1_chap03.html#tag_03_172")
-   ("File Other Class" . "basedefs/V1_chap03.html#tag_03_173")
-   ("File Owner Class" . "basedefs/V1_chap03.html#tag_03_174")
-   ("File Permission Bits" . "basedefs/V1_chap03.html#tag_03_175")
-   ("File Serial Number" . "basedefs/V1_chap03.html#tag_03_176")
-   ("File System" . "basedefs/V1_chap03.html#tag_03_177")
-   ("File Times Update" . "basedefs/V1_chap04.html#tag_04_09")
-   ("File Type" . "basedefs/V1_chap03.html#tag_03_178")
-   ("Filename" . "basedefs/V1_chap03.html#tag_03_170")
-   ("Filename Portability" . "basedefs/V1_chap04.html#tag_04_08")
-   ("Filename String" . "basedefs/V1_chap03.html#tag_03_171")
-   ("Filenames" . "basedefs/V1_chap04.html#tag_04_07")
-   ("Filter" . "basedefs/V1_chap03.html#tag_03_179")
-   ("First Open (of a File)" . "basedefs/V1_chap03.html#tag_03_180")
-   ("Flow Control" . "basedefs/V1_chap03.html#tag_03_181")
-   ("Foreground Job" . "basedefs/V1_chap03.html#tag_03_182")
-   ("Foreground Process" . "basedefs/V1_chap03.html#tag_03_183")
-   ("Foreground Process Group (or Foreground Job)"
-    .
-    "basedefs/V1_chap03.html#tag_03_184")
-   ("Foreground Process Group ID" . "basedefs/V1_chap03.html#tag_03_185")
-   ("Form-Feed Character (<form-feed>)"
-    .
-    "basedefs/V1_chap03.html#tag_03_186")
-   ("General" . "basedefs/V1_chap07.html#tag_07_01")
-   ("General Concepts" . "basedefs/V1_chap04.html#tag_04")
-   ("General Terminal Interface" . "basedefs/V1_chap11.html#tag_11")
-   ("Graphic Character" . "basedefs/V1_chap03.html#tag_03_187")
-   ("Group Database" . "basedefs/V1_chap03.html#tag_03_188")
-   ("Group ID" . "basedefs/V1_chap03.html#tag_03_189")
-   ("Group Name" . "basedefs/V1_chap03.html#tag_03_190")
-   ("Hard Limit" . "basedefs/V1_chap03.html#tag_03_191")
-   ("Hard Link" . "basedefs/V1_chap03.html#tag_03_192")
-   ("Home Directory" . "basedefs/V1_chap03.html#tag_03_193")
-   ("Host Byte Order" . "basedefs/V1_chap03.html#tag_03_194")
-   ("Host and Network Byte Orders" . "basedefs/V1_chap04.html#tag_04_10")
-   ("Implementation Conformance" . "basedefs/V1_chap02.html#tag_02_01")
-   ("Incomplete Line" . "basedefs/V1_chap03.html#tag_03_195")
-   ("Inf" . "basedefs/V1_chap03.html#tag_03_196")
-   ("Instrumented Application" . "basedefs/V1_chap03.html#tag_03_197")
-   ("Interactive Shell" . "basedefs/V1_chap03.html#tag_03_198")
-   ("Interface Characteristics" . "basedefs/V1_chap11.html#tag_11_01")
-   ("Internationalization" . "basedefs/V1_chap03.html#tag_03_199")
-   ("Internationalization Variables" . "basedefs/V1_chap08.html#tag_08_02")
-   ("Interprocess Communication" . "basedefs/V1_chap03.html#tag_03_200")
-   ("Invoke" . "basedefs/V1_chap03.html#tag_03_201")
-   ("Job" . "basedefs/V1_chap03.html#tag_03_202")
-   ("Job Control" . "basedefs/V1_chap03.html#tag_03_203")
-   ("Job Control Job ID" . "basedefs/V1_chap03.html#tag_03_204")
-   ("Language-Dependent Services for the C Programming Language"
-    .
-    "basedefs/V1_chap02.html#tag_02_03")
-   ("Last Close (of a File)" . "basedefs/V1_chap03.html#tag_03_205")
-   ("Line" . "basedefs/V1_chap03.html#tag_03_206")
-   ("Linger" . "basedefs/V1_chap03.html#tag_03_207")
-   ("Link" . "basedefs/V1_chap03.html#tag_03_208")
-   ("Link Count" . "basedefs/V1_chap03.html#tag_03_209")
-   ("Live Process" . "basedefs/V1_chap03.html#tag_03_210")
-   ("Local Customs" . "basedefs/V1_chap03.html#tag_03_211")
-   ("Local Interprocess Communication (Local IPC)"
-    .
-    "basedefs/V1_chap03.html#tag_03_212")
-   ("Locale" . "basedefs/V1_chap03.html#tag_03_213")
-   ("Locale" . "basedefs/V1_chap07.html#tag_07")
-   ("Locale Definition" . "basedefs/V1_chap07.html#tag_07_03")
-   ("Locale Definition Grammar" . "basedefs/V1_chap07.html#tag_07_04")
-   ("Localization" . "basedefs/V1_chap03.html#tag_03_214")
-   ("Login" . "basedefs/V1_chap03.html#tag_03_215")
-   ("Login Name" . "basedefs/V1_chap03.html#tag_03_216")
-   ("Map" . "basedefs/V1_chap03.html#tag_03_217")
-   ("Marked Message" . "basedefs/V1_chap03.html#tag_03_218")
-   ("Matched" . "basedefs/V1_chap03.html#tag_03_219")
-   ("Measurement of Execution Time" . "basedefs/V1_chap04.html#tag_04_11")
-   ("Memory Mapped Files" . "basedefs/V1_chap03.html#tag_03_220")
-   ("Memory Object" . "basedefs/V1_chap03.html#tag_03_221")
-   ("Memory Synchronization" . "basedefs/V1_chap04.html#tag_04_12")
-   ("Memory-Resident" . "basedefs/V1_chap03.html#tag_03_222")
-   ("Message" . "basedefs/V1_chap03.html#tag_03_223")
-   ("Message Catalog" . "basedefs/V1_chap03.html#tag_03_224")
-   ("Message Catalog Descriptor" . "basedefs/V1_chap03.html#tag_03_225")
-   ("Message Queue" . "basedefs/V1_chap03.html#tag_03_226")
-   ("Mode" . "basedefs/V1_chap03.html#tag_03_227")
-   ("Monotonic Clock" . "basedefs/V1_chap03.html#tag_03_228")
-   ("Mount Point" . "basedefs/V1_chap03.html#tag_03_229")
-   ("Multi-Character Collating Element"
-    .
-    "basedefs/V1_chap03.html#tag_03_230")
-   ("Multi-Threaded Library" . "basedefs/V1_chap03.html#tag_03_231")
-   ("Multi-Threaded Process" . "basedefs/V1_chap03.html#tag_03_232")
-   ("Multi-Threaded Program" . "basedefs/V1_chap03.html#tag_03_233")
-   ("Mutex" . "basedefs/V1_chap03.html#tag_03_234")
-   ("NUL" . "basedefs/V1_chap03.html#tag_03_247")
-   ("NaN (Not a Number)" . "basedefs/V1_chap03.html#tag_03_237")
-   ("Name" . "basedefs/V1_chap03.html#tag_03_235")
-   ("Named STREAM" . "basedefs/V1_chap03.html#tag_03_236")
-   ("Native Language" . "basedefs/V1_chap03.html#tag_03_238")
-   ("Negative Response" . "basedefs/V1_chap03.html#tag_03_239")
-   ("Network" . "basedefs/V1_chap03.html#tag_03_240")
-   ("Network Address" . "basedefs/V1_chap03.html#tag_03_241")
-   ("Network Byte Order" . "basedefs/V1_chap03.html#tag_03_242")
-   ("Newline Character (<newline>)" . "basedefs/V1_chap03.html#tag_03_243")
-   ("Nice Value" . "basedefs/V1_chap03.html#tag_03_244")
-   ("Non-Blocking" . "basedefs/V1_chap03.html#tag_03_245")
-   ("Non-Spacing Characters" . "basedefs/V1_chap03.html#tag_03_246")
-   ("Null Byte" . "basedefs/V1_chap03.html#tag_03_248")
-   ("Null Pointer" . "basedefs/V1_chap03.html#tag_03_249")
-   ("Null String" . "basedefs/V1_chap03.html#tag_03_250")
-   ("Null Wide-Character Code" . "basedefs/V1_chap03.html#tag_03_251")
-   ("Number-Sign Character (<number-sign>)"
-    .
-    "basedefs/V1_chap03.html#tag_03_252")
-   ("Object File" . "basedefs/V1_chap03.html#tag_03_253")
-   ("Octet" . "basedefs/V1_chap03.html#tag_03_254")
-   ("Offset Maximum" . "basedefs/V1_chap03.html#tag_03_255")
-   ("Opaque Address" . "basedefs/V1_chap03.html#tag_03_256")
-   ("Open File" . "basedefs/V1_chap03.html#tag_03_257")
-   ("Open File Description" . "basedefs/V1_chap03.html#tag_03_258")
-   ("Operand" . "basedefs/V1_chap03.html#tag_03_259")
-   ("Operator" . "basedefs/V1_chap03.html#tag_03_260")
-   ("Option" . "basedefs/V1_chap03.html#tag_03_261")
-   ("Option-Argument" . "basedefs/V1_chap03.html#tag_03_262")
-   ("Orientation" . "basedefs/V1_chap03.html#tag_03_263")
-   ("Orphaned Process Group" . "basedefs/V1_chap03.html#tag_03_264")
-   ("Other Environment Variables" . "basedefs/V1_chap08.html#tag_08_03")
-   ("Other Language-Related Specifications"
-    .
-    "basedefs/V1_chap02.html#tag_02_04")
-   ("Output Devices and Terminal Types" . "basedefs/V1_chap10.html#tag_10_02")
-   ("POSIX Locale" . "basedefs/V1_chap07.html#tag_07_02")
-   ("Page" . "basedefs/V1_chap03.html#tag_03_265")
-   ("Page Size" . "basedefs/V1_chap03.html#tag_03_266")
-   ("Parameter" . "basedefs/V1_chap03.html#tag_03_267")
-   ("Parameters that Can be Set" . "basedefs/V1_chap11.html#tag_11_02")
-   ("Parent Directory" . "basedefs/V1_chap03.html#tag_03_268")
-   ("Parent Process" . "basedefs/V1_chap03.html#tag_03_269")
-   ("Parent Process ID" . "basedefs/V1_chap03.html#tag_03_270")
-   ("Path Prefix" . "basedefs/V1_chap03.html#tag_03_273")
-   ("Pathname" . "basedefs/V1_chap03.html#tag_03_271")
-   ("Pathname Component" . "basedefs/V1_chap03.html#tag_03_272")
-   ("Pathname Resolution" . "basedefs/V1_chap04.html#tag_04_13")
-   ("Pattern" . "basedefs/V1_chap03.html#tag_03_274")
-   ("Period Character (<period>)" . "basedefs/V1_chap03.html#tag_03_275")
-   ("Permissions" . "basedefs/V1_chap03.html#tag_03_276")
-   ("Persistence" . "basedefs/V1_chap03.html#tag_03_277")
-   ("Pipe" . "basedefs/V1_chap03.html#tag_03_278")
-   ("Polling" . "basedefs/V1_chap03.html#tag_03_279")
-   ("Portable Character Set" . "basedefs/V1_chap03.html#tag_03_280")
-   ("Portable Character Set" . "basedefs/V1_chap06.html#tag_06_01")
-   ("Portable Filename" . "basedefs/V1_chap03.html#tag_03_281")
-   ("Portable Filename Character Set" . "basedefs/V1_chap03.html#tag_03_282")
-   ("Positional Parameter" . "basedefs/V1_chap03.html#tag_03_283")
-   ("Preallocation" . "basedefs/V1_chap03.html#tag_03_284")
-   ("Preempted Process (or Thread)" . "basedefs/V1_chap03.html#tag_03_285")
-   ("Previous Job" . "basedefs/V1_chap03.html#tag_03_286")
-   ("Printable Character" . "basedefs/V1_chap03.html#tag_03_287")
-   ("Printable File" . "basedefs/V1_chap03.html#tag_03_288")
-   ("Priority" . "basedefs/V1_chap03.html#tag_03_289")
-   ("Priority Band" . "basedefs/V1_chap03.html#tag_03_290")
-   ("Priority Inversion" . "basedefs/V1_chap03.html#tag_03_291")
-   ("Priority Scheduling" . "basedefs/V1_chap03.html#tag_03_292")
-   ("Priority-Based Scheduling" . "basedefs/V1_chap03.html#tag_03_293")
-   ("Privilege" . "basedefs/V1_chap03.html#tag_03_294")
-   ("Process" . "basedefs/V1_chap03.html#tag_03_295")
-   ("Process Group" . "basedefs/V1_chap03.html#tag_03_296")
-   ("Process Group ID" . "basedefs/V1_chap03.html#tag_03_297")
-   ("Process Group Leader" . "basedefs/V1_chap03.html#tag_03_298")
-   ("Process Group Lifetime" . "basedefs/V1_chap03.html#tag_03_299")
-   ("Process ID" . "basedefs/V1_chap03.html#tag_03_300")
-   ("Process ID Reuse" . "basedefs/V1_chap04.html#tag_04_14")
-   ("Process Lifetime" . "basedefs/V1_chap03.html#tag_03_301")
-   ("Process Memory Locking" . "basedefs/V1_chap03.html#tag_03_302")
-   ("Process Termination" . "basedefs/V1_chap03.html#tag_03_303")
-   ("Process Virtual Time" . "basedefs/V1_chap03.html#tag_03_305")
-   ("Process-To-Process Communication" . "basedefs/V1_chap03.html#tag_03_304")
-   ("Program" . "basedefs/V1_chap03.html#tag_03_306")
-   ("Protocol" . "basedefs/V1_chap03.html#tag_03_307")
-   ("Pseudo-Terminal" . "basedefs/V1_chap03.html#tag_03_308")
-   ("Radix Character" . "basedefs/V1_chap03.html#tag_03_309")
-   ("Read-Only File System" . "basedefs/V1_chap03.html#tag_03_310")
-   ("Read-Write Lock" . "basedefs/V1_chap03.html#tag_03_311")
-   ("Real Group ID" . "basedefs/V1_chap03.html#tag_03_312")
-   ("Real Time" . "basedefs/V1_chap03.html#tag_03_313")
-   ("Real User ID" . "basedefs/V1_chap03.html#tag_03_315")
-   ("Realtime Signal Extension" . "basedefs/V1_chap03.html#tag_03_314")
-   ("Record" . "basedefs/V1_chap03.html#tag_03_316")
-   ("Redirection" . "basedefs/V1_chap03.html#tag_03_317")
-   ("Redirection Operator" . "basedefs/V1_chap03.html#tag_03_318")
-   ("Referenced Shared Memory Object" . "basedefs/V1_chap03.html#tag_03_319")
-   ("Refresh" . "basedefs/V1_chap03.html#tag_03_320")
-   ("Region" . "basedefs/V1_chap03.html#tag_03_322")
-   ("Regular Expression" . "basedefs/V1_chap03.html#tag_03_321")
-   ("Regular Expression Definitions" . "basedefs/V1_chap09.html#tag_09_01")
-   ("Regular Expression General Requirements"
-    .
-    "basedefs/V1_chap09.html#tag_09_02")
-   ("Regular Expression Grammar" . "basedefs/V1_chap09.html#tag_09_05")
-   ("Regular Expressions" . "basedefs/V1_chap09.html#tag_09")
-   ("Regular File" . "basedefs/V1_chap03.html#tag_03_323")
-   ("Relative Pathname" . "basedefs/V1_chap03.html#tag_03_324")
-   ("Relocatable File" . "basedefs/V1_chap03.html#tag_03_325")
-   ("Relocation" . "basedefs/V1_chap03.html#tag_03_326")
-   ("Requested Batch Service" . "basedefs/V1_chap03.html#tag_03_327")
-   ("Robust Mutex" . "basedefs/V1_chap03.html#tag_03_329")
-   ("Root Directory" . "basedefs/V1_chap03.html#tag_03_330")
-   ("Runnable Process (or Thread)" . "basedefs/V1_chap03.html#tag_03_331")
-   ("Running Process (or Thread)" . "basedefs/V1_chap03.html#tag_03_332")
-   ("STREAM" . "basedefs/V1_chap03.html#tag_03_371")
-   ("STREAM End" . "basedefs/V1_chap03.html#tag_03_372")
-   ("STREAM Head" . "basedefs/V1_chap03.html#tag_03_373")
-   ("STREAMS Multiplexor" . "basedefs/V1_chap03.html#tag_03_374")
-   ("Saved Resource Limits" . "basedefs/V1_chap03.html#tag_03_333")
-   ("Saved Set-Group-ID" . "basedefs/V1_chap03.html#tag_03_334")
-   ("Saved Set-User-ID" . "basedefs/V1_chap03.html#tag_03_335")
-   ("Scheduling" . "basedefs/V1_chap03.html#tag_03_336")
-   ("Scheduling Allocation Domain" . "basedefs/V1_chap03.html#tag_03_337")
-   ("Scheduling Contention Scope" . "basedefs/V1_chap03.html#tag_03_338")
-   ("Scheduling Policy" . "basedefs/V1_chap03.html#tag_03_339")
-   ("Scheduling Policy" . "basedefs/V1_chap04.html#tag_04_15")
-   ("Screen" . "basedefs/V1_chap03.html#tag_03_340")
-   ("Scroll" . "basedefs/V1_chap03.html#tag_03_341")
-   ("Seconds Since the Epoch" . "basedefs/V1_chap04.html#tag_04_16")
-   ("Semaphore" . "basedefs/V1_chap03.html#tag_03_342")
-   ("Semaphore" . "basedefs/V1_chap04.html#tag_04_17")
-   ("Session" . "basedefs/V1_chap03.html#tag_03_343")
-   ("Session Leader" . "basedefs/V1_chap03.html#tag_03_344")
-   ("Session Lifetime" . "basedefs/V1_chap03.html#tag_03_345")
-   ("Shared Memory Object" . "basedefs/V1_chap03.html#tag_03_346")
-   ("Shell" . "basedefs/V1_chap03.html#tag_03_347")
-   ("Shell Script" . "basedefs/V1_chap03.html#tag_03_349")
-   ("Shell, the" . "basedefs/V1_chap03.html#tag_03_348")
-   ("Signal" . "basedefs/V1_chap03.html#tag_03_350")
-   ("Signal Stack" . "basedefs/V1_chap03.html#tag_03_351")
-   ("Single-Quote Character" . "basedefs/V1_chap03.html#tag_03_352")
-   ("Single-Threaded Process" . "basedefs/V1_chap03.html#tag_03_353")
-   ("Single-Threaded Program" . "basedefs/V1_chap03.html#tag_03_354")
-   ("Slash Character (<slash>)" . "basedefs/V1_chap03.html#tag_03_355")
-   ("Socket" . "basedefs/V1_chap03.html#tag_03_356")
-   ("Socket Address" . "basedefs/V1_chap03.html#tag_03_357")
-   ("Soft Limit" . "basedefs/V1_chap03.html#tag_03_358")
-   ("Source Code" . "basedefs/V1_chap03.html#tag_03_359")
-   ("Space Character (<space>)" . "basedefs/V1_chap03.html#tag_03_360")
-   ("Spawn" . "basedefs/V1_chap03.html#tag_03_361")
-   ("Special Built-In" . "basedefs/V1_chap03.html#tag_03_362")
-   ("Special Parameter" . "basedefs/V1_chap03.html#tag_03_363")
-   ("Spin Lock" . "basedefs/V1_chap03.html#tag_03_364")
-   ("Sporadic Server" . "basedefs/V1_chap03.html#tag_03_365")
-   ("Standard Error" . "basedefs/V1_chap03.html#tag_03_366")
-   ("Standard Input" . "basedefs/V1_chap03.html#tag_03_367")
-   ("Standard Output" . "basedefs/V1_chap03.html#tag_03_368")
-   ("Standard Utilities" . "basedefs/V1_chap03.html#tag_03_369")
-   ("Stream" . "basedefs/V1_chap03.html#tag_03_370")
-   ("String" . "basedefs/V1_chap03.html#tag_03_375")
-   ("Subshell" . "basedefs/V1_chap03.html#tag_03_376")
-   ("Successfully Transferred" . "basedefs/V1_chap03.html#tag_03_377")
-   ("Supplementary Group ID" . "basedefs/V1_chap03.html#tag_03_378")
-   ("Suspended Job" . "basedefs/V1_chap03.html#tag_03_379")
-   ("Symbolic Constant" . "basedefs/V1_chap03.html#tag_03_380")
-   ("Symbolic Link" . "basedefs/V1_chap03.html#tag_03_381")
-   ("Synchronized I/O Completion" . "basedefs/V1_chap03.html#tag_03_383")
-   ("Synchronized I/O Data Integrity Completion"
-    .
-    "basedefs/V1_chap03.html#tag_03_384")
-   ("Synchronized I/O File Integrity Completion"
-    .
-    "basedefs/V1_chap03.html#tag_03_385")
-   ("Synchronized I/O Operation" . "basedefs/V1_chap03.html#tag_03_386")
-   ("Synchronized Input and Output" . "basedefs/V1_chap03.html#tag_03_382")
-   ("Synchronous I/O Operation" . "basedefs/V1_chap03.html#tag_03_387")
-   ("Synchronously-Generated Signal" . "basedefs/V1_chap03.html#tag_03_388")
-   ("System" . "basedefs/V1_chap03.html#tag_03_389")
-   ("System Boot" . "basedefs/V1_chap03.html#tag_03_390")
-   ("System Clock" . "basedefs/V1_chap03.html#tag_03_391")
-   ("System Console" . "basedefs/V1_chap03.html#tag_03_392")
-   ("System Crash" . "basedefs/V1_chap03.html#tag_03_393")
-   ("System Databases" . "basedefs/V1_chap03.html#tag_03_394")
-   ("System Documentation" . "basedefs/V1_chap03.html#tag_03_395")
-   ("System Process" . "basedefs/V1_chap03.html#tag_03_396")
-   ("System Reboot" . "basedefs/V1_chap03.html#tag_03_397")
-   ("System Trace Event" . "basedefs/V1_chap03.html#tag_03_398")
-   ("System-Wide" . "basedefs/V1_chap03.html#tag_03_399")
-   ("Tab Character (<tab>)" . "basedefs/V1_chap03.html#tag_03_400")
-   ("Terminal (or Terminal Device)" . "basedefs/V1_chap03.html#tag_03_401")
-   ("Text Column" . "basedefs/V1_chap03.html#tag_03_402")
-   ("Text File" . "basedefs/V1_chap03.html#tag_03_403")
-   ("Thread" . "basedefs/V1_chap03.html#tag_03_404")
-   ("Thread ID" . "basedefs/V1_chap03.html#tag_03_405")
-   ("Thread List" . "basedefs/V1_chap03.html#tag_03_406")
-   ("Thread-Safe" . "basedefs/V1_chap03.html#tag_03_407")
-   ("Thread-Safety" . "basedefs/V1_chap04.html#tag_04_18")
-   ("Thread-Specific Data Key" . "basedefs/V1_chap03.html#tag_03_408")
-   ("Tilde Character (<tilde>)" . "basedefs/V1_chap03.html#tag_03_409")
-   ("Timeouts" . "basedefs/V1_chap03.html#tag_03_410")
-   ("Timer" . "basedefs/V1_chap03.html#tag_03_411")
-   ("Timer Overrun" . "basedefs/V1_chap03.html#tag_03_412")
-   ("Token" . "basedefs/V1_chap03.html#tag_03_413")
-   ("Trace Analyzer Process" . "basedefs/V1_chap03.html#tag_03_414")
-   ("Trace Controller Process" . "basedefs/V1_chap03.html#tag_03_415")
-   ("Trace Event" . "basedefs/V1_chap03.html#tag_03_416")
-   ("Trace Event Type" . "basedefs/V1_chap03.html#tag_03_417")
-   ("Trace Event Type Mapping" . "basedefs/V1_chap03.html#tag_03_418")
-   ("Trace Filter" . "basedefs/V1_chap03.html#tag_03_419")
-   ("Trace Generation Version" . "basedefs/V1_chap03.html#tag_03_420")
-   ("Trace Log" . "basedefs/V1_chap03.html#tag_03_421")
-   ("Trace Point" . "basedefs/V1_chap03.html#tag_03_422")
-   ("Trace Stream" . "basedefs/V1_chap03.html#tag_03_423")
-   ("Trace Stream Identifier" . "basedefs/V1_chap03.html#tag_03_424")
-   ("Trace System" . "basedefs/V1_chap03.html#tag_03_425")
-   ("Traced Process" . "basedefs/V1_chap03.html#tag_03_426")
-   ("Tracing" . "basedefs/V1_chap04.html#tag_04_19")
-   ("Tracing Status of a Trace Stream" . "basedefs/V1_chap03.html#tag_03_427")
-   ("Treatment of Error Conditions for Mathematical Functions"
-    .
-    "basedefs/V1_chap04.html#tag_04_20")
-   ("Treatment of NaN Arguments for the Mathematical Functions"
-    .
-    "basedefs/V1_chap04.html#tag_04_21")
-   ("Typed Memory Name Space" . "basedefs/V1_chap03.html#tag_03_428")
-   ("Typed Memory Object" . "basedefs/V1_chap03.html#tag_03_429")
-   ("Typed Memory Pool" . "basedefs/V1_chap03.html#tag_03_430")
-   ("Typed Memory Port" . "basedefs/V1_chap03.html#tag_03_431")
-   ("Unbind" . "basedefs/V1_chap03.html#tag_03_432")
-   ("Unit Data" . "basedefs/V1_chap03.html#tag_03_433")
-   ("Upshifting" . "basedefs/V1_chap03.html#tag_03_434")
-   ("User Database" . "basedefs/V1_chap03.html#tag_03_435")
-   ("User ID" . "basedefs/V1_chap03.html#tag_03_436")
-   ("User Name" . "basedefs/V1_chap03.html#tag_03_437")
-   ("User Trace Event" . "basedefs/V1_chap03.html#tag_03_438")
-   ("Utility" . "basedefs/V1_chap03.html#tag_03_439")
-   ("Utility" . "basedefs/V1_chap04.html#tag_04_22")
-   ("Utility Argument Syntax" . "basedefs/V1_chap12.html#tag_12_01")
-   ("Utility Conventions" . "basedefs/V1_chap12.html#tag_12")
-   ("Utility Syntax Guidelines" . "basedefs/V1_chap12.html#tag_12_02")
-   ("Variable" . "basedefs/V1_chap03.html#tag_03_440")
-   ("Variable Assignment" . "basedefs/V1_chap04.html#tag_04_23")
-   ("Vertical-Tab Character (<vertical-tab>)"
-    .
-    "basedefs/V1_chap03.html#tag_03_441")
-   ("White Space" . "basedefs/V1_chap03.html#tag_03_442")
-   ("Wide-Character Code (C Language)" . "basedefs/V1_chap03.html#tag_03_443")
-   ("Wide-Character Input/Output Functions"
-    .
-    "basedefs/V1_chap03.html#tag_03_444")
-   ("Wide-Character String" . "basedefs/V1_chap03.html#tag_03_445")
-   ("Word" . "basedefs/V1_chap03.html#tag_03_446")
-   ("Working Directory (or Current Working Directory)"
-    .
-    "basedefs/V1_chap03.html#tag_03_447")
-   ("Worldwide Portability Interface" . "basedefs/V1_chap03.html#tag_03_448")
-   ("Write" . "basedefs/V1_chap03.html#tag_03_449")
-   ("XSI" . "basedefs/V1_chap03.html#tag_03_450")
-   ("XSI-Conformant" . "basedefs/V1_chap03.html#tag_03_451")
-   ("Zombie Process" . "basedefs/V1_chap03.html#tag_03_452")
-   ("_Exit()" . "functions/_Exit.html")
-   ("_exit()" . "functions/_exit.html")
-   ("_longjmp()" . "functions/_longjmp.html")
-   ("_setjmp()" . "functions/_setjmp.html")
-   ("_tolower()" . "functions/_tolower.html")
-   ("_toupper()" . "functions/_toupper.html")
-   ("a64l()" . "functions/a64l.html")
-   ("abort()" . "functions/abort.html")
-   ("abs()" . "functions/abs.html")
-   ("accept()" . "functions/accept.html")
-   ("access()" . "functions/access.html")
-   ("acos()" . "functions/acos.html")
-   ("acosf()" . "functions/acosf.html")
-   ("acosh()" . "functions/acosh.html")
-   ("acoshf()" . "functions/acoshf.html")
-   ("acoshl()" . "functions/acoshl.html")
-   ("acosl()" . "functions/acosl.html")
-   ("admin" . "utilities/admin.html")
-   ("aio.h" . "basedefs/aio.h.html")
-   ("aio_cancel()" . "functions/aio_cancel.html")
-   ("aio_error()" . "functions/aio_error.html")
-   ("aio_fsync()" . "functions/aio_fsync.html")
-   ("aio_read()" . "functions/aio_read.html")
-   ("aio_return()" . "functions/aio_return.html")
-   ("aio_suspend()" . "functions/aio_suspend.html")
-   ("aio_write()" . "functions/aio_write.html")
-   ("alarm()" . "functions/alarm.html")
-   ("alias" . "utilities/alias.html")
-   ("alphasort()" . "functions/alphasort.html")
-   ("ar" . "utilities/ar.html")
-   ("arpa/inet.h" . "basedefs/arpa_inet.h.html")
-   ("asa" . "utilities/asa.html")
-   ("asctime()" . "functions/asctime.html")
-   ("asctime_r()" . "functions/asctime_r.html")
-   ("asin()" . "functions/asin.html")
-   ("asinf()" . "functions/asinf.html")
-   ("asinh()" . "functions/asinh.html")
-   ("asinhf()" . "functions/asinhf.html")
-   ("asinhl()" . "functions/asinhl.html")
-   ("asinl()" . "functions/asinl.html")
-   ("assert()" . "functions/assert.html")
-   ("assert.h" . "basedefs/assert.h.html")
-   ("at" . "utilities/at.html")
-   ("atan()" . "functions/atan.html")
-   ("atan2()" . "functions/atan2.html")
-   ("atan2f()" . "functions/atan2f.html")
-   ("atan2l()" . "functions/atan2l.html")
-   ("atanf()" . "functions/atanf.html")
-   ("atanh()" . "functions/atanh.html")
-   ("atanhf()" . "functions/atanhf.html")
-   ("atanhl()" . "functions/atanhl.html")
-   ("atanl()" . "functions/atanl.html")
-   ("atexit()" . "functions/atexit.html")
-   ("atof()" . "functions/atof.html")
-   ("atoi()" . "functions/atoi.html")
-   ("atol()" . "functions/atol.html")
-   ("atoll()" . "functions/atoll.html")
-   ("awk" . "utilities/awk.html")
-   ("basename" . "utilities/basename.html")
-   ("basename()" . "functions/basename.html")
-   ("batch" . "utilities/batch.html")
-   ("bc" . "utilities/bc.html")
-   ("bg" . "utilities/bg.html")
-   ("bind()" . "functions/bind.html")
-   ("break" . "utilities/V3_chap02.html#break")
-   ("bsearch()" . "functions/bsearch.html")
-   ("btowc()" . "functions/btowc.html")
-   ("c99" . "utilities/c99.html")
-   ("cabs()" . "functions/cabs.html")
-   ("cabsf()" . "functions/cabsf.html")
-   ("cabsl()" . "functions/cabsl.html")
-   ("cacos()" . "functions/cacos.html")
-   ("cacosf()" . "functions/cacosf.html")
-   ("cacosh()" . "functions/cacosh.html")
-   ("cacoshf()" . "functions/cacoshf.html")
-   ("cacoshl()" . "functions/cacoshl.html")
-   ("cacosl()" . "functions/cacosl.html")
-   ("cal" . "utilities/cal.html")
-   ("calloc()" . "functions/calloc.html")
-   ("carg()" . "functions/carg.html")
-   ("cargf()" . "functions/cargf.html")
-   ("cargl()" . "functions/cargl.html")
-   ("casin()" . "functions/casin.html")
-   ("casinf()" . "functions/casinf.html")
-   ("casinh()" . "functions/casinh.html")
-   ("casinhf()" . "functions/casinhf.html")
-   ("casinhl()" . "functions/casinhl.html")
-   ("casinl()" . "functions/casinl.html")
-   ("cat" . "utilities/cat.html")
-   ("catan()" . "functions/catan.html")
-   ("catanf()" . "functions/catanf.html")
-   ("catanh()" . "functions/catanh.html")
-   ("catanhf()" . "functions/catanhf.html")
-   ("catanhl()" . "functions/catanhl.html")
-   ("catanl()" . "functions/catanl.html")
-   ("catclose()" . "functions/catclose.html")
-   ("catgets()" . "functions/catgets.html")
-   ("catopen()" . "functions/catopen.html")
-   ("cbrt()" . "functions/cbrt.html")
-   ("cbrtf()" . "functions/cbrtf.html")
-   ("cbrtl()" . "functions/cbrtl.html")
-   ("ccos()" . "functions/ccos.html")
-   ("ccosf()" . "functions/ccosf.html")
-   ("ccosh()" . "functions/ccosh.html")
-   ("ccoshf()" . "functions/ccoshf.html")
-   ("ccoshl()" . "functions/ccoshl.html")
-   ("ccosl()" . "functions/ccosl.html")
-   ("cd" . "utilities/cd.html")
-   ("ceil()" . "functions/ceil.html")
-   ("ceilf()" . "functions/ceilf.html")
-   ("ceill()" . "functions/ceill.html")
-   ("cexp()" . "functions/cexp.html")
-   ("cexpf()" . "functions/cexpf.html")
-   ("cexpl()" . "functions/cexpl.html")
-   ("cfgetispeed()" . "functions/cfgetispeed.html")
-   ("cfgetospeed()" . "functions/cfgetospeed.html")
-   ("cflow" . "utilities/cflow.html")
-   ("cfsetispeed()" . "functions/cfsetispeed.html")
-   ("cfsetospeed()" . "functions/cfsetospeed.html")
-   ("chdir()" . "functions/chdir.html")
-   ("chgrp" . "utilities/chgrp.html")
-   ("chmod" . "utilities/chmod.html")
-   ("chmod()" . "functions/chmod.html")
-   ("chown" . "utilities/chown.html")
-   ("chown()" . "functions/chown.html")
-   ("cimag()" . "functions/cimag.html")
-   ("cimagf()" . "functions/cimagf.html")
-   ("cimagl()" . "functions/cimagl.html")
-   ("cksum" . "utilities/cksum.html")
-   ("clearerr()" . "functions/clearerr.html")
-   ("clock()" . "functions/clock.html")
-   ("clock_getcpuclockid()" . "functions/clock_getcpuclockid.html")
-   ("clock_getres()" . "functions/clock_getres.html")
-   ("clock_gettime()" . "functions/clock_gettime.html")
-   ("clock_nanosleep()" . "functions/clock_nanosleep.html")
-   ("clock_settime()" . "functions/clock_settime.html")
-   ("clog()" . "functions/clog.html")
-   ("clogf()" . "functions/clogf.html")
-   ("clogl()" . "functions/clogl.html")
-   ("close()" . "functions/close.html")
-   ("closedir()" . "functions/closedir.html")
-   ("closelog()" . "functions/closelog.html")
-   ("cmp" . "utilities/cmp.html")
-   ("colon" . "utilities/V3_chap02.html#colon")
-   ("comm" . "utilities/comm.html")
-   ("command" . "utilities/command.html")
-   ("complex.h" . "basedefs/complex.h.html")
-   ("compress" . "utilities/compress.html")
-   ("confstr()" . "functions/confstr.html")
-   ("conj()" . "functions/conj.html")
-   ("conjf()" . "functions/conjf.html")
-   ("conjl()" . "functions/conjl.html")
-   ("connect()" . "functions/connect.html")
-   ("continue" . "utilities/V3_chap02.html#continue")
-   ("copysign()" . "functions/copysign.html")
-   ("copysignf()" . "functions/copysignf.html")
-   ("copysignl()" . "functions/copysignl.html")
-   ("cos()" . "functions/cos.html")
-   ("cosf()" . "functions/cosf.html")
-   ("cosh()" . "functions/cosh.html")
-   ("coshf()" . "functions/coshf.html")
-   ("coshl()" . "functions/coshl.html")
-   ("cosl()" . "functions/cosl.html")
-   ("cp" . "utilities/cp.html")
-   ("cpio.h" . "basedefs/cpio.h.html")
-   ("cpow()" . "functions/cpow.html")
-   ("cpowf()" . "functions/cpowf.html")
-   ("cpowl()" . "functions/cpowl.html")
-   ("cproj()" . "functions/cproj.html")
-   ("cprojf()" . "functions/cprojf.html")
-   ("cprojl()" . "functions/cprojl.html")
-   ("creal()" . "functions/creal.html")
-   ("crealf()" . "functions/crealf.html")
-   ("creall()" . "functions/creall.html")
-   ("creat()" . "functions/creat.html")
-   ("crontab" . "utilities/crontab.html")
-   ("crypt()" . "functions/crypt.html")
-   ("csin()" . "functions/csin.html")
-   ("csinf()" . "functions/csinf.html")
-   ("csinh()" . "functions/csinh.html")
-   ("csinhf()" . "functions/csinhf.html")
-   ("csinhl()" . "functions/csinhl.html")
-   ("csinl()" . "functions/csinl.html")
-   ("csplit" . "utilities/csplit.html")
-   ("csqrt()" . "functions/csqrt.html")
-   ("csqrtf()" . "functions/csqrtf.html")
-   ("csqrtl()" . "functions/csqrtl.html")
-   ("ctags" . "utilities/ctags.html")
-   ("ctan()" . "functions/ctan.html")
-   ("ctanf()" . "functions/ctanf.html")
-   ("ctanh()" . "functions/ctanh.html")
-   ("ctanhf()" . "functions/ctanhf.html")
-   ("ctanhl()" . "functions/ctanhl.html")
-   ("ctanl()" . "functions/ctanl.html")
-   ("ctermid()" . "functions/ctermid.html")
-   ("ctime()" . "functions/ctime.html")
-   ("ctime_r()" . "functions/ctime_r.html")
-   ("ctype.h" . "basedefs/ctype.h.html")
-   ("cut" . "utilities/cut.html")
-   ("cxref" . "utilities/cxref.html")
-   ("date" . "utilities/date.html")
-   ("daylight" . "functions/daylight.html")
-   ("dbm_clearerr()" . "functions/dbm_clearerr.html")
-   ("dbm_close()" . "functions/dbm_close.html")
-   ("dbm_delete()" . "functions/dbm_delete.html")
-   ("dbm_error()" . "functions/dbm_error.html")
-   ("dbm_fetch()" . "functions/dbm_fetch.html")
-   ("dbm_firstkey()" . "functions/dbm_firstkey.html")
-   ("dbm_nextkey()" . "functions/dbm_nextkey.html")
-   ("dbm_open()" . "functions/dbm_open.html")
-   ("dbm_store()" . "functions/dbm_store.html")
-   ("dd" . "utilities/dd.html")
-   ("delta" . "utilities/delta.html")
-   ("df" . "utilities/df.html")
-   ("diff" . "utilities/diff.html")
-   ("difftime()" . "functions/difftime.html")
-   ("dirent.h" . "basedefs/dirent.h.html")
-   ("dirfd()" . "functions/dirfd.html")
-   ("dirname" . "utilities/dirname.html")
-   ("dirname()" . "functions/dirname.html")
-   ("div()" . "functions/div.html")
-   ("dlclose()" . "functions/dlclose.html")
-   ("dlerror()" . "functions/dlerror.html")
-   ("dlfcn.h" . "basedefs/dlfcn.h.html")
-   ("dlopen()" . "functions/dlopen.html")
-   ("dlsym()" . "functions/dlsym.html")
-   ("dot" . "utilities/V3_chap02.html#dot")
-   ("dprintf()" . "functions/dprintf.html")
-   ("drand48()" . "functions/drand48.html")
-   ("du" . "utilities/du.html")
-   ("dup()" . "functions/dup.html")
-   ("dup2()" . "functions/dup2.html")
-   ("duplocale()" . "functions/duplocale.html")
-   ("echo" . "utilities/echo.html")
-   ("ed" . "utilities/ed.html")
-   ("encrypt()" . "functions/encrypt.html")
-   ("endgrent()" . "functions/endgrent.html")
-   ("endhostent()" . "functions/endhostent.html")
-   ("endnetent()" . "functions/endnetent.html")
-   ("endprotoent()" . "functions/endprotoent.html")
-   ("endpwent()" . "functions/endpwent.html")
-   ("endservent()" . "functions/endservent.html")
-   ("endutxent()" . "functions/endutxent.html")
-   ("env" . "utilities/env.html")
-   ("environ" . "functions/environ.html")
-   ("erand48()" . "functions/erand48.html")
-   ("erf()" . "functions/erf.html")
-   ("erfc()" . "functions/erfc.html")
-   ("erfcf()" . "functions/erfcf.html")
-   ("erfcl()" . "functions/erfcl.html")
-   ("erff()" . "functions/erff.html")
-   ("erfl()" . "functions/erfl.html")
-   ("errno" . "functions/errno.html")
-   ("errno.h" . "basedefs/errno.h.html")
-   ("eval" . "utilities/V3_chap02.html#eval")
-   ("ex" . "utilities/ex.html")
-   ("exec" . "utilities/V3_chap02.html#exec")
-   ("execl()" . "functions/execl.html")
-   ("execle()" . "functions/execle.html")
-   ("execlp()" . "functions/execlp.html")
-   ("execv()" . "functions/execv.html")
-   ("execve()" . "functions/execve.html")
-   ("execvp()" . "functions/execvp.html")
-   ("exit" . "utilities/V3_chap02.html#exit")
-   ("exit()" . "functions/exit.html")
-   ("exp()" . "functions/exp.html")
-   ("exp2()" . "functions/exp2.html")
-   ("exp2f()" . "functions/exp2f.html")
-   ("exp2l()" . "functions/exp2l.html")
-   ("expand" . "utilities/expand.html")
-   ("expf()" . "functions/expf.html")
-   ("expl()" . "functions/expl.html")
-   ("expm1()" . "functions/expm1.html")
-   ("expm1f()" . "functions/expm1f.html")
-   ("expm1l()" . "functions/expm1l.html")
-   ("export" . "utilities/V3_chap02.html#export")
-   ("expr" . "utilities/expr.html")
-   ("fabs()" . "functions/fabs.html")
-   ("fabsf()" . "functions/fabsf.html")
-   ("fabsl()" . "functions/fabsl.html")
-   ("faccessat()" . "functions/faccessat.html")
-   ("false" . "utilities/false.html")
-   ("fattach()" . "functions/fattach.html")
-   ("fc" . "utilities/fc.html")
-   ("fchdir()" . "functions/fchdir.html")
-   ("fchmod()" . "functions/fchmod.html")
-   ("fchmodat()" . "functions/fchmodat.html")
-   ("fchown()" . "functions/fchown.html")
-   ("fchownat()" . "functions/fchownat.html")
-   ("fclose()" . "functions/fclose.html")
-   ("fcntl()" . "functions/fcntl.html")
-   ("fcntl.h" . "basedefs/fcntl.h.html")
-   ("fdatasync()" . "functions/fdatasync.html")
-   ("fdetach()" . "functions/fdetach.html")
-   ("fdim()" . "functions/fdim.html")
-   ("fdimf()" . "functions/fdimf.html")
-   ("fdiml()" . "functions/fdiml.html")
-   ("fdopen()" . "functions/fdopen.html")
-   ("fdopendir()" . "functions/fdopendir.html")
-   ("feclearexcept()" . "functions/feclearexcept.html")
-   ("fegetenv()" . "functions/fegetenv.html")
-   ("fegetexceptflag()" . "functions/fegetexceptflag.html")
-   ("fegetround()" . "functions/fegetround.html")
-   ("feholdexcept()" . "functions/feholdexcept.html")
-   ("fenv.h" . "basedefs/fenv.h.html")
-   ("feof()" . "functions/feof.html")
-   ("feraiseexcept()" . "functions/feraiseexcept.html")
-   ("ferror()" . "functions/ferror.html")
-   ("fesetenv()" . "functions/fesetenv.html")
-   ("fesetexceptflag()" . "functions/fesetexceptflag.html")
-   ("fesetround()" . "functions/fesetround.html")
-   ("fetestexcept()" . "functions/fetestexcept.html")
-   ("feupdateenv()" . "functions/feupdateenv.html")
-   ("fexecve()" . "functions/fexecve.html")
-   ("fflush()" . "functions/fflush.html")
-   ("ffs()" . "functions/ffs.html")
-   ("fg" . "utilities/fg.html")
-   ("fgetc()" . "functions/fgetc.html")
-   ("fgetpos()" . "functions/fgetpos.html")
-   ("fgets()" . "functions/fgets.html")
-   ("fgetwc()" . "functions/fgetwc.html")
-   ("fgetws()" . "functions/fgetws.html")
-   ("file" . "utilities/file.html")
-   ("fileno()" . "functions/fileno.html")
-   ("find" . "utilities/find.html")
-   ("float.h" . "basedefs/float.h.html")
-   ("flockfile()" . "functions/flockfile.html")
-   ("floor()" . "functions/floor.html")
-   ("floorf()" . "functions/floorf.html")
-   ("floorl()" . "functions/floorl.html")
-   ("fma()" . "functions/fma.html")
-   ("fmaf()" . "functions/fmaf.html")
-   ("fmal()" . "functions/fmal.html")
-   ("fmax()" . "functions/fmax.html")
-   ("fmaxf()" . "functions/fmaxf.html")
-   ("fmaxl()" . "functions/fmaxl.html")
-   ("fmemopen()" . "functions/fmemopen.html")
-   ("fmin()" . "functions/fmin.html")
-   ("fminf()" . "functions/fminf.html")
-   ("fminl()" . "functions/fminl.html")
-   ("fmod()" . "functions/fmod.html")
-   ("fmodf()" . "functions/fmodf.html")
-   ("fmodl()" . "functions/fmodl.html")
-   ("fmtmsg()" . "functions/fmtmsg.html")
-   ("fmtmsg.h" . "basedefs/fmtmsg.h.html")
-   ("fnmatch()" . "functions/fnmatch.html")
-   ("fnmatch.h" . "basedefs/fnmatch.h.html")
-   ("fold" . "utilities/fold.html")
-   ("fopen()" . "functions/fopen.html")
-   ("fork()" . "functions/fork.html")
-   ("fort77" . "utilities/fort77.html")
-   ("fpathconf()" . "functions/fpathconf.html")
-   ("fpclassify()" . "functions/fpclassify.html")
-   ("fprintf()" . "functions/fprintf.html")
-   ("fputc()" . "functions/fputc.html")
-   ("fputs()" . "functions/fputs.html")
-   ("fputwc()" . "functions/fputwc.html")
-   ("fputws()" . "functions/fputws.html")
-   ("fread()" . "functions/fread.html")
-   ("free()" . "functions/free.html")
-   ("freeaddrinfo()" . "functions/freeaddrinfo.html")
-   ("freelocale()" . "functions/freelocale.html")
-   ("freopen()" . "functions/freopen.html")
-   ("frexp()" . "functions/frexp.html")
-   ("frexpf()" . "functions/frexpf.html")
-   ("frexpl()" . "functions/frexpl.html")
-   ("fscanf()" . "functions/fscanf.html")
-   ("fseek()" . "functions/fseek.html")
-   ("fseeko()" . "functions/fseeko.html")
-   ("fsetpos()" . "functions/fsetpos.html")
-   ("fstat()" . "functions/fstat.html")
-   ("fstatat()" . "functions/fstatat.html")
-   ("fstatvfs()" . "functions/fstatvfs.html")
-   ("fsync()" . "functions/fsync.html")
-   ("ftell()" . "functions/ftell.html")
-   ("ftello()" . "functions/ftello.html")
-   ("ftok()" . "functions/ftok.html")
-   ("ftruncate()" . "functions/ftruncate.html")
-   ("ftrylockfile()" . "functions/ftrylockfile.html")
-   ("ftw()" . "functions/ftw.html")
-   ("ftw.h" . "basedefs/ftw.h.html")
-   ("funlockfile()" . "functions/funlockfile.html")
-   ("fuser" . "utilities/fuser.html")
-   ("futimens()" . "functions/futimens.html")
-   ("fwide()" . "functions/fwide.html")
-   ("fwprintf()" . "functions/fwprintf.html")
-   ("fwrite()" . "functions/fwrite.html")
-   ("fwscanf()" . "functions/fwscanf.html")
-   ("gai_strerror()" . "functions/gai_strerror.html")
-   ("gencat" . "utilities/gencat.html")
-   ("get" . "utilities/get.html")
-   ("getaddrinfo()" . "functions/getaddrinfo.html")
-   ("getc()" . "functions/getc.html")
-   ("getc_unlocked()" . "functions/getc_unlocked.html")
-   ("getchar()" . "functions/getchar.html")
-   ("getchar_unlocked()" . "functions/getchar_unlocked.html")
-   ("getconf" . "utilities/getconf.html")
-   ("getcwd()" . "functions/getcwd.html")
-   ("getdate()" . "functions/getdate.html")
-   ("getdate_err" . "functions/getdate_err.html")
-   ("getdelim()" . "functions/getdelim.html")
-   ("getegid()" . "functions/getegid.html")
-   ("getenv()" . "functions/getenv.html")
-   ("geteuid()" . "functions/geteuid.html")
-   ("getgid()" . "functions/getgid.html")
-   ("getgrent()" . "functions/getgrent.html")
-   ("getgrgid()" . "functions/getgrgid.html")
-   ("getgrgid_r()" . "functions/getgrgid_r.html")
-   ("getgrnam()" . "functions/getgrnam.html")
-   ("getgrnam_r()" . "functions/getgrnam_r.html")
-   ("getgroups()" . "functions/getgroups.html")
-   ("gethostent()" . "functions/gethostent.html")
-   ("gethostid()" . "functions/gethostid.html")
-   ("gethostname()" . "functions/gethostname.html")
-   ("getitimer()" . "functions/getitimer.html")
-   ("getline()" . "functions/getline.html")
-   ("getlogin()" . "functions/getlogin.html")
-   ("getlogin_r()" . "functions/getlogin_r.html")
-   ("getmsg()" . "functions/getmsg.html")
-   ("getnameinfo()" . "functions/getnameinfo.html")
-   ("getnetbyaddr()" . "functions/getnetbyaddr.html")
-   ("getnetbyname()" . "functions/getnetbyname.html")
-   ("getnetent()" . "functions/getnetent.html")
-   ("getopt()" . "functions/getopt.html")
-   ("getopts" . "utilities/getopts.html")
-   ("getpeername()" . "functions/getpeername.html")
-   ("getpgid()" . "functions/getpgid.html")
-   ("getpgrp()" . "functions/getpgrp.html")
-   ("getpid()" . "functions/getpid.html")
-   ("getpmsg()" . "functions/getpmsg.html")
-   ("getppid()" . "functions/getppid.html")
-   ("getpriority()" . "functions/getpriority.html")
-   ("getprotobyname()" . "functions/getprotobyname.html")
-   ("getprotobynumber()" . "functions/getprotobynumber.html")
-   ("getprotoent()" . "functions/getprotoent.html")
-   ("getpwent()" . "functions/getpwent.html")
-   ("getpwnam()" . "functions/getpwnam.html")
-   ("getpwnam_r()" . "functions/getpwnam_r.html")
-   ("getpwuid()" . "functions/getpwuid.html")
-   ("getpwuid_r()" . "functions/getpwuid_r.html")
-   ("getrlimit()" . "functions/getrlimit.html")
-   ("getrusage()" . "functions/getrusage.html")
-   ("gets()" . "functions/gets.html")
-   ("getservbyname()" . "functions/getservbyname.html")
-   ("getservbyport()" . "functions/getservbyport.html")
-   ("getservent()" . "functions/getservent.html")
-   ("getsid()" . "functions/getsid.html")
-   ("getsockname()" . "functions/getsockname.html")
-   ("getsockopt()" . "functions/getsockopt.html")
-   ("getsubopt()" . "functions/getsubopt.html")
-   ("gettimeofday()" . "functions/gettimeofday.html")
-   ("getuid()" . "functions/getuid.html")
-   ("getutxent()" . "functions/getutxent.html")
-   ("getutxid()" . "functions/getutxid.html")
-   ("getutxline()" . "functions/getutxline.html")
-   ("getwc()" . "functions/getwc.html")
-   ("getwchar()" . "functions/getwchar.html")
-   ("glob()" . "functions/glob.html")
-   ("glob.h" . "basedefs/glob.h.html")
-   ("globfree()" . "functions/globfree.html")
-   ("gmtime()" . "functions/gmtime.html")
-   ("gmtime_r()" . "functions/gmtime_r.html")
-   ("grantpt()" . "functions/grantpt.html")
-   ("grep" . "utilities/grep.html")
-   ("grp.h" . "basedefs/grp.h.html")
-   ("hash" . "utilities/hash.html")
-   ("hcreate()" . "functions/hcreate.html")
-   ("hdestroy()" . "functions/hdestroy.html")
-   ("head" . "utilities/head.html")
-   ("hsearch()" . "functions/hsearch.html")
-   ("htonl()" . "functions/htonl.html")
-   ("htons()" . "functions/htons.html")
-   ("hypot()" . "functions/hypot.html")
-   ("hypotf()" . "functions/hypotf.html")
-   ("hypotl()" . "functions/hypotl.html")
-   ("iconv" . "utilities/iconv.html")
-   ("iconv()" . "functions/iconv.html")
-   ("iconv.h" . "basedefs/iconv.h.html")
-   ("iconv_close()" . "functions/iconv_close.html")
-   ("iconv_open()" . "functions/iconv_open.html")
-   ("id" . "utilities/id.html")
-   ("if_freenameindex()" . "functions/if_freenameindex.html")
-   ("if_indextoname()" . "functions/if_indextoname.html")
-   ("if_nameindex()" . "functions/if_nameindex.html")
-   ("if_nametoindex()" . "functions/if_nametoindex.html")
-   ("ilogb()" . "functions/ilogb.html")
-   ("ilogbf()" . "functions/ilogbf.html")
-   ("ilogbl()" . "functions/ilogbl.html")
-   ("imaxabs()" . "functions/imaxabs.html")
-   ("imaxdiv()" . "functions/imaxdiv.html")
-   ("inet_addr()" . "functions/inet_addr.html")
-   ("inet_ntoa()" . "functions/inet_ntoa.html")
-   ("inet_ntop()" . "functions/inet_ntop.html")
-   ("inet_pton()" . "functions/inet_pton.html")
-   ("initstate()" . "functions/initstate.html")
-   ("insque()" . "functions/insque.html")
-   ("inttypes.h" . "basedefs/inttypes.h.html")
-   ("ioctl()" . "functions/ioctl.html")
-   ("ipcrm" . "utilities/ipcrm.html")
-   ("ipcs" . "utilities/ipcs.html")
-   ("isalnum()" . "functions/isalnum.html")
-   ("isalnum_l()" . "functions/isalnum_l.html")
-   ("isalpha()" . "functions/isalpha.html")
-   ("isalpha_l()" . "functions/isalpha_l.html")
-   ("isascii()" . "functions/isascii.html")
-   ("isastream()" . "functions/isastream.html")
-   ("isatty()" . "functions/isatty.html")
-   ("isblank()" . "functions/isblank.html")
-   ("isblank_l()" . "functions/isblank_l.html")
-   ("iscntrl()" . "functions/iscntrl.html")
-   ("iscntrl_l()" . "functions/iscntrl_l.html")
-   ("isdigit()" . "functions/isdigit.html")
-   ("isdigit_l()" . "functions/isdigit_l.html")
-   ("isfinite()" . "functions/isfinite.html")
-   ("isgraph()" . "functions/isgraph.html")
-   ("isgraph_l()" . "functions/isgraph_l.html")
-   ("isgreater()" . "functions/isgreater.html")
-   ("isgreaterequal()" . "functions/isgreaterequal.html")
-   ("isinf()" . "functions/isinf.html")
-   ("isless()" . "functions/isless.html")
-   ("islessequal()" . "functions/islessequal.html")
-   ("islessgreater()" . "functions/islessgreater.html")
-   ("islower()" . "functions/islower.html")
-   ("islower_l()" . "functions/islower_l.html")
-   ("isnan()" . "functions/isnan.html")
-   ("isnormal()" . "functions/isnormal.html")
-   ("iso646.h" . "basedefs/iso646.h.html")
-   ("isprint()" . "functions/isprint.html")
-   ("isprint_l()" . "functions/isprint_l.html")
-   ("ispunct()" . "functions/ispunct.html")
-   ("ispunct_l()" . "functions/ispunct_l.html")
-   ("isspace()" . "functions/isspace.html")
-   ("isspace_l()" . "functions/isspace_l.html")
-   ("isunordered()" . "functions/isunordered.html")
-   ("isupper()" . "functions/isupper.html")
-   ("isupper_l()" . "functions/isupper_l.html")
-   ("iswalnum()" . "functions/iswalnum.html")
-   ("iswalnum_l()" . "functions/iswalnum_l.html")
-   ("iswalpha()" . "functions/iswalpha.html")
-   ("iswalpha_l()" . "functions/iswalpha_l.html")
-   ("iswblank()" . "functions/iswblank.html")
-   ("iswblank_l()" . "functions/iswblank_l.html")
-   ("iswcntrl()" . "functions/iswcntrl.html")
-   ("iswcntrl_l()" . "functions/iswcntrl_l.html")
-   ("iswctype()" . "functions/iswctype.html")
-   ("iswctype_l()" . "functions/iswctype_l.html")
-   ("iswdigit()" . "functions/iswdigit.html")
-   ("iswdigit_l()" . "functions/iswdigit_l.html")
-   ("iswgraph()" . "functions/iswgraph.html")
-   ("iswgraph_l()" . "functions/iswgraph_l.html")
-   ("iswlower()" . "functions/iswlower.html")
-   ("iswlower_l()" . "functions/iswlower_l.html")
-   ("iswprint()" . "functions/iswprint.html")
-   ("iswprint_l()" . "functions/iswprint_l.html")
-   ("iswpunct()" . "functions/iswpunct.html")
-   ("iswpunct_l()" . "functions/iswpunct_l.html")
-   ("iswspace()" . "functions/iswspace.html")
-   ("iswspace_l()" . "functions/iswspace_l.html")
-   ("iswupper()" . "functions/iswupper.html")
-   ("iswupper_l()" . "functions/iswupper_l.html")
-   ("iswxdigit()" . "functions/iswxdigit.html")
-   ("iswxdigit_l()" . "functions/iswxdigit_l.html")
-   ("isxdigit()" . "functions/isxdigit.html")
-   ("isxdigit_l()" . "functions/isxdigit_l.html")
-   ("j0()" . "functions/j0.html")
-   ("j1()" . "functions/j1.html")
-   ("jn()" . "functions/jn.html")
-   ("jobs" . "utilities/jobs.html")
-   ("join" . "utilities/join.html")
-   ("jrand48()" . "functions/jrand48.html")
-   ("kill" . "utilities/kill.html")
-   ("kill()" . "functions/kill.html")
-   ("killpg()" . "functions/killpg.html")
-   ("l64a()" . "functions/l64a.html")
-   ("labs()" . "functions/labs.html")
-   ("langinfo.h" . "basedefs/langinfo.h.html")
-   ("lchown()" . "functions/lchown.html")
-   ("lcong48()" . "functions/lcong48.html")
-   ("ldexp()" . "functions/ldexp.html")
-   ("ldexpf()" . "functions/ldexpf.html")
-   ("ldexpl()" . "functions/ldexpl.html")
-   ("ldiv()" . "functions/ldiv.html")
-   ("lex" . "utilities/lex.html")
-   ("lfind()" . "functions/lfind.html")
-   ("lgamma()" . "functions/lgamma.html")
-   ("lgammaf()" . "functions/lgammaf.html")
-   ("lgammal()" . "functions/lgammal.html")
-   ("libgen.h" . "basedefs/libgen.h.html")
-   ("limits.h" . "basedefs/limits.h.html")
-   ("link" . "utilities/link.html")
-   ("link()" . "functions/link.html")
-   ("linkat()" . "functions/linkat.html")
-   ("lio_listio()" . "functions/lio_listio.html")
-   ("listen()" . "functions/listen.html")
-   ("llabs()" . "functions/llabs.html")
-   ("lldiv()" . "functions/lldiv.html")
-   ("llrint()" . "functions/llrint.html")
-   ("llrintf()" . "functions/llrintf.html")
-   ("llrintl()" . "functions/llrintl.html")
-   ("llround()" . "functions/llround.html")
-   ("llroundf()" . "functions/llroundf.html")
-   ("llroundl()" . "functions/llroundl.html")
-   ("ln" . "utilities/ln.html")
-   ("locale" . "utilities/locale.html")
-   ("locale.h" . "basedefs/locale.h.html")
-   ("localeconv()" . "functions/localeconv.html")
-   ("localedef" . "utilities/localedef.html")
-   ("localtime()" . "functions/localtime.html")
-   ("localtime_r()" . "functions/localtime_r.html")
-   ("lockf()" . "functions/lockf.html")
-   ("log()" . "functions/log.html")
-   ("log10()" . "functions/log10.html")
-   ("log10f()" . "functions/log10f.html")
-   ("log10l()" . "functions/log10l.html")
-   ("log1p()" . "functions/log1p.html")
-   ("log1pf()" . "functions/log1pf.html")
-   ("log1pl()" . "functions/log1pl.html")
-   ("log2()" . "functions/log2.html")
-   ("log2f()" . "functions/log2f.html")
-   ("log2l()" . "functions/log2l.html")
-   ("logb()" . "functions/logb.html")
-   ("logbf()" . "functions/logbf.html")
-   ("logbl()" . "functions/logbl.html")
-   ("logf()" . "functions/logf.html")
-   ("logger" . "utilities/logger.html")
-   ("logl()" . "functions/logl.html")
-   ("logname" . "utilities/logname.html")
-   ("longjmp()" . "functions/longjmp.html")
-   ("lp" . "utilities/lp.html")
-   ("lrand48()" . "functions/lrand48.html")
-   ("lrint()" . "functions/lrint.html")
-   ("lrintf()" . "functions/lrintf.html")
-   ("lrintl()" . "functions/lrintl.html")
-   ("lround()" . "functions/lround.html")
-   ("lroundf()" . "functions/lroundf.html")
-   ("lroundl()" . "functions/lroundl.html")
-   ("ls" . "utilities/ls.html")
-   ("lsearch()" . "functions/lsearch.html")
-   ("lseek()" . "functions/lseek.html")
-   ("lstat()" . "functions/lstat.html")
-   ("m4" . "utilities/m4.html")
-   ("mailx" . "utilities/mailx.html")
-   ("make" . "utilities/make.html")
-   ("malloc()" . "functions/malloc.html")
-   ("man" . "utilities/man.html")
-   ("math.h" . "basedefs/math.h.html")
-   ("mblen()" . "functions/mblen.html")
-   ("mbrlen()" . "functions/mbrlen.html")
-   ("mbrtowc()" . "functions/mbrtowc.html")
-   ("mbsinit()" . "functions/mbsinit.html")
-   ("mbsnrtowcs()" . "functions/mbsnrtowcs.html")
-   ("mbsrtowcs()" . "functions/mbsrtowcs.html")
-   ("mbstowcs()" . "functions/mbstowcs.html")
-   ("mbtowc()" . "functions/mbtowc.html")
-   ("memccpy()" . "functions/memccpy.html")
-   ("memchr()" . "functions/memchr.html")
-   ("memcmp()" . "functions/memcmp.html")
-   ("memcpy()" . "functions/memcpy.html")
-   ("memmove()" . "functions/memmove.html")
-   ("memset()" . "functions/memset.html")
-   ("mesg" . "utilities/mesg.html")
-   ("mkdir" . "utilities/mkdir.html")
-   ("mkdir()" . "functions/mkdir.html")
-   ("mkdirat()" . "functions/mkdirat.html")
-   ("mkdtemp()" . "functions/mkdtemp.html")
-   ("mkfifo" . "utilities/mkfifo.html")
-   ("mkfifo()" . "functions/mkfifo.html")
-   ("mkfifoat()" . "functions/mkfifoat.html")
-   ("mknod()" . "functions/mknod.html")
-   ("mknodat()" . "functions/mknodat.html")
-   ("mkstemp()" . "functions/mkstemp.html")
-   ("mktime()" . "functions/mktime.html")
-   ("mlock()" . "functions/mlock.html")
-   ("mlockall()" . "functions/mlockall.html")
-   ("mmap()" . "functions/mmap.html")
-   ("modf()" . "functions/modf.html")
-   ("modff()" . "functions/modff.html")
-   ("modfl()" . "functions/modfl.html")
-   ("monetary.h" . "basedefs/monetary.h.html")
-   ("more" . "utilities/more.html")
-   ("mprotect()" . "functions/mprotect.html")
-   ("mq_close()" . "functions/mq_close.html")
-   ("mq_getattr()" . "functions/mq_getattr.html")
-   ("mq_notify()" . "functions/mq_notify.html")
-   ("mq_open()" . "functions/mq_open.html")
-   ("mq_receive()" . "functions/mq_receive.html")
-   ("mq_send()" . "functions/mq_send.html")
-   ("mq_setattr()" . "functions/mq_setattr.html")
-   ("mq_timedreceive()" . "functions/mq_timedreceive.html")
-   ("mq_timedsend()" . "functions/mq_timedsend.html")
-   ("mq_unlink()" . "functions/mq_unlink.html")
-   ("mqueue.h" . "basedefs/mqueue.h.html")
-   ("mrand48()" . "functions/mrand48.html")
-   ("msgctl()" . "functions/msgctl.html")
-   ("msgget()" . "functions/msgget.html")
-   ("msgrcv()" . "functions/msgrcv.html")
-   ("msgsnd()" . "functions/msgsnd.html")
-   ("msync()" . "functions/msync.html")
-   ("munlock()" . "functions/munlock.html")
-   ("munlockall()" . "functions/munlockall.html")
-   ("munmap()" . "functions/munmap.html")
-   ("mv" . "utilities/mv.html")
-   ("nan()" . "functions/nan.html")
-   ("nanf()" . "functions/nanf.html")
-   ("nanl()" . "functions/nanl.html")
-   ("nanosleep()" . "functions/nanosleep.html")
-   ("ndbm.h" . "basedefs/ndbm.h.html")
-   ("nearbyint()" . "functions/nearbyint.html")
-   ("nearbyintf()" . "functions/nearbyintf.html")
-   ("nearbyintl()" . "functions/nearbyintl.html")
-   ("net/if.h" . "basedefs/net_if.h.html")
-   ("netdb.h" . "basedefs/netdb.h.html")
-   ("netinet/in.h" . "basedefs/netinet_in.h.html")
-   ("netinet/tcp.h" . "basedefs/netinet_tcp.h.html")
-   ("newgrp" . "utilities/newgrp.html")
-   ("newlocale()" . "functions/newlocale.html")
-   ("nextafter()" . "functions/nextafter.html")
-   ("nextafterf()" . "functions/nextafterf.html")
-   ("nextafterl()" . "functions/nextafterl.html")
-   ("nexttoward()" . "functions/nexttoward.html")
-   ("nexttowardf()" . "functions/nexttowardf.html")
-   ("nexttowardl()" . "functions/nexttowardl.html")
-   ("nftw()" . "functions/nftw.html")
-   ("nice" . "utilities/nice.html")
-   ("nice()" . "functions/nice.html")
-   ("nl" . "utilities/nl.html")
-   ("nl_langinfo()" . "functions/nl_langinfo.html")
-   ("nl_langinfo_l()" . "functions/nl_langinfo_l.html")
-   ("nl_types.h" . "basedefs/nl_types.h.html")
-   ("nm" . "utilities/nm.html")
-   ("nohup" . "utilities/nohup.html")
-   ("nrand48()" . "functions/nrand48.html")
-   ("ntohl()" . "functions/ntohl.html")
-   ("ntohs()" . "functions/ntohs.html")
-   ("od" . "utilities/od.html")
-   ("open()" . "functions/open.html")
-   ("open_memstream()" . "functions/open_memstream.html")
-   ("open_wmemstream()" . "functions/open_wmemstream.html")
-   ("openat()" . "functions/openat.html")
-   ("opendir()" . "functions/opendir.html")
-   ("openlog()" . "functions/openlog.html")
-   ("optarg" . "functions/optarg.html")
-   ("opterr" . "functions/opterr.html")
-   ("optind" . "functions/optind.html")
-   ("optopt" . "functions/optopt.html")
-   ("paste" . "utilities/paste.html")
-   ("patch" . "utilities/patch.html")
-   ("pathchk" . "utilities/pathchk.html")
-   ("pathconf()" . "functions/pathconf.html")
-   ("pause()" . "functions/pause.html")
-   ("pax" . "utilities/pax.html")
-   ("pclose()" . "functions/pclose.html")
-   ("perror()" . "functions/perror.html")
-   ("pipe()" . "functions/pipe.html")
-   ("poll()" . "functions/poll.html")
-   ("poll.h" . "basedefs/poll.h.html")
-   ("popen()" . "functions/popen.html")
-   ("posix_fadvise()" . "functions/posix_fadvise.html")
-   ("posix_fallocate()" . "functions/posix_fallocate.html")
-   ("posix_madvise()" . "functions/posix_madvise.html")
-   ("posix_mem_offset()" . "functions/posix_mem_offset.html")
-   ("posix_memalign()" . "functions/posix_memalign.html")
-   ("posix_openpt()" . "functions/posix_openpt.html")
-   ("posix_spawn()" . "functions/posix_spawn.html")
-   ("posix_spawn_file_actions_addclose()"
-    .
-    "functions/posix_spawn_file_actions_addclose.html")
-   ("posix_spawn_file_actions_adddup2()"
-    .
-    "functions/posix_spawn_file_actions_adddup2.html")
-   ("posix_spawn_file_actions_addopen()"
-    .
-    "functions/posix_spawn_file_actions_addopen.html")
-   ("posix_spawn_file_actions_destroy()"
-    .
-    "functions/posix_spawn_file_actions_destroy.html")
-   ("posix_spawn_file_actions_init()"
-    .
-    "functions/posix_spawn_file_actions_init.html")
-   ("posix_spawnattr_destroy()" . "functions/posix_spawnattr_destroy.html")
-   ("posix_spawnattr_getflags()" . "functions/posix_spawnattr_getflags.html")
-   ("posix_spawnattr_getpgroup()"
-    .
-    "functions/posix_spawnattr_getpgroup.html")
-   ("posix_spawnattr_getschedparam()"
-    .
-    "functions/posix_spawnattr_getschedparam.html")
-   ("posix_spawnattr_getschedpolicy()"
-    .
-    "functions/posix_spawnattr_getschedpolicy.html")
-   ("posix_spawnattr_getsigdefault()"
-    .
-    "functions/posix_spawnattr_getsigdefault.html")
-   ("posix_spawnattr_getsigmask()"
-    .
-    "functions/posix_spawnattr_getsigmask.html")
-   ("posix_spawnattr_init()" . "functions/posix_spawnattr_init.html")
-   ("posix_spawnattr_setflags()" . "functions/posix_spawnattr_setflags.html")
-   ("posix_spawnattr_setpgroup()"
-    .
-    "functions/posix_spawnattr_setpgroup.html")
-   ("posix_spawnattr_setschedparam()"
-    .
-    "functions/posix_spawnattr_setschedparam.html")
-   ("posix_spawnattr_setschedpolicy()"
-    .
-    "functions/posix_spawnattr_setschedpolicy.html")
-   ("posix_spawnattr_setsigdefault()"
-    .
-    "functions/posix_spawnattr_setsigdefault.html")
-   ("posix_spawnattr_setsigmask()"
-    .
-    "functions/posix_spawnattr_setsigmask.html")
-   ("posix_spawnp()" . "functions/posix_spawnp.html")
-   ("posix_trace_attr_destroy()" . "functions/posix_trace_attr_destroy.html")
-   ("posix_trace_attr_getclockres()"
-    .
-    "functions/posix_trace_attr_getclockres.html")
-   ("posix_trace_attr_getcreatetime()"
-    .
-    "functions/posix_trace_attr_getcreatetime.html")
-   ("posix_trace_attr_getgenversion()"
-    .
-    "functions/posix_trace_attr_getgenversion.html")
-   ("posix_trace_attr_getinherited()"
-    .
-    "functions/posix_trace_attr_getinherited.html")
-   ("posix_trace_attr_getlogfullpolicy()"
-    .
-    "functions/posix_trace_attr_getlogfullpolicy.html")
-   ("posix_trace_attr_getlogsize()"
-    .
-    "functions/posix_trace_attr_getlogsize.html")
-   ("posix_trace_attr_getmaxdatasize()"
-    .
-    "functions/posix_trace_attr_getmaxdatasize.html")
-   ("posix_trace_attr_getmaxsystemeventsize()"
-    .
-    "functions/posix_trace_attr_getmaxsystemeventsize.html")
-   ("posix_trace_attr_getmaxusereventsize()"
-    .
-    "functions/posix_trace_attr_getmaxusereventsize.html")
-   ("posix_trace_attr_getname()" . "functions/posix_trace_attr_getname.html")
-   ("posix_trace_attr_getstreamfullpolicy()"
-    .
-    "functions/posix_trace_attr_getstreamfullpolicy.html")
-   ("posix_trace_attr_getstreamsize()"
-    .
-    "functions/posix_trace_attr_getstreamsize.html")
-   ("posix_trace_attr_init()" . "functions/posix_trace_attr_init.html")
-   ("posix_trace_attr_setinherited()"
-    .
-    "functions/posix_trace_attr_setinherited.html")
-   ("posix_trace_attr_setlogfullpolicy()"
-    .
-    "functions/posix_trace_attr_setlogfullpolicy.html")
-   ("posix_trace_attr_setlogsize()"
-    .
-    "functions/posix_trace_attr_setlogsize.html")
-   ("posix_trace_attr_setmaxdatasize()"
-    .
-    "functions/posix_trace_attr_setmaxdatasize.html")
-   ("posix_trace_attr_setname()" . "functions/posix_trace_attr_setname.html")
-   ("posix_trace_attr_setstreamfullpolicy()"
-    .
-    "functions/posix_trace_attr_setstreamfullpolicy.html")
-   ("posix_trace_attr_setstreamsize()"
-    .
-    "functions/posix_trace_attr_setstreamsize.html")
-   ("posix_trace_clear()" . "functions/posix_trace_clear.html")
-   ("posix_trace_close()" . "functions/posix_trace_close.html")
-   ("posix_trace_create()" . "functions/posix_trace_create.html")
-   ("posix_trace_create_withlog()"
-    .
-    "functions/posix_trace_create_withlog.html")
-   ("posix_trace_event()" . "functions/posix_trace_event.html")
-   ("posix_trace_eventid_equal()"
-    .
-    "functions/posix_trace_eventid_equal.html")
-   ("posix_trace_eventid_get_name()"
-    .
-    "functions/posix_trace_eventid_get_name.html")
-   ("posix_trace_eventid_open()" . "functions/posix_trace_eventid_open.html")
-   ("posix_trace_eventset_add()" . "functions/posix_trace_eventset_add.html")
-   ("posix_trace_eventset_del()" . "functions/posix_trace_eventset_del.html")
-   ("posix_trace_eventset_empty()"
-    .
-    "functions/posix_trace_eventset_empty.html")
-   ("posix_trace_eventset_fill()"
-    .
-    "functions/posix_trace_eventset_fill.html")
-   ("posix_trace_eventset_ismember()"
-    .
-    "functions/posix_trace_eventset_ismember.html")
-   ("posix_trace_eventtypelist_getnext_id()"
-    .
-    "functions/posix_trace_eventtypelist_getnext_id.html")
-   ("posix_trace_eventtypelist_rewind()"
-    .
-    "functions/posix_trace_eventtypelist_rewind.html")
-   ("posix_trace_flush()" . "functions/posix_trace_flush.html")
-   ("posix_trace_get_attr()" . "functions/posix_trace_get_attr.html")
-   ("posix_trace_get_filter()" . "functions/posix_trace_get_filter.html")
-   ("posix_trace_get_status()" . "functions/posix_trace_get_status.html")
-   ("posix_trace_getnext_event()"
-    .
-    "functions/posix_trace_getnext_event.html")
-   ("posix_trace_open()" . "functions/posix_trace_open.html")
-   ("posix_trace_rewind()" . "functions/posix_trace_rewind.html")
-   ("posix_trace_set_filter()" . "functions/posix_trace_set_filter.html")
-   ("posix_trace_shutdown()" . "functions/posix_trace_shutdown.html")
-   ("posix_trace_start()" . "functions/posix_trace_start.html")
-   ("posix_trace_stop()" . "functions/posix_trace_stop.html")
-   ("posix_trace_timedgetnext_event()"
-    .
-    "functions/posix_trace_timedgetnext_event.html")
-   ("posix_trace_trid_eventid_open()"
-    .
-    "functions/posix_trace_trid_eventid_open.html")
-   ("posix_trace_trygetnext_event()"
-    .
-    "functions/posix_trace_trygetnext_event.html")
-   ("posix_typed_mem_get_info()" . "functions/posix_typed_mem_get_info.html")
-   ("posix_typed_mem_open()" . "functions/posix_typed_mem_open.html")
-   ("pow()" . "functions/pow.html")
-   ("powf()" . "functions/powf.html")
-   ("powl()" . "functions/powl.html")
-   ("pr" . "utilities/pr.html")
-   ("pread()" . "functions/pread.html")
-   ("printf" . "utilities/printf.html")
-   ("printf()" . "functions/printf.html")
-   ("prs" . "utilities/prs.html")
-   ("ps" . "utilities/ps.html")
-   ("pselect()" . "functions/pselect.html")
-   ("psiginfo()" . "functions/psiginfo.html")
-   ("psignal()" . "functions/psignal.html")
-   ("pthread.h" . "basedefs/pthread.h.html")
-   ("pthread_atfork()" . "functions/pthread_atfork.html")
-   ("pthread_attr_destroy()" . "functions/pthread_attr_destroy.html")
-   ("pthread_attr_getdetachstate()"
-    .
-    "functions/pthread_attr_getdetachstate.html")
-   ("pthread_attr_getguardsize()"
-    .
-    "functions/pthread_attr_getguardsize.html")
-   ("pthread_attr_getinheritsched()"
-    .
-    "functions/pthread_attr_getinheritsched.html")
-   ("pthread_attr_getschedparam()"
-    .
-    "functions/pthread_attr_getschedparam.html")
-   ("pthread_attr_getschedpolicy()"
-    .
-    "functions/pthread_attr_getschedpolicy.html")
-   ("pthread_attr_getscope()" . "functions/pthread_attr_getscope.html")
-   ("pthread_attr_getstack()" . "functions/pthread_attr_getstack.html")
-   ("pthread_attr_getstacksize()"
-    .
-    "functions/pthread_attr_getstacksize.html")
-   ("pthread_attr_init()" . "functions/pthread_attr_init.html")
-   ("pthread_attr_setdetachstate()"
-    .
-    "functions/pthread_attr_setdetachstate.html")
-   ("pthread_attr_setguardsize()"
-    .
-    "functions/pthread_attr_setguardsize.html")
-   ("pthread_attr_setinheritsched()"
-    .
-    "functions/pthread_attr_setinheritsched.html")
-   ("pthread_attr_setschedparam()"
-    .
-    "functions/pthread_attr_setschedparam.html")
-   ("pthread_attr_setschedpolicy()"
-    .
-    "functions/pthread_attr_setschedpolicy.html")
-   ("pthread_attr_setscope()" . "functions/pthread_attr_setscope.html")
-   ("pthread_attr_setstack()" . "functions/pthread_attr_setstack.html")
-   ("pthread_attr_setstacksize()"
-    .
-    "functions/pthread_attr_setstacksize.html")
-   ("pthread_barrier_destroy()" . "functions/pthread_barrier_destroy.html")
-   ("pthread_barrier_init()" . "functions/pthread_barrier_init.html")
-   ("pthread_barrier_wait()" . "functions/pthread_barrier_wait.html")
-   ("pthread_barrierattr_destroy()"
-    .
-    "functions/pthread_barrierattr_destroy.html")
-   ("pthread_barrierattr_getpshared()"
-    .
-    "functions/pthread_barrierattr_getpshared.html")
-   ("pthread_barrierattr_init()" . "functions/pthread_barrierattr_init.html")
-   ("pthread_barrierattr_setpshared()"
-    .
-    "functions/pthread_barrierattr_setpshared.html")
-   ("pthread_cancel()" . "functions/pthread_cancel.html")
-   ("pthread_cleanup_pop()" . "functions/pthread_cleanup_pop.html")
-   ("pthread_cleanup_push()" . "functions/pthread_cleanup_push.html")
-   ("pthread_cond_broadcast()" . "functions/pthread_cond_broadcast.html")
-   ("pthread_cond_destroy()" . "functions/pthread_cond_destroy.html")
-   ("pthread_cond_init()" . "functions/pthread_cond_init.html")
-   ("pthread_cond_signal()" . "functions/pthread_cond_signal.html")
-   ("pthread_cond_timedwait()" . "functions/pthread_cond_timedwait.html")
-   ("pthread_cond_wait()" . "functions/pthread_cond_wait.html")
-   ("pthread_condattr_destroy()" . "functions/pthread_condattr_destroy.html")
-   ("pthread_condattr_getclock()"
-    .
-    "functions/pthread_condattr_getclock.html")
-   ("pthread_condattr_getpshared()"
-    .
-    "functions/pthread_condattr_getpshared.html")
-   ("pthread_condattr_init()" . "functions/pthread_condattr_init.html")
-   ("pthread_condattr_setclock()"
-    .
-    "functions/pthread_condattr_setclock.html")
-   ("pthread_condattr_setpshared()"
-    .
-    "functions/pthread_condattr_setpshared.html")
-   ("pthread_create()" . "functions/pthread_create.html")
-   ("pthread_detach()" . "functions/pthread_detach.html")
-   ("pthread_equal()" . "functions/pthread_equal.html")
-   ("pthread_exit()" . "functions/pthread_exit.html")
-   ("pthread_getconcurrency()" . "functions/pthread_getconcurrency.html")
-   ("pthread_getcpuclockid()" . "functions/pthread_getcpuclockid.html")
-   ("pthread_getschedparam()" . "functions/pthread_getschedparam.html")
-   ("pthread_getspecific()" . "functions/pthread_getspecific.html")
-   ("pthread_join()" . "functions/pthread_join.html")
-   ("pthread_key_create()" . "functions/pthread_key_create.html")
-   ("pthread_key_delete()" . "functions/pthread_key_delete.html")
-   ("pthread_kill()" . "functions/pthread_kill.html")
-   ("pthread_mutex_consistent()" . "functions/pthread_mutex_consistent.html")
-   ("pthread_mutex_destroy()" . "functions/pthread_mutex_destroy.html")
-   ("pthread_mutex_getprioceiling()"
-    .
-    "functions/pthread_mutex_getprioceiling.html")
-   ("pthread_mutex_init()" . "functions/pthread_mutex_init.html")
-   ("pthread_mutex_lock()" . "functions/pthread_mutex_lock.html")
-   ("pthread_mutex_setprioceiling()"
-    .
-    "functions/pthread_mutex_setprioceiling.html")
-   ("pthread_mutex_timedlock()" . "functions/pthread_mutex_timedlock.html")
-   ("pthread_mutex_trylock()" . "functions/pthread_mutex_trylock.html")
-   ("pthread_mutex_unlock()" . "functions/pthread_mutex_unlock.html")
-   ("pthread_mutexattr_destroy()"
-    .
-    "functions/pthread_mutexattr_destroy.html")
-   ("pthread_mutexattr_getprioceiling()"
-    .
-    "functions/pthread_mutexattr_getprioceiling.html")
-   ("pthread_mutexattr_getprotocol()"
-    .
-    "functions/pthread_mutexattr_getprotocol.html")
-   ("pthread_mutexattr_getpshared()"
-    .
-    "functions/pthread_mutexattr_getpshared.html")
-   ("pthread_mutexattr_getrobust()"
-    .
-    "functions/pthread_mutexattr_getrobust.html")
-   ("pthread_mutexattr_gettype()"
-    .
-    "functions/pthread_mutexattr_gettype.html")
-   ("pthread_mutexattr_init()" . "functions/pthread_mutexattr_init.html")
-   ("pthread_mutexattr_setprioceiling()"
-    .
-    "functions/pthread_mutexattr_setprioceiling.html")
-   ("pthread_mutexattr_setprotocol()"
-    .
-    "functions/pthread_mutexattr_setprotocol.html")
-   ("pthread_mutexattr_setpshared()"
-    .
-    "functions/pthread_mutexattr_setpshared.html")
-   ("pthread_mutexattr_setrobust()"
-    .
-    "functions/pthread_mutexattr_setrobust.html")
-   ("pthread_mutexattr_settype()"
-    .
-    "functions/pthread_mutexattr_settype.html")
-   ("pthread_once()" . "functions/pthread_once.html")
-   ("pthread_rwlock_destroy()" . "functions/pthread_rwlock_destroy.html")
-   ("pthread_rwlock_init()" . "functions/pthread_rwlock_init.html")
-   ("pthread_rwlock_rdlock()" . "functions/pthread_rwlock_rdlock.html")
-   ("pthread_rwlock_timedrdlock()"
-    .
-    "functions/pthread_rwlock_timedrdlock.html")
-   ("pthread_rwlock_timedwrlock()"
-    .
-    "functions/pthread_rwlock_timedwrlock.html")
-   ("pthread_rwlock_tryrdlock()" . "functions/pthread_rwlock_tryrdlock.html")
-   ("pthread_rwlock_trywrlock()" . "functions/pthread_rwlock_trywrlock.html")
-   ("pthread_rwlock_unlock()" . "functions/pthread_rwlock_unlock.html")
-   ("pthread_rwlock_wrlock()" . "functions/pthread_rwlock_wrlock.html")
-   ("pthread_rwlockattr_destroy()"
-    .
-    "functions/pthread_rwlockattr_destroy.html")
-   ("pthread_rwlockattr_getpshared()"
-    .
-    "functions/pthread_rwlockattr_getpshared.html")
-   ("pthread_rwlockattr_init()" . "functions/pthread_rwlockattr_init.html")
-   ("pthread_rwlockattr_setpshared()"
-    .
-    "functions/pthread_rwlockattr_setpshared.html")
-   ("pthread_self()" . "functions/pthread_self.html")
-   ("pthread_setcancelstate()" . "functions/pthread_setcancelstate.html")
-   ("pthread_setcanceltype()" . "functions/pthread_setcanceltype.html")
-   ("pthread_setconcurrency()" . "functions/pthread_setconcurrency.html")
-   ("pthread_setschedparam()" . "functions/pthread_setschedparam.html")
-   ("pthread_setschedprio()" . "functions/pthread_setschedprio.html")
-   ("pthread_setspecific()" . "functions/pthread_setspecific.html")
-   ("pthread_sigmask()" . "functions/pthread_sigmask.html")
-   ("pthread_spin_destroy()" . "functions/pthread_spin_destroy.html")
-   ("pthread_spin_init()" . "functions/pthread_spin_init.html")
-   ("pthread_spin_lock()" . "functions/pthread_spin_lock.html")
-   ("pthread_spin_trylock()" . "functions/pthread_spin_trylock.html")
-   ("pthread_spin_unlock()" . "functions/pthread_spin_unlock.html")
-   ("pthread_testcancel()" . "functions/pthread_testcancel.html")
-   ("ptsname()" . "functions/ptsname.html")
-   ("putc()" . "functions/putc.html")
-   ("putc_unlocked()" . "functions/putc_unlocked.html")
-   ("putchar()" . "functions/putchar.html")
-   ("putchar_unlocked()" . "functions/putchar_unlocked.html")
-   ("putenv()" . "functions/putenv.html")
-   ("putmsg()" . "functions/putmsg.html")
-   ("putpmsg()" . "functions/putpmsg.html")
-   ("puts()" . "functions/puts.html")
-   ("pututxline()" . "functions/pututxline.html")
-   ("putwc()" . "functions/putwc.html")
-   ("putwchar()" . "functions/putwchar.html")
-   ("pwd" . "utilities/pwd.html")
-   ("pwd.h" . "basedefs/pwd.h.html")
-   ("pwrite()" . "functions/pwrite.html")
-   ("qalter" . "utilities/qalter.html")
-   ("qdel" . "utilities/qdel.html")
-   ("qhold" . "utilities/qhold.html")
-   ("qmove" . "utilities/qmove.html")
-   ("qmsg" . "utilities/qmsg.html")
-   ("qrerun" . "utilities/qrerun.html")
-   ("qrls" . "utilities/qrls.html")
-   ("qselect" . "utilities/qselect.html")
-   ("qsig" . "utilities/qsig.html")
-   ("qsort()" . "functions/qsort.html")
-   ("qstat" . "utilities/qstat.html")
-   ("qsub" . "utilities/qsub.html")
-   ("raise()" . "functions/raise.html")
-   ("rand()" . "functions/rand.html")
-   ("rand_r()" . "functions/rand_r.html")
-   ("random()" . "functions/random.html")
-   ("read" . "utilities/read.html")
-   ("read()" . "functions/read.html")
-   ("readdir()" . "functions/readdir.html")
-   ("readdir_r()" . "functions/readdir_r.html")
-   ("readlink()" . "functions/readlink.html")
-   ("readlinkat()" . "functions/readlinkat.html")
-   ("readonly" . "utilities/V3_chap02.html#readonly")
-   ("readv()" . "functions/readv.html")
-   ("realloc()" . "functions/realloc.html")
-   ("realpath()" . "functions/realpath.html")
-   ("recv()" . "functions/recv.html")
-   ("recvfrom()" . "functions/recvfrom.html")
-   ("recvmsg()" . "functions/recvmsg.html")
-   ("regcomp()" . "functions/regcomp.html")
-   ("regerror()" . "functions/regerror.html")
-   ("regex.h" . "basedefs/regex.h.html")
-   ("regexec()" . "functions/regexec.html")
-   ("regfree()" . "functions/regfree.html")
-   ("remainder()" . "functions/remainder.html")
-   ("remainderf()" . "functions/remainderf.html")
-   ("remainderl()" . "functions/remainderl.html")
-   ("remove()" . "functions/remove.html")
-   ("remque()" . "functions/remque.html")
-   ("remquo()" . "functions/remquo.html")
-   ("remquof()" . "functions/remquof.html")
-   ("remquol()" . "functions/remquol.html")
-   ("rename()" . "functions/rename.html")
-   ("renameat()" . "functions/renameat.html")
-   ("renice" . "utilities/renice.html")
-   ("return" . "utilities/V3_chap02.html#return")
-   ("rewind()" . "functions/rewind.html")
-   ("rewinddir()" . "functions/rewinddir.html")
-   ("rint()" . "functions/rint.html")
-   ("rintf()" . "functions/rintf.html")
-   ("rintl()" . "functions/rintl.html")
-   ("rm" . "utilities/rm.html")
-   ("rmdel" . "utilities/rmdel.html")
-   ("rmdir" . "utilities/rmdir.html")
-   ("rmdir()" . "functions/rmdir.html")
-   ("round()" . "functions/round.html")
-   ("roundf()" . "functions/roundf.html")
-   ("roundl()" . "functions/roundl.html")
-   ("sact" . "utilities/sact.html")
-   ("scalbln()" . "functions/scalbln.html")
-   ("scalblnf()" . "functions/scalblnf.html")
-   ("scalblnl()" . "functions/scalblnl.html")
-   ("scalbn()" . "functions/scalbn.html")
-   ("scalbnf()" . "functions/scalbnf.html")
-   ("scalbnl()" . "functions/scalbnl.html")
-   ("scandir()" . "functions/scandir.html")
-   ("scanf()" . "functions/scanf.html")
-   ("sccs" . "utilities/sccs.html")
-   ("sched.h" . "basedefs/sched.h.html")
-   ("sched_get_priority_max()" . "functions/sched_get_priority_max.html")
-   ("sched_get_priority_min()" . "functions/sched_get_priority_min.html")
-   ("sched_getparam()" . "functions/sched_getparam.html")
-   ("sched_getscheduler()" . "functions/sched_getscheduler.html")
-   ("sched_rr_get_interval()" . "functions/sched_rr_get_interval.html")
-   ("sched_setparam()" . "functions/sched_setparam.html")
-   ("sched_setscheduler()" . "functions/sched_setscheduler.html")
-   ("sched_yield()" . "functions/sched_yield.html")
-   ("search.h" . "basedefs/search.h.html")
-   ("sed" . "utilities/sed.html")
-   ("seed48()" . "functions/seed48.html")
-   ("seekdir()" . "functions/seekdir.html")
-   ("select()" . "functions/select.html")
-   ("sem_close()" . "functions/sem_close.html")
-   ("sem_destroy()" . "functions/sem_destroy.html")
-   ("sem_getvalue()" . "functions/sem_getvalue.html")
-   ("sem_init()" . "functions/sem_init.html")
-   ("sem_open()" . "functions/sem_open.html")
-   ("sem_post()" . "functions/sem_post.html")
-   ("sem_timedwait()" . "functions/sem_timedwait.html")
-   ("sem_trywait()" . "functions/sem_trywait.html")
-   ("sem_unlink()" . "functions/sem_unlink.html")
-   ("sem_wait()" . "functions/sem_wait.html")
-   ("semaphore.h" . "basedefs/semaphore.h.html")
-   ("semctl()" . "functions/semctl.html")
-   ("semget()" . "functions/semget.html")
-   ("semop()" . "functions/semop.html")
-   ("send()" . "functions/send.html")
-   ("sendmsg()" . "functions/sendmsg.html")
-   ("sendto()" . "functions/sendto.html")
-   ("set" . "utilities/V3_chap02.html#set")
-   ("setbuf()" . "functions/setbuf.html")
-   ("setegid()" . "functions/setegid.html")
-   ("setenv()" . "functions/setenv.html")
-   ("seteuid()" . "functions/seteuid.html")
-   ("setgid()" . "functions/setgid.html")
-   ("setgrent()" . "functions/setgrent.html")
-   ("sethostent()" . "functions/sethostent.html")
-   ("setitimer()" . "functions/setitimer.html")
-   ("setjmp()" . "functions/setjmp.html")
-   ("setjmp.h" . "basedefs/setjmp.h.html")
-   ("setkey()" . "functions/setkey.html")
-   ("setlocale()" . "functions/setlocale.html")
-   ("setlogmask()" . "functions/setlogmask.html")
-   ("setnetent()" . "functions/setnetent.html")
-   ("setpgid()" . "functions/setpgid.html")
-   ("setpgrp()" . "functions/setpgrp.html")
-   ("setpriority()" . "functions/setpriority.html")
-   ("setprotoent()" . "functions/setprotoent.html")
-   ("setpwent()" . "functions/setpwent.html")
-   ("setregid()" . "functions/setregid.html")
-   ("setreuid()" . "functions/setreuid.html")
-   ("setrlimit()" . "functions/setrlimit.html")
-   ("setservent()" . "functions/setservent.html")
-   ("setsid()" . "functions/setsid.html")
-   ("setsockopt()" . "functions/setsockopt.html")
-   ("setstate()" . "functions/setstate.html")
-   ("setuid()" . "functions/setuid.html")
-   ("setutxent()" . "functions/setutxent.html")
-   ("setvbuf()" . "functions/setvbuf.html")
-   ("sh" . "utilities/sh.html")
-   ("shift" . "utilities/V3_chap02.html#shift")
-   ("shm_open()" . "functions/shm_open.html")
-   ("shm_unlink()" . "functions/shm_unlink.html")
-   ("shmat()" . "functions/shmat.html")
-   ("shmctl()" . "functions/shmctl.html")
-   ("shmdt()" . "functions/shmdt.html")
-   ("shmget()" . "functions/shmget.html")
-   ("shutdown()" . "functions/shutdown.html")
-   ("sigaction()" . "functions/sigaction.html")
-   ("sigaddset()" . "functions/sigaddset.html")
-   ("sigaltstack()" . "functions/sigaltstack.html")
-   ("sigdelset()" . "functions/sigdelset.html")
-   ("sigemptyset()" . "functions/sigemptyset.html")
-   ("sigfillset()" . "functions/sigfillset.html")
-   ("sighold()" . "functions/sighold.html")
-   ("sigignore()" . "functions/sigignore.html")
-   ("siginterrupt()" . "functions/siginterrupt.html")
-   ("sigismember()" . "functions/sigismember.html")
-   ("siglongjmp()" . "functions/siglongjmp.html")
-   ("signal()" . "functions/signal.html")
-   ("signal.h" . "basedefs/signal.h.html")
-   ("signbit()" . "functions/signbit.html")
-   ("signgam" . "functions/signgam.html")
-   ("sigpause()" . "functions/sigpause.html")
-   ("sigpending()" . "functions/sigpending.html")
-   ("sigprocmask()" . "functions/sigprocmask.html")
-   ("sigqueue()" . "functions/sigqueue.html")
-   ("sigrelse()" . "functions/sigrelse.html")
-   ("sigset()" . "functions/sigset.html")
-   ("sigsetjmp()" . "functions/sigsetjmp.html")
-   ("sigsuspend()" . "functions/sigsuspend.html")
-   ("sigtimedwait()" . "functions/sigtimedwait.html")
-   ("sigwait()" . "functions/sigwait.html")
-   ("sigwaitinfo()" . "functions/sigwaitinfo.html")
-   ("sin()" . "functions/sin.html")
-   ("sinf()" . "functions/sinf.html")
-   ("sinh()" . "functions/sinh.html")
-   ("sinhf()" . "functions/sinhf.html")
-   ("sinhl()" . "functions/sinhl.html")
-   ("sinl()" . "functions/sinl.html")
-   ("sleep" . "utilities/sleep.html")
-   ("sleep()" . "functions/sleep.html")
-   ("snprintf()" . "functions/snprintf.html")
-   ("sockatmark()" . "functions/sockatmark.html")
-   ("socket()" . "functions/socket.html")
-   ("socketpair()" . "functions/socketpair.html")
-   ("sort" . "utilities/sort.html")
-   ("spawn.h" . "basedefs/spawn.h.html")
-   ("split" . "utilities/split.html")
-   ("sprintf()" . "functions/sprintf.html")
-   ("sqrt()" . "functions/sqrt.html")
-   ("sqrtf()" . "functions/sqrtf.html")
-   ("sqrtl()" . "functions/sqrtl.html")
-   ("srand()" . "functions/srand.html")
-   ("srand48()" . "functions/srand48.html")
-   ("srandom()" . "functions/srandom.html")
-   ("sscanf()" . "functions/sscanf.html")
-   ("stat()" . "functions/stat.html")
-   ("statvfs()" . "functions/statvfs.html")
-   ("stdarg.h" . "basedefs/stdarg.h.html")
-   ("stdbool.h" . "basedefs/stdbool.h.html")
-   ("stddef.h" . "basedefs/stddef.h.html")
-   ("stderr" . "functions/stderr.html")
-   ("stdin" . "functions/stdin.html")
-   ("stdint.h" . "basedefs/stdint.h.html")
-   ("stdio.h" . "basedefs/stdio.h.html")
-   ("stdlib.h" . "basedefs/stdlib.h.html")
-   ("stdout" . "functions/stdout.html")
-   ("stpcpy()" . "functions/stpcpy.html")
-   ("stpncpy()" . "functions/stpncpy.html")
-   ("strcasecmp()" . "functions/strcasecmp.html")
-   ("strcasecmp_l()" . "functions/strcasecmp_l.html")
-   ("strcat()" . "functions/strcat.html")
-   ("strchr()" . "functions/strchr.html")
-   ("strcmp()" . "functions/strcmp.html")
-   ("strcoll()" . "functions/strcoll.html")
-   ("strcoll_l()" . "functions/strcoll_l.html")
-   ("strcpy()" . "functions/strcpy.html")
-   ("strcspn()" . "functions/strcspn.html")
-   ("strdup()" . "functions/strdup.html")
-   ("strerror()" . "functions/strerror.html")
-   ("strerror_l()" . "functions/strerror_l.html")
-   ("strerror_r()" . "functions/strerror_r.html")
-   ("strfmon()" . "functions/strfmon.html")
-   ("strfmon_l()" . "functions/strfmon_l.html")
-   ("strftime()" . "functions/strftime.html")
-   ("strftime_l()" . "functions/strftime_l.html")
-   ("string.h" . "basedefs/string.h.html")
-   ("strings" . "utilities/strings.html")
-   ("strings.h" . "basedefs/strings.h.html")
-   ("strip" . "utilities/strip.html")
-   ("strlen()" . "functions/strlen.html")
-   ("strncasecmp()" . "functions/strncasecmp.html")
-   ("strncasecmp_l()" . "functions/strncasecmp_l.html")
-   ("strncat()" . "functions/strncat.html")
-   ("strncmp()" . "functions/strncmp.html")
-   ("strncpy()" . "functions/strncpy.html")
-   ("strndup()" . "functions/strndup.html")
-   ("strnlen()" . "functions/strnlen.html")
-   ("stropts.h" . "basedefs/stropts.h.html")
-   ("strpbrk()" . "functions/strpbrk.html")
-   ("strptime()" . "functions/strptime.html")
-   ("strrchr()" . "functions/strrchr.html")
-   ("strsignal()" . "functions/strsignal.html")
-   ("strspn()" . "functions/strspn.html")
-   ("strstr()" . "functions/strstr.html")
-   ("strtod()" . "functions/strtod.html")
-   ("strtof()" . "functions/strtof.html")
-   ("strtoimax()" . "functions/strtoimax.html")
-   ("strtok()" . "functions/strtok.html")
-   ("strtok_r()" . "functions/strtok_r.html")
-   ("strtol()" . "functions/strtol.html")
-   ("strtold()" . "functions/strtold.html")
-   ("strtoll()" . "functions/strtoll.html")
-   ("strtoul()" . "functions/strtoul.html")
-   ("strtoull()" . "functions/strtoull.html")
-   ("strtoumax()" . "functions/strtoumax.html")
-   ("strxfrm()" . "functions/strxfrm.html")
-   ("strxfrm_l()" . "functions/strxfrm_l.html")
-   ("stty" . "utilities/stty.html")
-   ("swab()" . "functions/swab.html")
-   ("swprintf()" . "functions/swprintf.html")
-   ("swscanf()" . "functions/swscanf.html")
-   ("symlink()" . "functions/symlink.html")
-   ("symlinkat()" . "functions/symlinkat.html")
-   ("sync()" . "functions/sync.html")
-   ("sys/ipc.h" . "basedefs/sys_ipc.h.html")
-   ("sys/mman.h" . "basedefs/sys_mman.h.html")
-   ("sys/msg.h" . "basedefs/sys_msg.h.html")
-   ("sys/resource.h" . "basedefs/sys_resource.h.html")
-   ("sys/select.h" . "basedefs/sys_select.h.html")
-   ("sys/sem.h" . "basedefs/sys_sem.h.html")
-   ("sys/shm.h" . "basedefs/sys_shm.h.html")
-   ("sys/socket.h" . "basedefs/sys_socket.h.html")
-   ("sys/stat.h" . "basedefs/sys_stat.h.html")
-   ("sys/statvfs.h" . "basedefs/sys_statvfs.h.html")
-   ("sys/time.h" . "basedefs/sys_time.h.html")
-   ("sys/times.h" . "basedefs/sys_times.h.html")
-   ("sys/types.h" . "basedefs/sys_types.h.html")
-   ("sys/uio.h" . "basedefs/sys_uio.h.html")
-   ("sys/un.h" . "basedefs/sys_un.h.html")
-   ("sys/utsname.h" . "basedefs/sys_utsname.h.html")
-   ("sys/wait.h" . "basedefs/sys_wait.h.html")
-   ("sysconf()" . "functions/sysconf.html")
-   ("syslog()" . "functions/syslog.html")
-   ("syslog.h" . "basedefs/syslog.h.html")
-   ("system()" . "functions/system.html")
-   ("tabs" . "utilities/tabs.html")
-   ("tail" . "utilities/tail.html")
-   ("talk" . "utilities/talk.html")
-   ("tan()" . "functions/tan.html")
-   ("tanf()" . "functions/tanf.html")
-   ("tanh()" . "functions/tanh.html")
-   ("tanhf()" . "functions/tanhf.html")
-   ("tanhl()" . "functions/tanhl.html")
-   ("tanl()" . "functions/tanl.html")
-   ("tar.h" . "basedefs/tar.h.html")
-   ("tcdrain()" . "functions/tcdrain.html")
-   ("tcflow()" . "functions/tcflow.html")
-   ("tcflush()" . "functions/tcflush.html")
-   ("tcgetattr()" . "functions/tcgetattr.html")
-   ("tcgetpgrp()" . "functions/tcgetpgrp.html")
-   ("tcgetsid()" . "functions/tcgetsid.html")
-   ("tcsendbreak()" . "functions/tcsendbreak.html")
-   ("tcsetattr()" . "functions/tcsetattr.html")
-   ("tcsetpgrp()" . "functions/tcsetpgrp.html")
-   ("tdelete()" . "functions/tdelete.html")
-   ("tee" . "utilities/tee.html")
-   ("telldir()" . "functions/telldir.html")
-   ("tempnam()" . "functions/tempnam.html")
-   ("termios.h" . "basedefs/termios.h.html")
-   ("test" . "utilities/test.html")
-   ("tfind()" . "functions/tfind.html")
-   ("tgamma()" . "functions/tgamma.html")
-   ("tgammaf()" . "functions/tgammaf.html")
-   ("tgammal()" . "functions/tgammal.html")
-   ("tgmath.h" . "basedefs/tgmath.h.html")
-   ("time" . "utilities/time.html")
-   ("time()" . "functions/time.html")
-   ("time.h" . "basedefs/time.h.html")
-   ("timer_create()" . "functions/timer_create.html")
-   ("timer_delete()" . "functions/timer_delete.html")
-   ("timer_getoverrun()" . "functions/timer_getoverrun.html")
-   ("timer_gettime()" . "functions/timer_gettime.html")
-   ("timer_settime()" . "functions/timer_settime.html")
-   ("times" . "utilities/V3_chap02.html#times")
-   ("times()" . "functions/times.html")
-   ("timezone" . "functions/timezone.html")
-   ("tmpfile()" . "functions/tmpfile.html")
-   ("tmpnam()" . "functions/tmpnam.html")
-   ("toascii()" . "functions/toascii.html")
-   ("tolower()" . "functions/tolower.html")
-   ("tolower_l()" . "functions/tolower_l.html")
-   ("touch" . "utilities/touch.html")
-   ("toupper()" . "functions/toupper.html")
-   ("toupper_l()" . "functions/toupper_l.html")
-   ("towctrans()" . "functions/towctrans.html")
-   ("towctrans_l()" . "functions/towctrans_l.html")
-   ("towlower()" . "functions/towlower.html")
-   ("towlower_l()" . "functions/towlower_l.html")
-   ("towupper()" . "functions/towupper.html")
-   ("towupper_l()" . "functions/towupper_l.html")
-   ("tput" . "utilities/tput.html")
-   ("tr" . "utilities/tr.html")
-   ("trace.h" . "basedefs/trace.h.html")
-   ("trap" . "utilities/V3_chap02.html#trap")
-   ("true" . "utilities/true.html")
-   ("trunc()" . "functions/trunc.html")
-   ("truncate()" . "functions/truncate.html")
-   ("truncf()" . "functions/truncf.html")
-   ("truncl()" . "functions/truncl.html")
-   ("tsearch()" . "functions/tsearch.html")
-   ("tsort" . "utilities/tsort.html")
-   ("tty" . "utilities/tty.html")
-   ("ttyname()" . "functions/ttyname.html")
-   ("ttyname_r()" . "functions/ttyname_r.html")
-   ("twalk()" . "functions/twalk.html")
-   ("type" . "utilities/type.html")
-   ("tzname" . "functions/tzname.html")
-   ("tzset()" . "functions/tzset.html")
-   ("ulimit" . "utilities/ulimit.html")
-   ("ulimit()" . "functions/ulimit.html")
-   ("ulimit.h" . "basedefs/ulimit.h.html")
-   ("umask" . "utilities/umask.html")
-   ("umask()" . "functions/umask.html")
-   ("unalias" . "utilities/unalias.html")
-   ("uname" . "utilities/uname.html")
-   ("uname()" . "functions/uname.html")
-   ("uncompress" . "utilities/uncompress.html")
-   ("unexpand" . "utilities/unexpand.html")
-   ("unget" . "utilities/unget.html")
-   ("ungetc()" . "functions/ungetc.html")
-   ("ungetwc()" . "functions/ungetwc.html")
-   ("uniq" . "utilities/uniq.html")
-   ("unistd.h" . "basedefs/unistd.h.html")
-   ("unlink" . "utilities/unlink.html")
-   ("unlink()" . "functions/unlink.html")
-   ("unlinkat()" . "functions/unlinkat.html")
-   ("unlockpt()" . "functions/unlockpt.html")
-   ("unset" . "utilities/V3_chap02.html#unset")
-   ("unsetenv()" . "functions/unsetenv.html")
-   ("uselocale()" . "functions/uselocale.html")
-   ("utime()" . "functions/utime.html")
-   ("utime.h" . "basedefs/utime.h.html")
-   ("utimensat()" . "functions/utimensat.html")
-   ("utimes()" . "functions/utimes.html")
-   ("utmpx.h" . "basedefs/utmpx.h.html")
-   ("uucp" . "utilities/uucp.html")
-   ("uudecode" . "utilities/uudecode.html")
-   ("uuencode" . "utilities/uuencode.html")
-   ("uustat" . "utilities/uustat.html")
-   ("uux" . "utilities/uux.html")
-   ("va_arg()" . "functions/va_arg.html")
-   ("va_copy()" . "functions/va_copy.html")
-   ("va_end()" . "functions/va_end.html")
-   ("va_start()" . "functions/va_start.html")
-   ("val" . "utilities/val.html")
-   ("vdprintf()" . "functions/vdprintf.html")
-   ("vfprintf()" . "functions/vfprintf.html")
-   ("vfscanf()" . "functions/vfscanf.html")
-   ("vfwprintf()" . "functions/vfwprintf.html")
-   ("vfwscanf()" . "functions/vfwscanf.html")
-   ("vi" . "utilities/vi.html")
-   ("vprintf()" . "functions/vprintf.html")
-   ("vscanf()" . "functions/vscanf.html")
-   ("vsnprintf()" . "functions/vsnprintf.html")
-   ("vsprintf()" . "functions/vsprintf.html")
-   ("vsscanf()" . "functions/vsscanf.html")
-   ("vswprintf()" . "functions/vswprintf.html")
-   ("vswscanf()" . "functions/vswscanf.html")
-   ("vwprintf()" . "functions/vwprintf.html")
-   ("vwscanf()" . "functions/vwscanf.html")
-   ("wait" . "utilities/wait.html")
-   ("wait()" . "functions/wait.html")
-   ("waitid()" . "functions/waitid.html")
-   ("waitpid()" . "functions/waitpid.html")
-   ("wc" . "utilities/wc.html")
-   ("wchar.h" . "basedefs/wchar.h.html")
-   ("wcpcpy()" . "functions/wcpcpy.html")
-   ("wcpncpy()" . "functions/wcpncpy.html")
-   ("wcrtomb()" . "functions/wcrtomb.html")
-   ("wcscasecmp()" . "functions/wcscasecmp.html")
-   ("wcscasecmp_l()" . "functions/wcscasecmp_l.html")
-   ("wcscat()" . "functions/wcscat.html")
-   ("wcschr()" . "functions/wcschr.html")
-   ("wcscmp()" . "functions/wcscmp.html")
-   ("wcscoll()" . "functions/wcscoll.html")
-   ("wcscoll_l()" . "functions/wcscoll_l.html")
-   ("wcscpy()" . "functions/wcscpy.html")
-   ("wcscspn()" . "functions/wcscspn.html")
-   ("wcsdup()" . "functions/wcsdup.html")
-   ("wcsftime()" . "functions/wcsftime.html")
-   ("wcslen()" . "functions/wcslen.html")
-   ("wcsncasecmp()" . "functions/wcsncasecmp.html")
-   ("wcsncasecmp_l()" . "functions/wcsncasecmp_l.html")
-   ("wcsncat()" . "functions/wcsncat.html")
-   ("wcsncmp()" . "functions/wcsncmp.html")
-   ("wcsncpy()" . "functions/wcsncpy.html")
-   ("wcsnlen()" . "functions/wcsnlen.html")
-   ("wcsnrtombs()" . "functions/wcsnrtombs.html")
-   ("wcspbrk()" . "functions/wcspbrk.html")
-   ("wcsrchr()" . "functions/wcsrchr.html")
-   ("wcsrtombs()" . "functions/wcsrtombs.html")
-   ("wcsspn()" . "functions/wcsspn.html")
-   ("wcsstr()" . "functions/wcsstr.html")
-   ("wcstod()" . "functions/wcstod.html")
-   ("wcstof()" . "functions/wcstof.html")
-   ("wcstoimax()" . "functions/wcstoimax.html")
-   ("wcstok()" . "functions/wcstok.html")
-   ("wcstol()" . "functions/wcstol.html")
-   ("wcstold()" . "functions/wcstold.html")
-   ("wcstoll()" . "functions/wcstoll.html")
-   ("wcstombs()" . "functions/wcstombs.html")
-   ("wcstoul()" . "functions/wcstoul.html")
-   ("wcstoull()" . "functions/wcstoull.html")
-   ("wcstoumax()" . "functions/wcstoumax.html")
-   ("wcswidth()" . "functions/wcswidth.html")
-   ("wcsxfrm()" . "functions/wcsxfrm.html")
-   ("wcsxfrm_l()" . "functions/wcsxfrm_l.html")
-   ("wctob()" . "functions/wctob.html")
-   ("wctomb()" . "functions/wctomb.html")
-   ("wctrans()" . "functions/wctrans.html")
-   ("wctrans_l()" . "functions/wctrans_l.html")
-   ("wctype()" . "functions/wctype.html")
-   ("wctype.h" . "basedefs/wctype.h.html")
-   ("wctype_l()" . "functions/wctype_l.html")
-   ("wcwidth()" . "functions/wcwidth.html")
-   ("what" . "utilities/what.html")
-   ("who" . "utilities/who.html")
-   ("wmemchr()" . "functions/wmemchr.html")
-   ("wmemcmp()" . "functions/wmemcmp.html")
-   ("wmemcpy()" . "functions/wmemcpy.html")
-   ("wmemmove()" . "functions/wmemmove.html")
-   ("wmemset()" . "functions/wmemset.html")
-   ("wordexp()" . "functions/wordexp.html")
-   ("wordexp.h" . "basedefs/wordexp.h.html")
-   ("wordfree()" . "functions/wordfree.html")
-   ("wprintf()" . "functions/wprintf.html")
-   ("write" . "utilities/write.html")
-   ("write()" . "functions/write.html")
-   ("writev()" . "functions/writev.html")
-   ("wscanf()" . "functions/wscanf.html")
-   ("xargs" . "utilities/xargs.html")
-   ("y0()" . "functions/y0.html")
-   ("y1()" . "functions/y1.html")
-   ("yacc" . "utilities/yacc.html")
-   ("yn()" . "functions/yn.html")
-   ("zcat" . "utilities/zcat.html"))
- "POSIX manual page data.")
+(defconst posix-manual-data--as-string
+  (concat
+   "Abortive Release\t"
+   "basedefs/V1_chap03.html#tag_03_01\n"
+   "Absolute Pathname\t"
+   "basedefs/V1_chap03.html#tag_03_02\n"
+   "Access Mode\t"
+   "basedefs/V1_chap03.html#tag_03_03\n"
+   "Additional File Access Control Mechanism\t"
+   "basedefs/V1_chap03.html#tag_03_04\n"
+   "Address Space\t"
+   "basedefs/V1_chap03.html#tag_03_05\n"
+   "Advisory Information\t"
+   "basedefs/V1_chap03.html#tag_03_06\n"
+   "Affirmative Response\t"
+   "basedefs/V1_chap03.html#tag_03_07\n"
+   "Alert\t"
+   "basedefs/V1_chap03.html#tag_03_08\n"
+   "Alert Character (<alert>)\t"
+   "basedefs/V1_chap03.html#tag_03_09\n"
+   "Alias Name\t"
+   "basedefs/V1_chap03.html#tag_03_10\n"
+   "Alignment\t"
+   "basedefs/V1_chap03.html#tag_03_11\n"
+   "Alternate File Access Control Mechanism\t"
+   "basedefs/V1_chap03.html#tag_03_12\n"
+   "Alternate Signal Stack\t"
+   "basedefs/V1_chap03.html#tag_03_13\n"
+   "Ancillary Data\t"
+   "basedefs/V1_chap03.html#tag_03_14\n"
+   "Angle Brackets\t"
+   "basedefs/V1_chap03.html#tag_03_15\n"
+   "Apostrophe Character (<apostrophe>)\t"
+   "basedefs/V1_chap03.html#tag_03_16\n"
+   "Application\t"
+   "basedefs/V1_chap03.html#tag_03_17\n"
+   "Application Address\t"
+   "basedefs/V1_chap03.html#tag_03_18\n"
+   "Application Conformance\t"
+   "basedefs/V1_chap02.html#tag_02_02\n"
+   "Application Program Interface (API)\t"
+   "basedefs/V1_chap03.html#tag_03_19\n"
+   "Appropriate Privileges\t"
+   "basedefs/V1_chap03.html#tag_03_20\n"
+   "Argument\t"
+   "basedefs/V1_chap03.html#tag_03_21\n"
+   "Arm (a Timer)\t"
+   "basedefs/V1_chap03.html#tag_03_22\n"
+   "Asterisk Character (<asterisk>)\t"
+   "basedefs/V1_chap03.html#tag_03_23\n"
+   "Async-Cancel-Safe Function\t"
+   "basedefs/V1_chap03.html#tag_03_24\n"
+   "Async-Signal-Safe Function\t"
+   "basedefs/V1_chap03.html#tag_03_27\n"
+   "Asynchronous Events\t"
+   "basedefs/V1_chap03.html#tag_03_25\n"
+   "Asynchronous I/O Completion\t"
+   "basedefs/V1_chap03.html#tag_03_29\n"
+   "Asynchronous I/O Operation\t"
+   "basedefs/V1_chap03.html#tag_03_30\n"
+   "Asynchronous Input and Output\t"
+   "basedefs/V1_chap03.html#tag_03_26\n"
+   "Asynchronously-Generated Signal\t"
+   "basedefs/V1_chap03.html#tag_03_28\n"
+   "Authentication\t"
+   "basedefs/V1_chap03.html#tag_03_31\n"
+   "Authorization\t"
+   "basedefs/V1_chap03.html#tag_03_32\n"
+   "Background Job\t"
+   "basedefs/V1_chap03.html#tag_03_33\n"
+   "Background Process\t"
+   "basedefs/V1_chap03.html#tag_03_34\n"
+   "Background Process Group (or Background Job)\t"
+   "basedefs/V1_chap03.html#tag_03_35\n"
+   "Backquote Character\t"
+   "basedefs/V1_chap03.html#tag_03_36\n"
+   "Backslash Character (<backslash>)\t"
+   "basedefs/V1_chap03.html#tag_03_37\n"
+   "Backspace Character (<backspace>)\t"
+   "basedefs/V1_chap03.html#tag_03_38\n"
+   "Barrier\t"
+   "basedefs/V1_chap03.html#tag_03_39\n"
+   "Basename\t"
+   "basedefs/V1_chap03.html#tag_03_40\n"
+   "Basic Regular Expression (BRE)\t"
+   "basedefs/V1_chap03.html#tag_03_41\n"
+   "Basic Regular Expressions\t"
+   "basedefs/V1_chap09.html#tag_09_03\n"
+   "Batch Access List\t"
+   "basedefs/V1_chap03.html#tag_03_42\n"
+   "Batch Administrator\t"
+   "basedefs/V1_chap03.html#tag_03_43\n"
+   "Batch Client\t"
+   "basedefs/V1_chap03.html#tag_03_44\n"
+   "Batch Destination\t"
+   "basedefs/V1_chap03.html#tag_03_45\n"
+   "Batch Destination Identifier\t"
+   "basedefs/V1_chap03.html#tag_03_46\n"
+   "Batch Directive\t"
+   "basedefs/V1_chap03.html#tag_03_47\n"
+   "Batch Job\t"
+   "basedefs/V1_chap03.html#tag_03_48\n"
+   "Batch Job Attribute\t"
+   "basedefs/V1_chap03.html#tag_03_49\n"
+   "Batch Job Identifier\t"
+   "basedefs/V1_chap03.html#tag_03_50\n"
+   "Batch Job Name\t"
+   "basedefs/V1_chap03.html#tag_03_51\n"
+   "Batch Job Owner\t"
+   "basedefs/V1_chap03.html#tag_03_52\n"
+   "Batch Job Priority\t"
+   "basedefs/V1_chap03.html#tag_03_53\n"
+   "Batch Job State\t"
+   "basedefs/V1_chap03.html#tag_03_54\n"
+   "Batch Name Service\t"
+   "basedefs/V1_chap03.html#tag_03_55\n"
+   "Batch Name Space\t"
+   "basedefs/V1_chap03.html#tag_03_56\n"
+   "Batch Node\t"
+   "basedefs/V1_chap03.html#tag_03_57\n"
+   "Batch Operator\t"
+   "basedefs/V1_chap03.html#tag_03_58\n"
+   "Batch Queue\t"
+   "basedefs/V1_chap03.html#tag_03_59\n"
+   "Batch Queue Attribute\t"
+   "basedefs/V1_chap03.html#tag_03_60\n"
+   "Batch Queue Position\t"
+   "basedefs/V1_chap03.html#tag_03_61\n"
+   "Batch Queue Priority\t"
+   "basedefs/V1_chap03.html#tag_03_62\n"
+   "Batch Rerunability\t"
+   "basedefs/V1_chap03.html#tag_03_63\n"
+   "Batch Restart\t"
+   "basedefs/V1_chap03.html#tag_03_64\n"
+   "Batch Server\t"
+   "basedefs/V1_chap03.html#tag_03_65\n"
+   "Batch Server Name\t"
+   "basedefs/V1_chap03.html#tag_03_66\n"
+   "Batch Service\t"
+   "basedefs/V1_chap03.html#tag_03_67\n"
+   "Batch Service Request\t"
+   "basedefs/V1_chap03.html#tag_03_68\n"
+   "Batch Submission\t"
+   "basedefs/V1_chap03.html#tag_03_69\n"
+   "Batch System\t"
+   "basedefs/V1_chap03.html#tag_03_70\n"
+   "Batch Target User\t"
+   "basedefs/V1_chap03.html#tag_03_71\n"
+   "Batch User\t"
+   "basedefs/V1_chap03.html#tag_03_72\n"
+   "Bind\t"
+   "basedefs/V1_chap03.html#tag_03_73\n"
+   "Blank Character (<blank>)\t"
+   "basedefs/V1_chap03.html#tag_03_74\n"
+   "Blank Line\t"
+   "basedefs/V1_chap03.html#tag_03_75\n"
+   "Block Special File\t"
+   "basedefs/V1_chap03.html#tag_03_79\n"
+   "Block-Mode Terminal\t"
+   "basedefs/V1_chap03.html#tag_03_78\n"
+   "Blocked Process (or Thread)\t"
+   "basedefs/V1_chap03.html#tag_03_76\n"
+   "Blocking\t"
+   "basedefs/V1_chap03.html#tag_03_77\n"
+   "Braces\t"
+   "basedefs/V1_chap03.html#tag_03_80\n"
+   "Brackets\t"
+   "basedefs/V1_chap03.html#tag_03_81\n"
+   "Broadcast\t"
+   "basedefs/V1_chap03.html#tag_03_82\n"
+   "Built-In Utility (or Built-In)\t"
+   "basedefs/V1_chap03.html#tag_03_83\n"
+   "Byte\t"
+   "basedefs/V1_chap03.html#tag_03_84\n"
+   "Byte Input/Output Functions\t"
+   "basedefs/V1_chap03.html#tag_03_85\n"
+   "C Language Wide-Character Codes\t"
+   "basedefs/V1_chap06.html#tag_06_03\n"
+   "CPU Time (Execution Time)\t"
+   "basedefs/V1_chap03.html#tag_03_118\n"
+   "CPU-Time Clock\t"
+   "basedefs/V1_chap03.html#tag_03_119\n"
+   "CPU-Time Timer\t"
+   "basedefs/V1_chap03.html#tag_03_120\n"
+   "Carriage-Return Character (<carriage-return>)\t"
+   "basedefs/V1_chap03.html#tag_03_86\n"
+   "Character\t"
+   "basedefs/V1_chap03.html#tag_03_87\n"
+   "Character Array\t"
+   "basedefs/V1_chap03.html#tag_03_88\n"
+   "Character Class\t"
+   "basedefs/V1_chap03.html#tag_03_89\n"
+   "Character Encoding\t"
+   "basedefs/V1_chap06.html#tag_06_02\n"
+   "Character Set\t"
+   "basedefs/V1_chap03.html#tag_03_90\n"
+   "Character Set\t"
+   "basedefs/V1_chap06.html#tag_06\n"
+   "Character Set Description File\t"
+   "basedefs/V1_chap06.html#tag_06_04\n"
+   "Character Special File\t"
+   "basedefs/V1_chap03.html#tag_03_91\n"
+   "Character String\t"
+   "basedefs/V1_chap03.html#tag_03_92\n"
+   "Child Process\t"
+   "basedefs/V1_chap03.html#tag_03_93\n"
+   "Circumflex Character (<circumflex>)\t"
+   "basedefs/V1_chap03.html#tag_03_94\n"
+   "Clock\t"
+   "basedefs/V1_chap03.html#tag_03_95\n"
+   "Clock Jump\t"
+   "basedefs/V1_chap03.html#tag_03_96\n"
+   "Clock Tick\t"
+   "basedefs/V1_chap03.html#tag_03_97\n"
+   "Coded Character Set\t"
+   "basedefs/V1_chap03.html#tag_03_98\n"
+   "Codeset\t"
+   "basedefs/V1_chap03.html#tag_03_99\n"
+   "Collating Element\t"
+   "basedefs/V1_chap03.html#tag_03_100\n"
+   "Collation\t"
+   "basedefs/V1_chap03.html#tag_03_101\n"
+   "Collation Sequence\t"
+   "basedefs/V1_chap03.html#tag_03_102\n"
+   "Column Position\t"
+   "basedefs/V1_chap03.html#tag_03_103\n"
+   "Command\t"
+   "basedefs/V1_chap03.html#tag_03_104\n"
+   "Command Language Interpreter\t"
+   "basedefs/V1_chap03.html#tag_03_105\n"
+   "Composite Graphic Symbol\t"
+   "basedefs/V1_chap03.html#tag_03_106\n"
+   "Concurrent Execution\t"
+   "basedefs/V1_chap04.html#tag_04_01\n"
+   "Condition Variable\t"
+   "basedefs/V1_chap03.html#tag_03_107\n"
+   "Conformance\t"
+   "basedefs/V1_chap02.html#tag_02\n"
+   "Connected Socket\t"
+   "basedefs/V1_chap03.html#tag_03_108\n"
+   "Connection\t"
+   "basedefs/V1_chap03.html#tag_03_109\n"
+   "Connection Mode\t"
+   "basedefs/V1_chap03.html#tag_03_110\n"
+   "Connectionless Mode\t"
+   "basedefs/V1_chap03.html#tag_03_111\n"
+   "Control Character\t"
+   "basedefs/V1_chap03.html#tag_03_112\n"
+   "Control Operator\t"
+   "basedefs/V1_chap03.html#tag_03_113\n"
+   "Controlling Process\t"
+   "basedefs/V1_chap03.html#tag_03_114\n"
+   "Controlling Terminal\t"
+   "basedefs/V1_chap03.html#tag_03_115\n"
+   "Conversion Descriptor\t"
+   "basedefs/V1_chap03.html#tag_03_116\n"
+   "Core File\t"
+   "basedefs/V1_chap03.html#tag_03_117\n"
+   "Current Job\t"
+   "basedefs/V1_chap03.html#tag_03_121\n"
+   "Current Working Directory\t"
+   "basedefs/V1_chap03.html#tag_03_122\n"
+   "Cursor Position\t"
+   "basedefs/V1_chap03.html#tag_03_123\n"
+   "Data Segment\t"
+   "basedefs/V1_chap03.html#tag_03_125\n"
+   "Datagram\t"
+   "basedefs/V1_chap03.html#tag_03_124\n"
+   "Default Initialization\t"
+   "basedefs/V1_chap04.html#tag_04_02\n"
+   "Deferred Batch Service\t"
+   "basedefs/V1_chap03.html#tag_03_126\n"
+   "Definitions\t"
+   "basedefs/V1_chap03.html#tag_03\n"
+   "Device\t"
+   "basedefs/V1_chap03.html#tag_03_127\n"
+   "Device ID\t"
+   "basedefs/V1_chap03.html#tag_03_128\n"
+   "Directory\t"
+   "basedefs/V1_chap03.html#tag_03_129\n"
+   "Directory Entry (or Link)\t"
+   "basedefs/V1_chap03.html#tag_03_130\n"
+   "Directory Protection\t"
+   "basedefs/V1_chap04.html#tag_04_03\n"
+   "Directory Stream\t"
+   "basedefs/V1_chap03.html#tag_03_131\n"
+   "Directory Structure and Devices\t"
+   "basedefs/V1_chap10.html#tag_10\n"
+   "Directory Structure and Files\t"
+   "basedefs/V1_chap10.html#tag_10_01\n"
+   "Disarm (a Timer)\t"
+   "basedefs/V1_chap03.html#tag_03_132\n"
+   "Display\t"
+   "basedefs/V1_chap03.html#tag_03_133\n"
+   "Display Line\t"
+   "basedefs/V1_chap03.html#tag_03_134\n"
+   "Dollar-Sign Character (<dollar-sign>)\t"
+   "basedefs/V1_chap03.html#tag_03_135\n"
+   "Dot\t"
+   "basedefs/V1_chap03.html#tag_03_136\n"
+   "Dot-Dot\t"
+   "basedefs/V1_chap03.html#tag_03_137\n"
+   "Double-Quote Character\t"
+   "basedefs/V1_chap03.html#tag_03_138\n"
+   "Downshifting\t"
+   "basedefs/V1_chap03.html#tag_03_139\n"
+   "Driver\t"
+   "basedefs/V1_chap03.html#tag_03_140\n"
+   "Effective Group ID\t"
+   "basedefs/V1_chap03.html#tag_03_141\n"
+   "Effective User ID\t"
+   "basedefs/V1_chap03.html#tag_03_142\n"
+   "Eight-Bit Transparency\t"
+   "basedefs/V1_chap03.html#tag_03_143\n"
+   "Empty Directory\t"
+   "basedefs/V1_chap03.html#tag_03_144\n"
+   "Empty Line\t"
+   "basedefs/V1_chap03.html#tag_03_145\n"
+   "Empty String (or Null String)\t"
+   "basedefs/V1_chap03.html#tag_03_146\n"
+   "Empty Wide-Character String\t"
+   "basedefs/V1_chap03.html#tag_03_147\n"
+   "Encoding Rule\t"
+   "basedefs/V1_chap03.html#tag_03_148\n"
+   "Entire Regular Expression\t"
+   "basedefs/V1_chap03.html#tag_03_149\n"
+   "Environment Variable Definition\t"
+   "basedefs/V1_chap08.html#tag_08_01\n"
+   "Environment Variables\t"
+   "basedefs/V1_chap08.html#tag_08\n"
+   "Epoch\t"
+   "basedefs/V1_chap03.html#tag_03_150\n"
+   "Equivalence Class\t"
+   "basedefs/V1_chap03.html#tag_03_151\n"
+   "Era\t"
+   "basedefs/V1_chap03.html#tag_03_152\n"
+   "Event Management\t"
+   "basedefs/V1_chap03.html#tag_03_153\n"
+   "Executable File\t"
+   "basedefs/V1_chap03.html#tag_03_154\n"
+   "Execute\t"
+   "basedefs/V1_chap03.html#tag_03_155\n"
+   "Execution Time\t"
+   "basedefs/V1_chap03.html#tag_03_156\n"
+   "Execution Time Monitoring\t"
+   "basedefs/V1_chap03.html#tag_03_157\n"
+   "Expand\t"
+   "basedefs/V1_chap03.html#tag_03_158\n"
+   "Extended Regular Expression (ERE)\t"
+   "basedefs/V1_chap03.html#tag_03_159\n"
+   "Extended Regular Expressions\t"
+   "basedefs/V1_chap09.html#tag_09_04\n"
+   "Extended Security Controls\t"
+   "basedefs/V1_chap03.html#tag_03_160\n"
+   "Extended Security Controls\t"
+   "basedefs/V1_chap04.html#tag_04_04\n"
+   "FD_CLR()\t"
+   "functions/FD_CLR.html\n"
+   "FD_ISSET()\t"
+   "functions/FD_ISSET.html\n"
+   "FD_SET()\t"
+   "functions/FD_SET.html\n"
+   "FD_ZERO()\t"
+   "functions/FD_ZERO.html\n"
+   "FIFO Special File (or FIFO)\t"
+   "basedefs/V1_chap03.html#tag_03_163\n"
+   "Feature Test Macro\t"
+   "basedefs/V1_chap03.html#tag_03_161\n"
+   "Field\t"
+   "basedefs/V1_chap03.html#tag_03_162\n"
+   "File\t"
+   "basedefs/V1_chap03.html#tag_03_164\n"
+   "File Access Permissions\t"
+   "basedefs/V1_chap04.html#tag_04_05\n"
+   "File Description\t"
+   "basedefs/V1_chap03.html#tag_03_165\n"
+   "File Descriptor\t"
+   "basedefs/V1_chap03.html#tag_03_166\n"
+   "File Format Notation\t"
+   "basedefs/V1_chap05.html#tag_05\n"
+   "File Group Class\t"
+   "basedefs/V1_chap03.html#tag_03_167\n"
+   "File Hierarchy\t"
+   "basedefs/V1_chap04.html#tag_04_06\n"
+   "File Mode\t"
+   "basedefs/V1_chap03.html#tag_03_168\n"
+   "File Mode Bits\t"
+   "basedefs/V1_chap03.html#tag_03_169\n"
+   "File Offset\t"
+   "basedefs/V1_chap03.html#tag_03_172\n"
+   "File Other Class\t"
+   "basedefs/V1_chap03.html#tag_03_173\n"
+   "File Owner Class\t"
+   "basedefs/V1_chap03.html#tag_03_174\n"
+   "File Permission Bits\t"
+   "basedefs/V1_chap03.html#tag_03_175\n"
+   "File Serial Number\t"
+   "basedefs/V1_chap03.html#tag_03_176\n"
+   "File System\t"
+   "basedefs/V1_chap03.html#tag_03_177\n"
+   "File Times Update\t"
+   "basedefs/V1_chap04.html#tag_04_09\n"
+   "File Type\t"
+   "basedefs/V1_chap03.html#tag_03_178\n"
+   "Filename\t"
+   "basedefs/V1_chap03.html#tag_03_170\n"
+   "Filename Portability\t"
+   "basedefs/V1_chap04.html#tag_04_08\n"
+   "Filename String\t"
+   "basedefs/V1_chap03.html#tag_03_171\n"
+   "Filenames\t"
+   "basedefs/V1_chap04.html#tag_04_07\n"
+   "Filter\t"
+   "basedefs/V1_chap03.html#tag_03_179\n"
+   "First Open (of a File)\t"
+   "basedefs/V1_chap03.html#tag_03_180\n"
+   "Flow Control\t"
+   "basedefs/V1_chap03.html#tag_03_181\n"
+   "Foreground Job\t"
+   "basedefs/V1_chap03.html#tag_03_182\n"
+   "Foreground Process\t"
+   "basedefs/V1_chap03.html#tag_03_183\n"
+   "Foreground Process Group (or Foreground Job)\t"
+   "basedefs/V1_chap03.html#tag_03_184\n"
+   "Foreground Process Group ID\t"
+   "basedefs/V1_chap03.html#tag_03_185\n"
+   "Form-Feed Character (<form-feed>)\t"
+   "basedefs/V1_chap03.html#tag_03_186\n"
+   "General\t"
+   "basedefs/V1_chap07.html#tag_07_01\n"
+   "General Concepts\t"
+   "basedefs/V1_chap04.html#tag_04\n"
+   "General Terminal Interface\t"
+   "basedefs/V1_chap11.html#tag_11\n"
+   "Graphic Character\t"
+   "basedefs/V1_chap03.html#tag_03_187\n"
+   "Group Database\t"
+   "basedefs/V1_chap03.html#tag_03_188\n"
+   "Group ID\t"
+   "basedefs/V1_chap03.html#tag_03_189\n"
+   "Group Name\t"
+   "basedefs/V1_chap03.html#tag_03_190\n"
+   "Hard Limit\t"
+   "basedefs/V1_chap03.html#tag_03_191\n"
+   "Hard Link\t"
+   "basedefs/V1_chap03.html#tag_03_192\n"
+   "Home Directory\t"
+   "basedefs/V1_chap03.html#tag_03_193\n"
+   "Host Byte Order\t"
+   "basedefs/V1_chap03.html#tag_03_194\n"
+   "Host and Network Byte Orders\t"
+   "basedefs/V1_chap04.html#tag_04_10\n"
+   "Implementation Conformance\t"
+   "basedefs/V1_chap02.html#tag_02_01\n"
+   "Incomplete Line\t"
+   "basedefs/V1_chap03.html#tag_03_195\n"
+   "Inf\t"
+   "basedefs/V1_chap03.html#tag_03_196\n"
+   "Instrumented Application\t"
+   "basedefs/V1_chap03.html#tag_03_197\n"
+   "Interactive Shell\t"
+   "basedefs/V1_chap03.html#tag_03_198\n"
+   "Interface Characteristics\t"
+   "basedefs/V1_chap11.html#tag_11_01\n"
+   "Internationalization\t"
+   "basedefs/V1_chap03.html#tag_03_199\n"
+   "Internationalization Variables\t"
+   "basedefs/V1_chap08.html#tag_08_02\n"
+   "Interprocess Communication\t"
+   "basedefs/V1_chap03.html#tag_03_200\n"
+   "Invoke\t"
+   "basedefs/V1_chap03.html#tag_03_201\n"
+   "Job\t"
+   "basedefs/V1_chap03.html#tag_03_202\n"
+   "Job Control\t"
+   "basedefs/V1_chap03.html#tag_03_203\n"
+   "Job Control Job ID\t"
+   "basedefs/V1_chap03.html#tag_03_204\n"
+   "Language-Dependent Services for the C Programming Language\t"
+   "basedefs/V1_chap02.html#tag_02_03\n"
+   "Last Close (of a File)\t"
+   "basedefs/V1_chap03.html#tag_03_205\n"
+   "Line\t"
+   "basedefs/V1_chap03.html#tag_03_206\n"
+   "Linger\t"
+   "basedefs/V1_chap03.html#tag_03_207\n"
+   "Link\t"
+   "basedefs/V1_chap03.html#tag_03_208\n"
+   "Link Count\t"
+   "basedefs/V1_chap03.html#tag_03_209\n"
+   "Live Process\t"
+   "basedefs/V1_chap03.html#tag_03_210\n"
+   "Local Customs\t"
+   "basedefs/V1_chap03.html#tag_03_211\n"
+   "Local Interprocess Communication (Local IPC)\t"
+   "basedefs/V1_chap03.html#tag_03_212\n"
+   "Locale\t"
+   "basedefs/V1_chap03.html#tag_03_213\n"
+   "Locale\t"
+   "basedefs/V1_chap07.html#tag_07\n"
+   "Locale Definition\t"
+   "basedefs/V1_chap07.html#tag_07_03\n"
+   "Locale Definition Grammar\t"
+   "basedefs/V1_chap07.html#tag_07_04\n"
+   "Localization\t"
+   "basedefs/V1_chap03.html#tag_03_214\n"
+   "Login\t"
+   "basedefs/V1_chap03.html#tag_03_215\n"
+   "Login Name\t"
+   "basedefs/V1_chap03.html#tag_03_216\n"
+   "Map\t"
+   "basedefs/V1_chap03.html#tag_03_217\n"
+   "Marked Message\t"
+   "basedefs/V1_chap03.html#tag_03_218\n"
+   "Matched\t"
+   "basedefs/V1_chap03.html#tag_03_219\n"
+   "Measurement of Execution Time\t"
+   "basedefs/V1_chap04.html#tag_04_11\n"
+   "Memory Mapped Files\t"
+   "basedefs/V1_chap03.html#tag_03_220\n"
+   "Memory Object\t"
+   "basedefs/V1_chap03.html#tag_03_221\n"
+   "Memory Synchronization\t"
+   "basedefs/V1_chap04.html#tag_04_12\n"
+   "Memory-Resident\t"
+   "basedefs/V1_chap03.html#tag_03_222\n"
+   "Message\t"
+   "basedefs/V1_chap03.html#tag_03_223\n"
+   "Message Catalog\t"
+   "basedefs/V1_chap03.html#tag_03_224\n"
+   "Message Catalog Descriptor\t"
+   "basedefs/V1_chap03.html#tag_03_225\n"
+   "Message Queue\t"
+   "basedefs/V1_chap03.html#tag_03_226\n"
+   "Mode\t"
+   "basedefs/V1_chap03.html#tag_03_227\n"
+   "Monotonic Clock\t"
+   "basedefs/V1_chap03.html#tag_03_228\n"
+   "Mount Point\t"
+   "basedefs/V1_chap03.html#tag_03_229\n"
+   "Multi-Character Collating Element\t"
+   "basedefs/V1_chap03.html#tag_03_230\n"
+   "Multi-Threaded Library\t"
+   "basedefs/V1_chap03.html#tag_03_231\n"
+   "Multi-Threaded Process\t"
+   "basedefs/V1_chap03.html#tag_03_232\n"
+   "Multi-Threaded Program\t"
+   "basedefs/V1_chap03.html#tag_03_233\n"
+   "Mutex\t"
+   "basedefs/V1_chap03.html#tag_03_234\n"
+   "NUL\t"
+   "basedefs/V1_chap03.html#tag_03_247\n"
+   "NaN (Not a Number)\t"
+   "basedefs/V1_chap03.html#tag_03_237\n"
+   "Name\t"
+   "basedefs/V1_chap03.html#tag_03_235\n"
+   "Named STREAM\t"
+   "basedefs/V1_chap03.html#tag_03_236\n"
+   "Native Language\t"
+   "basedefs/V1_chap03.html#tag_03_238\n"
+   "Negative Response\t"
+   "basedefs/V1_chap03.html#tag_03_239\n"
+   "Network\t"
+   "basedefs/V1_chap03.html#tag_03_240\n"
+   "Network Address\t"
+   "basedefs/V1_chap03.html#tag_03_241\n"
+   "Network Byte Order\t"
+   "basedefs/V1_chap03.html#tag_03_242\n"
+   "Newline Character (<newline>)\t"
+   "basedefs/V1_chap03.html#tag_03_243\n"
+   "Nice Value\t"
+   "basedefs/V1_chap03.html#tag_03_244\n"
+   "Non-Blocking\t"
+   "basedefs/V1_chap03.html#tag_03_245\n"
+   "Non-Spacing Characters\t"
+   "basedefs/V1_chap03.html#tag_03_246\n"
+   "Null Byte\t"
+   "basedefs/V1_chap03.html#tag_03_248\n"
+   "Null Pointer\t"
+   "basedefs/V1_chap03.html#tag_03_249\n"
+   "Null String\t"
+   "basedefs/V1_chap03.html#tag_03_250\n"
+   "Null Wide-Character Code\t"
+   "basedefs/V1_chap03.html#tag_03_251\n"
+   "Number-Sign Character (<number-sign>)\t"
+   "basedefs/V1_chap03.html#tag_03_252\n"
+   "Object File\t"
+   "basedefs/V1_chap03.html#tag_03_253\n"
+   "Octet\t"
+   "basedefs/V1_chap03.html#tag_03_254\n"
+   "Offset Maximum\t"
+   "basedefs/V1_chap03.html#tag_03_255\n"
+   "Opaque Address\t"
+   "basedefs/V1_chap03.html#tag_03_256\n"
+   "Open File\t"
+   "basedefs/V1_chap03.html#tag_03_257\n"
+   "Open File Description\t"
+   "basedefs/V1_chap03.html#tag_03_258\n"
+   "Operand\t"
+   "basedefs/V1_chap03.html#tag_03_259\n"
+   "Operator\t"
+   "basedefs/V1_chap03.html#tag_03_260\n"
+   "Option\t"
+   "basedefs/V1_chap03.html#tag_03_261\n"
+   "Option-Argument\t"
+   "basedefs/V1_chap03.html#tag_03_262\n"
+   "Orientation\t"
+   "basedefs/V1_chap03.html#tag_03_263\n"
+   "Orphaned Process Group\t"
+   "basedefs/V1_chap03.html#tag_03_264\n"
+   "Other Environment Variables\t"
+   "basedefs/V1_chap08.html#tag_08_03\n"
+   "Other Language-Related Specifications\t"
+   "basedefs/V1_chap02.html#tag_02_04\n"
+   "Output Devices and Terminal Types\t"
+   "basedefs/V1_chap10.html#tag_10_02\n"
+   "POSIX Locale\t"
+   "basedefs/V1_chap07.html#tag_07_02\n"
+   "Page\t"
+   "basedefs/V1_chap03.html#tag_03_265\n"
+   "Page Size\t"
+   "basedefs/V1_chap03.html#tag_03_266\n"
+   "Parameter\t"
+   "basedefs/V1_chap03.html#tag_03_267\n"
+   "Parameters that Can be Set\t"
+   "basedefs/V1_chap11.html#tag_11_02\n"
+   "Parent Directory\t"
+   "basedefs/V1_chap03.html#tag_03_268\n"
+   "Parent Process\t"
+   "basedefs/V1_chap03.html#tag_03_269\n"
+   "Parent Process ID\t"
+   "basedefs/V1_chap03.html#tag_03_270\n"
+   "Path Prefix\t"
+   "basedefs/V1_chap03.html#tag_03_273\n"
+   "Pathname\t"
+   "basedefs/V1_chap03.html#tag_03_271\n"
+   "Pathname Component\t"
+   "basedefs/V1_chap03.html#tag_03_272\n"
+   "Pathname Resolution\t"
+   "basedefs/V1_chap04.html#tag_04_13\n"
+   "Pattern\t"
+   "basedefs/V1_chap03.html#tag_03_274\n"
+   "Period Character (<period>)\t"
+   "basedefs/V1_chap03.html#tag_03_275\n"
+   "Permissions\t"
+   "basedefs/V1_chap03.html#tag_03_276\n"
+   "Persistence\t"
+   "basedefs/V1_chap03.html#tag_03_277\n"
+   "Pipe\t"
+   "basedefs/V1_chap03.html#tag_03_278\n"
+   "Polling\t"
+   "basedefs/V1_chap03.html#tag_03_279\n"
+   "Portable Character Set\t"
+   "basedefs/V1_chap03.html#tag_03_280\n"
+   "Portable Character Set\t"
+   "basedefs/V1_chap06.html#tag_06_01\n"
+   "Portable Filename\t"
+   "basedefs/V1_chap03.html#tag_03_281\n"
+   "Portable Filename Character Set\t"
+   "basedefs/V1_chap03.html#tag_03_282\n"
+   "Positional Parameter\t"
+   "basedefs/V1_chap03.html#tag_03_283\n"
+   "Preallocation\t"
+   "basedefs/V1_chap03.html#tag_03_284\n"
+   "Preempted Process (or Thread)\t"
+   "basedefs/V1_chap03.html#tag_03_285\n"
+   "Previous Job\t"
+   "basedefs/V1_chap03.html#tag_03_286\n"
+   "Printable Character\t"
+   "basedefs/V1_chap03.html#tag_03_287\n"
+   "Printable File\t"
+   "basedefs/V1_chap03.html#tag_03_288\n"
+   "Priority\t"
+   "basedefs/V1_chap03.html#tag_03_289\n"
+   "Priority Band\t"
+   "basedefs/V1_chap03.html#tag_03_290\n"
+   "Priority Inversion\t"
+   "basedefs/V1_chap03.html#tag_03_291\n"
+   "Priority Scheduling\t"
+   "basedefs/V1_chap03.html#tag_03_292\n"
+   "Priority-Based Scheduling\t"
+   "basedefs/V1_chap03.html#tag_03_293\n"
+   "Privilege\t"
+   "basedefs/V1_chap03.html#tag_03_294\n"
+   "Process\t"
+   "basedefs/V1_chap03.html#tag_03_295\n"
+   "Process Group\t"
+   "basedefs/V1_chap03.html#tag_03_296\n"
+   "Process Group ID\t"
+   "basedefs/V1_chap03.html#tag_03_297\n"
+   "Process Group Leader\t"
+   "basedefs/V1_chap03.html#tag_03_298\n"
+   "Process Group Lifetime\t"
+   "basedefs/V1_chap03.html#tag_03_299\n"
+   "Process ID\t"
+   "basedefs/V1_chap03.html#tag_03_300\n"
+   "Process ID Reuse\t"
+   "basedefs/V1_chap04.html#tag_04_14\n"
+   "Process Lifetime\t"
+   "basedefs/V1_chap03.html#tag_03_301\n"
+   "Process Memory Locking\t"
+   "basedefs/V1_chap03.html#tag_03_302\n"
+   "Process Termination\t"
+   "basedefs/V1_chap03.html#tag_03_303\n"
+   "Process Virtual Time\t"
+   "basedefs/V1_chap03.html#tag_03_305\n"
+   "Process-To-Process Communication\t"
+   "basedefs/V1_chap03.html#tag_03_304\n"
+   "Program\t"
+   "basedefs/V1_chap03.html#tag_03_306\n"
+   "Protocol\t"
+   "basedefs/V1_chap03.html#tag_03_307\n"
+   "Pseudo-Terminal\t"
+   "basedefs/V1_chap03.html#tag_03_308\n"
+   "Radix Character\t"
+   "basedefs/V1_chap03.html#tag_03_309\n"
+   "Read-Only File System\t"
+   "basedefs/V1_chap03.html#tag_03_310\n"
+   "Read-Write Lock\t"
+   "basedefs/V1_chap03.html#tag_03_311\n"
+   "Real Group ID\t"
+   "basedefs/V1_chap03.html#tag_03_312\n"
+   "Real Time\t"
+   "basedefs/V1_chap03.html#tag_03_313\n"
+   "Real User ID\t"
+   "basedefs/V1_chap03.html#tag_03_315\n"
+   "Realtime Signal Extension\t"
+   "basedefs/V1_chap03.html#tag_03_314\n"
+   "Record\t"
+   "basedefs/V1_chap03.html#tag_03_316\n"
+   "Redirection\t"
+   "basedefs/V1_chap03.html#tag_03_317\n"
+   "Redirection Operator\t"
+   "basedefs/V1_chap03.html#tag_03_318\n"
+   "Referenced Shared Memory Object\t"
+   "basedefs/V1_chap03.html#tag_03_319\n"
+   "Refresh\t"
+   "basedefs/V1_chap03.html#tag_03_320\n"
+   "Region\t"
+   "basedefs/V1_chap03.html#tag_03_322\n"
+   "Regular Expression\t"
+   "basedefs/V1_chap03.html#tag_03_321\n"
+   "Regular Expression Definitions\t"
+   "basedefs/V1_chap09.html#tag_09_01\n"
+   "Regular Expression General Requirements\t"
+   "basedefs/V1_chap09.html#tag_09_02\n"
+   "Regular Expression Grammar\t"
+   "basedefs/V1_chap09.html#tag_09_05\n"
+   "Regular Expressions\t"
+   "basedefs/V1_chap09.html#tag_09\n"
+   "Regular File\t"
+   "basedefs/V1_chap03.html#tag_03_323\n"
+   "Relative Pathname\t"
+   "basedefs/V1_chap03.html#tag_03_324\n"
+   "Relocatable File\t"
+   "basedefs/V1_chap03.html#tag_03_325\n"
+   "Relocation\t"
+   "basedefs/V1_chap03.html#tag_03_326\n"
+   "Requested Batch Service\t"
+   "basedefs/V1_chap03.html#tag_03_327\n"
+   "Robust Mutex\t"
+   "basedefs/V1_chap03.html#tag_03_329\n"
+   "Root Directory\t"
+   "basedefs/V1_chap03.html#tag_03_330\n"
+   "Runnable Process (or Thread)\t"
+   "basedefs/V1_chap03.html#tag_03_331\n"
+   "Running Process (or Thread)\t"
+   "basedefs/V1_chap03.html#tag_03_332\n"
+   "STREAM\t"
+   "basedefs/V1_chap03.html#tag_03_371\n"
+   "STREAM End\t"
+   "basedefs/V1_chap03.html#tag_03_372\n"
+   "STREAM Head\t"
+   "basedefs/V1_chap03.html#tag_03_373\n"
+   "STREAMS Multiplexor\t"
+   "basedefs/V1_chap03.html#tag_03_374\n"
+   "Saved Resource Limits\t"
+   "basedefs/V1_chap03.html#tag_03_333\n"
+   "Saved Set-Group-ID\t"
+   "basedefs/V1_chap03.html#tag_03_334\n"
+   "Saved Set-User-ID\t"
+   "basedefs/V1_chap03.html#tag_03_335\n"
+   "Scheduling\t"
+   "basedefs/V1_chap03.html#tag_03_336\n"
+   "Scheduling Allocation Domain\t"
+   "basedefs/V1_chap03.html#tag_03_337\n"
+   "Scheduling Contention Scope\t"
+   "basedefs/V1_chap03.html#tag_03_338\n"
+   "Scheduling Policy\t"
+   "basedefs/V1_chap03.html#tag_03_339\n"
+   "Scheduling Policy\t"
+   "basedefs/V1_chap04.html#tag_04_15\n"
+   "Screen\t"
+   "basedefs/V1_chap03.html#tag_03_340\n"
+   "Scroll\t"
+   "basedefs/V1_chap03.html#tag_03_341\n"
+   "Seconds Since the Epoch\t"
+   "basedefs/V1_chap04.html#tag_04_16\n"
+   "Semaphore\t"
+   "basedefs/V1_chap03.html#tag_03_342\n"
+   "Semaphore\t"
+   "basedefs/V1_chap04.html#tag_04_17\n"
+   "Session\t"
+   "basedefs/V1_chap03.html#tag_03_343\n"
+   "Session Leader\t"
+   "basedefs/V1_chap03.html#tag_03_344\n"
+   "Session Lifetime\t"
+   "basedefs/V1_chap03.html#tag_03_345\n"
+   "Shared Memory Object\t"
+   "basedefs/V1_chap03.html#tag_03_346\n"
+   "Shell\t"
+   "basedefs/V1_chap03.html#tag_03_347\n"
+   "Shell Script\t"
+   "basedefs/V1_chap03.html#tag_03_349\n"
+   "Shell, the\t"
+   "basedefs/V1_chap03.html#tag_03_348\n"
+   "Signal\t"
+   "basedefs/V1_chap03.html#tag_03_350\n"
+   "Signal Stack\t"
+   "basedefs/V1_chap03.html#tag_03_351\n"
+   "Single-Quote Character\t"
+   "basedefs/V1_chap03.html#tag_03_352\n"
+   "Single-Threaded Process\t"
+   "basedefs/V1_chap03.html#tag_03_353\n"
+   "Single-Threaded Program\t"
+   "basedefs/V1_chap03.html#tag_03_354\n"
+   "Slash Character (<slash>)\t"
+   "basedefs/V1_chap03.html#tag_03_355\n"
+   "Socket\t"
+   "basedefs/V1_chap03.html#tag_03_356\n"
+   "Socket Address\t"
+   "basedefs/V1_chap03.html#tag_03_357\n"
+   "Soft Limit\t"
+   "basedefs/V1_chap03.html#tag_03_358\n"
+   "Source Code\t"
+   "basedefs/V1_chap03.html#tag_03_359\n"
+   "Space Character (<space>)\t"
+   "basedefs/V1_chap03.html#tag_03_360\n"
+   "Spawn\t"
+   "basedefs/V1_chap03.html#tag_03_361\n"
+   "Special Built-In\t"
+   "basedefs/V1_chap03.html#tag_03_362\n"
+   "Special Parameter\t"
+   "basedefs/V1_chap03.html#tag_03_363\n"
+   "Spin Lock\t"
+   "basedefs/V1_chap03.html#tag_03_364\n"
+   "Sporadic Server\t"
+   "basedefs/V1_chap03.html#tag_03_365\n"
+   "Standard Error\t"
+   "basedefs/V1_chap03.html#tag_03_366\n"
+   "Standard Input\t"
+   "basedefs/V1_chap03.html#tag_03_367\n"
+   "Standard Output\t"
+   "basedefs/V1_chap03.html#tag_03_368\n"
+   "Standard Utilities\t"
+   "basedefs/V1_chap03.html#tag_03_369\n"
+   "Stream\t"
+   "basedefs/V1_chap03.html#tag_03_370\n"
+   "String\t"
+   "basedefs/V1_chap03.html#tag_03_375\n"
+   "Subshell\t"
+   "basedefs/V1_chap03.html#tag_03_376\n"
+   "Successfully Transferred\t"
+   "basedefs/V1_chap03.html#tag_03_377\n"
+   "Supplementary Group ID\t"
+   "basedefs/V1_chap03.html#tag_03_378\n"
+   "Suspended Job\t"
+   "basedefs/V1_chap03.html#tag_03_379\n"
+   "Symbolic Constant\t"
+   "basedefs/V1_chap03.html#tag_03_380\n"
+   "Symbolic Link\t"
+   "basedefs/V1_chap03.html#tag_03_381\n"
+   "Synchronized I/O Completion\t"
+   "basedefs/V1_chap03.html#tag_03_383\n"
+   "Synchronized I/O Data Integrity Completion\t"
+   "basedefs/V1_chap03.html#tag_03_384\n"
+   "Synchronized I/O File Integrity Completion\t"
+   "basedefs/V1_chap03.html#tag_03_385\n"
+   "Synchronized I/O Operation\t"
+   "basedefs/V1_chap03.html#tag_03_386\n"
+   "Synchronized Input and Output\t"
+   "basedefs/V1_chap03.html#tag_03_382\n"
+   "Synchronous I/O Operation\t"
+   "basedefs/V1_chap03.html#tag_03_387\n"
+   "Synchronously-Generated Signal\t"
+   "basedefs/V1_chap03.html#tag_03_388\n"
+   "System\t"
+   "basedefs/V1_chap03.html#tag_03_389\n"
+   "System Boot\t"
+   "basedefs/V1_chap03.html#tag_03_390\n"
+   "System Clock\t"
+   "basedefs/V1_chap03.html#tag_03_391\n"
+   "System Console\t"
+   "basedefs/V1_chap03.html#tag_03_392\n"
+   "System Crash\t"
+   "basedefs/V1_chap03.html#tag_03_393\n"
+   "System Databases\t"
+   "basedefs/V1_chap03.html#tag_03_394\n"
+   "System Documentation\t"
+   "basedefs/V1_chap03.html#tag_03_395\n"
+   "System Process\t"
+   "basedefs/V1_chap03.html#tag_03_396\n"
+   "System Reboot\t"
+   "basedefs/V1_chap03.html#tag_03_397\n"
+   "System Trace Event\t"
+   "basedefs/V1_chap03.html#tag_03_398\n"
+   "System-Wide\t"
+   "basedefs/V1_chap03.html#tag_03_399\n"
+   "Tab Character (<tab>)\t"
+   "basedefs/V1_chap03.html#tag_03_400\n"
+   "Terminal (or Terminal Device)\t"
+   "basedefs/V1_chap03.html#tag_03_401\n"
+   "Text Column\t"
+   "basedefs/V1_chap03.html#tag_03_402\n"
+   "Text File\t"
+   "basedefs/V1_chap03.html#tag_03_403\n"
+   "Thread\t"
+   "basedefs/V1_chap03.html#tag_03_404\n"
+   "Thread ID\t"
+   "basedefs/V1_chap03.html#tag_03_405\n"
+   "Thread List\t"
+   "basedefs/V1_chap03.html#tag_03_406\n"
+   "Thread-Safe\t"
+   "basedefs/V1_chap03.html#tag_03_407\n"
+   "Thread-Safety\t"
+   "basedefs/V1_chap04.html#tag_04_18\n"
+   "Thread-Specific Data Key\t"
+   "basedefs/V1_chap03.html#tag_03_408\n"
+   "Tilde Character (<tilde>)\t"
+   "basedefs/V1_chap03.html#tag_03_409\n"
+   "Timeouts\t"
+   "basedefs/V1_chap03.html#tag_03_410\n"
+   "Timer\t"
+   "basedefs/V1_chap03.html#tag_03_411\n"
+   "Timer Overrun\t"
+   "basedefs/V1_chap03.html#tag_03_412\n"
+   "Token\t"
+   "basedefs/V1_chap03.html#tag_03_413\n"
+   "Trace Analyzer Process\t"
+   "basedefs/V1_chap03.html#tag_03_414\n"
+   "Trace Controller Process\t"
+   "basedefs/V1_chap03.html#tag_03_415\n"
+   "Trace Event\t"
+   "basedefs/V1_chap03.html#tag_03_416\n"
+   "Trace Event Type\t"
+   "basedefs/V1_chap03.html#tag_03_417\n"
+   "Trace Event Type Mapping\t"
+   "basedefs/V1_chap03.html#tag_03_418\n"
+   "Trace Filter\t"
+   "basedefs/V1_chap03.html#tag_03_419\n"
+   "Trace Generation Version\t"
+   "basedefs/V1_chap03.html#tag_03_420\n"
+   "Trace Log\t"
+   "basedefs/V1_chap03.html#tag_03_421\n"
+   "Trace Point\t"
+   "basedefs/V1_chap03.html#tag_03_422\n"
+   "Trace Stream\t"
+   "basedefs/V1_chap03.html#tag_03_423\n"
+   "Trace Stream Identifier\t"
+   "basedefs/V1_chap03.html#tag_03_424\n"
+   "Trace System\t"
+   "basedefs/V1_chap03.html#tag_03_425\n"
+   "Traced Process\t"
+   "basedefs/V1_chap03.html#tag_03_426\n"
+   "Tracing\t"
+   "basedefs/V1_chap04.html#tag_04_19\n"
+   "Tracing Status of a Trace Stream\t"
+   "basedefs/V1_chap03.html#tag_03_427\n"
+   "Treatment of Error Conditions for Mathematical Functions\t"
+   "basedefs/V1_chap04.html#tag_04_20\n"
+   "Treatment of NaN Arguments for the Mathematical Functions\t"
+   "basedefs/V1_chap04.html#tag_04_21\n"
+   "Typed Memory Name Space\t"
+   "basedefs/V1_chap03.html#tag_03_428\n"
+   "Typed Memory Object\t"
+   "basedefs/V1_chap03.html#tag_03_429\n"
+   "Typed Memory Pool\t"
+   "basedefs/V1_chap03.html#tag_03_430\n"
+   "Typed Memory Port\t"
+   "basedefs/V1_chap03.html#tag_03_431\n"
+   "Unbind\t"
+   "basedefs/V1_chap03.html#tag_03_432\n"
+   "Unit Data\t"
+   "basedefs/V1_chap03.html#tag_03_433\n"
+   "Upshifting\t"
+   "basedefs/V1_chap03.html#tag_03_434\n"
+   "User Database\t"
+   "basedefs/V1_chap03.html#tag_03_435\n"
+   "User ID\t"
+   "basedefs/V1_chap03.html#tag_03_436\n"
+   "User Name\t"
+   "basedefs/V1_chap03.html#tag_03_437\n"
+   "User Trace Event\t"
+   "basedefs/V1_chap03.html#tag_03_438\n"
+   "Utility\t"
+   "basedefs/V1_chap03.html#tag_03_439\n"
+   "Utility\t"
+   "basedefs/V1_chap04.html#tag_04_22\n"
+   "Utility Argument Syntax\t"
+   "basedefs/V1_chap12.html#tag_12_01\n"
+   "Utility Conventions\t"
+   "basedefs/V1_chap12.html#tag_12\n"
+   "Utility Syntax Guidelines\t"
+   "basedefs/V1_chap12.html#tag_12_02\n"
+   "Variable\t"
+   "basedefs/V1_chap03.html#tag_03_440\n"
+   "Variable Assignment\t"
+   "basedefs/V1_chap04.html#tag_04_23\n"
+   "Vertical-Tab Character (<vertical-tab>)\t"
+   "basedefs/V1_chap03.html#tag_03_441\n"
+   "White Space\t"
+   "basedefs/V1_chap03.html#tag_03_442\n"
+   "Wide-Character Code (C Language)\t"
+   "basedefs/V1_chap03.html#tag_03_443\n"
+   "Wide-Character Input/Output Functions\t"
+   "basedefs/V1_chap03.html#tag_03_444\n"
+   "Wide-Character String\t"
+   "basedefs/V1_chap03.html#tag_03_445\n"
+   "Word\t"
+   "basedefs/V1_chap03.html#tag_03_446\n"
+   "Working Directory (or Current Working Directory)\t"
+   "basedefs/V1_chap03.html#tag_03_447\n"
+   "Worldwide Portability Interface\t"
+   "basedefs/V1_chap03.html#tag_03_448\n"
+   "Write\t"
+   "basedefs/V1_chap03.html#tag_03_449\n"
+   "XSI\t"
+   "basedefs/V1_chap03.html#tag_03_450\n"
+   "XSI-Conformant\t"
+   "basedefs/V1_chap03.html#tag_03_451\n"
+   "Zombie Process\t"
+   "basedefs/V1_chap03.html#tag_03_452\n"
+   "_Exit()\t"
+   "functions/_Exit.html\n"
+   "_exit()\t"
+   "functions/_exit.html\n"
+   "_longjmp()\t"
+   "functions/_longjmp.html\n"
+   "_setjmp()\t"
+   "functions/_setjmp.html\n"
+   "_tolower()\t"
+   "functions/_tolower.html\n"
+   "_toupper()\t"
+   "functions/_toupper.html\n"
+   "a64l()\t"
+   "functions/a64l.html\n"
+   "abort()\t"
+   "functions/abort.html\n"
+   "abs()\t"
+   "functions/abs.html\n"
+   "accept()\t"
+   "functions/accept.html\n"
+   "access()\t"
+   "functions/access.html\n"
+   "acos()\t"
+   "functions/acos.html\n"
+   "acosf()\t"
+   "functions/acosf.html\n"
+   "acosh()\t"
+   "functions/acosh.html\n"
+   "acoshf()\t"
+   "functions/acoshf.html\n"
+   "acoshl()\t"
+   "functions/acoshl.html\n"
+   "acosl()\t"
+   "functions/acosl.html\n"
+   "admin\t"
+   "utilities/admin.html\n"
+   "aio.h\t"
+   "basedefs/aio.h.html\n"
+   "aio_cancel()\t"
+   "functions/aio_cancel.html\n"
+   "aio_error()\t"
+   "functions/aio_error.html\n"
+   "aio_fsync()\t"
+   "functions/aio_fsync.html\n"
+   "aio_read()\t"
+   "functions/aio_read.html\n"
+   "aio_return()\t"
+   "functions/aio_return.html\n"
+   "aio_suspend()\t"
+   "functions/aio_suspend.html\n"
+   "aio_write()\t"
+   "functions/aio_write.html\n"
+   "alarm()\t"
+   "functions/alarm.html\n"
+   "alias\t"
+   "utilities/alias.html\n"
+   "alphasort()\t"
+   "functions/alphasort.html\n"
+   "ar\t"
+   "utilities/ar.html\n"
+   "arpa/inet.h\t"
+   "basedefs/arpa_inet.h.html\n"
+   "asa\t"
+   "utilities/asa.html\n"
+   "asctime()\t"
+   "functions/asctime.html\n"
+   "asctime_r()\t"
+   "functions/asctime_r.html\n"
+   "asin()\t"
+   "functions/asin.html\n"
+   "asinf()\t"
+   "functions/asinf.html\n"
+   "asinh()\t"
+   "functions/asinh.html\n"
+   "asinhf()\t"
+   "functions/asinhf.html\n"
+   "asinhl()\t"
+   "functions/asinhl.html\n"
+   "asinl()\t"
+   "functions/asinl.html\n"
+   "assert()\t"
+   "functions/assert.html\n"
+   "assert.h\t"
+   "basedefs/assert.h.html\n"
+   "at\t"
+   "utilities/at.html\n"
+   "atan()\t"
+   "functions/atan.html\n"
+   "atan2()\t"
+   "functions/atan2.html\n"
+   "atan2f()\t"
+   "functions/atan2f.html\n"
+   "atan2l()\t"
+   "functions/atan2l.html\n"
+   "atanf()\t"
+   "functions/atanf.html\n"
+   "atanh()\t"
+   "functions/atanh.html\n"
+   "atanhf()\t"
+   "functions/atanhf.html\n"
+   "atanhl()\t"
+   "functions/atanhl.html\n"
+   "atanl()\t"
+   "functions/atanl.html\n"
+   "atexit()\t"
+   "functions/atexit.html\n"
+   "atof()\t"
+   "functions/atof.html\n"
+   "atoi()\t"
+   "functions/atoi.html\n"
+   "atol()\t"
+   "functions/atol.html\n"
+   "atoll()\t"
+   "functions/atoll.html\n"
+   "awk\t"
+   "utilities/awk.html\n"
+   "basename\t"
+   "utilities/basename.html\n"
+   "basename()\t"
+   "functions/basename.html\n"
+   "batch\t"
+   "utilities/batch.html\n"
+   "bc\t"
+   "utilities/bc.html\n"
+   "bg\t"
+   "utilities/bg.html\n"
+   "bind()\t"
+   "functions/bind.html\n"
+   "break\t"
+   "utilities/V3_chap02.html#break\n"
+   "bsearch()\t"
+   "functions/bsearch.html\n"
+   "btowc()\t"
+   "functions/btowc.html\n"
+   "c99\t"
+   "utilities/c99.html\n"
+   "cabs()\t"
+   "functions/cabs.html\n"
+   "cabsf()\t"
+   "functions/cabsf.html\n"
+   "cabsl()\t"
+   "functions/cabsl.html\n"
+   "cacos()\t"
+   "functions/cacos.html\n"
+   "cacosf()\t"
+   "functions/cacosf.html\n"
+   "cacosh()\t"
+   "functions/cacosh.html\n"
+   "cacoshf()\t"
+   "functions/cacoshf.html\n"
+   "cacoshl()\t"
+   "functions/cacoshl.html\n"
+   "cacosl()\t"
+   "functions/cacosl.html\n"
+   "cal\t"
+   "utilities/cal.html\n"
+   "calloc()\t"
+   "functions/calloc.html\n"
+   "carg()\t"
+   "functions/carg.html\n"
+   "cargf()\t"
+   "functions/cargf.html\n"
+   "cargl()\t"
+   "functions/cargl.html\n"
+   "casin()\t"
+   "functions/casin.html\n"
+   "casinf()\t"
+   "functions/casinf.html\n"
+   "casinh()\t"
+   "functions/casinh.html\n"
+   "casinhf()\t"
+   "functions/casinhf.html\n"
+   "casinhl()\t"
+   "functions/casinhl.html\n"
+   "casinl()\t"
+   "functions/casinl.html\n"
+   "cat\t"
+   "utilities/cat.html\n"
+   "catan()\t"
+   "functions/catan.html\n"
+   "catanf()\t"
+   "functions/catanf.html\n"
+   "catanh()\t"
+   "functions/catanh.html\n"
+   "catanhf()\t"
+   "functions/catanhf.html\n"
+   "catanhl()\t"
+   "functions/catanhl.html\n"
+   "catanl()\t"
+   "functions/catanl.html\n"
+   "catclose()\t"
+   "functions/catclose.html\n"
+   "catgets()\t"
+   "functions/catgets.html\n"
+   "catopen()\t"
+   "functions/catopen.html\n"
+   "cbrt()\t"
+   "functions/cbrt.html\n"
+   "cbrtf()\t"
+   "functions/cbrtf.html\n"
+   "cbrtl()\t"
+   "functions/cbrtl.html\n"
+   "ccos()\t"
+   "functions/ccos.html\n"
+   "ccosf()\t"
+   "functions/ccosf.html\n"
+   "ccosh()\t"
+   "functions/ccosh.html\n"
+   "ccoshf()\t"
+   "functions/ccoshf.html\n"
+   "ccoshl()\t"
+   "functions/ccoshl.html\n"
+   "ccosl()\t"
+   "functions/ccosl.html\n"
+   "cd\t"
+   "utilities/cd.html\n"
+   "ceil()\t"
+   "functions/ceil.html\n"
+   "ceilf()\t"
+   "functions/ceilf.html\n"
+   "ceill()\t"
+   "functions/ceill.html\n"
+   "cexp()\t"
+   "functions/cexp.html\n"
+   "cexpf()\t"
+   "functions/cexpf.html\n"
+   "cexpl()\t"
+   "functions/cexpl.html\n"
+   "cfgetispeed()\t"
+   "functions/cfgetispeed.html\n"
+   "cfgetospeed()\t"
+   "functions/cfgetospeed.html\n"
+   "cflow\t"
+   "utilities/cflow.html\n"
+   "cfsetispeed()\t"
+   "functions/cfsetispeed.html\n"
+   "cfsetospeed()\t"
+   "functions/cfsetospeed.html\n"
+   "chdir()\t"
+   "functions/chdir.html\n"
+   "chgrp\t"
+   "utilities/chgrp.html\n"
+   "chmod\t"
+   "utilities/chmod.html\n"
+   "chmod()\t"
+   "functions/chmod.html\n"
+   "chown\t"
+   "utilities/chown.html\n"
+   "chown()\t"
+   "functions/chown.html\n"
+   "cimag()\t"
+   "functions/cimag.html\n"
+   "cimagf()\t"
+   "functions/cimagf.html\n"
+   "cimagl()\t"
+   "functions/cimagl.html\n"
+   "cksum\t"
+   "utilities/cksum.html\n"
+   "clearerr()\t"
+   "functions/clearerr.html\n"
+   "clock()\t"
+   "functions/clock.html\n"
+   "clock_getcpuclockid()\t"
+   "functions/clock_getcpuclockid.html\n"
+   "clock_getres()\t"
+   "functions/clock_getres.html\n"
+   "clock_gettime()\t"
+   "functions/clock_gettime.html\n"
+   "clock_nanosleep()\t"
+   "functions/clock_nanosleep.html\n"
+   "clock_settime()\t"
+   "functions/clock_settime.html\n"
+   "clog()\t"
+   "functions/clog.html\n"
+   "clogf()\t"
+   "functions/clogf.html\n"
+   "clogl()\t"
+   "functions/clogl.html\n"
+   "close()\t"
+   "functions/close.html\n"
+   "closedir()\t"
+   "functions/closedir.html\n"
+   "closelog()\t"
+   "functions/closelog.html\n"
+   "cmp\t"
+   "utilities/cmp.html\n"
+   "colon\t"
+   "utilities/V3_chap02.html#colon\n"
+   "comm\t"
+   "utilities/comm.html\n"
+   "command\t"
+   "utilities/command.html\n"
+   "complex.h\t"
+   "basedefs/complex.h.html\n"
+   "compress\t"
+   "utilities/compress.html\n"
+   "confstr()\t"
+   "functions/confstr.html\n"
+   "conj()\t"
+   "functions/conj.html\n"
+   "conjf()\t"
+   "functions/conjf.html\n"
+   "conjl()\t"
+   "functions/conjl.html\n"
+   "connect()\t"
+   "functions/connect.html\n"
+   "continue\t"
+   "utilities/V3_chap02.html#continue\n"
+   "copysign()\t"
+   "functions/copysign.html\n"
+   "copysignf()\t"
+   "functions/copysignf.html\n"
+   "copysignl()\t"
+   "functions/copysignl.html\n"
+   "cos()\t"
+   "functions/cos.html\n"
+   "cosf()\t"
+   "functions/cosf.html\n"
+   "cosh()\t"
+   "functions/cosh.html\n"
+   "coshf()\t"
+   "functions/coshf.html\n"
+   "coshl()\t"
+   "functions/coshl.html\n"
+   "cosl()\t"
+   "functions/cosl.html\n"
+   "cp\t"
+   "utilities/cp.html\n"
+   "cpio.h\t"
+   "basedefs/cpio.h.html\n"
+   "cpow()\t"
+   "functions/cpow.html\n"
+   "cpowf()\t"
+   "functions/cpowf.html\n"
+   "cpowl()\t"
+   "functions/cpowl.html\n"
+   "cproj()\t"
+   "functions/cproj.html\n"
+   "cprojf()\t"
+   "functions/cprojf.html\n"
+   "cprojl()\t"
+   "functions/cprojl.html\n"
+   "creal()\t"
+   "functions/creal.html\n"
+   "crealf()\t"
+   "functions/crealf.html\n"
+   "creall()\t"
+   "functions/creall.html\n"
+   "creat()\t"
+   "functions/creat.html\n"
+   "crontab\t"
+   "utilities/crontab.html\n"
+   "crypt()\t"
+   "functions/crypt.html\n"
+   "csin()\t"
+   "functions/csin.html\n"
+   "csinf()\t"
+   "functions/csinf.html\n"
+   "csinh()\t"
+   "functions/csinh.html\n"
+   "csinhf()\t"
+   "functions/csinhf.html\n"
+   "csinhl()\t"
+   "functions/csinhl.html\n"
+   "csinl()\t"
+   "functions/csinl.html\n"
+   "csplit\t"
+   "utilities/csplit.html\n"
+   "csqrt()\t"
+   "functions/csqrt.html\n"
+   "csqrtf()\t"
+   "functions/csqrtf.html\n"
+   "csqrtl()\t"
+   "functions/csqrtl.html\n"
+   "ctags\t"
+   "utilities/ctags.html\n"
+   "ctan()\t"
+   "functions/ctan.html\n"
+   "ctanf()\t"
+   "functions/ctanf.html\n"
+   "ctanh()\t"
+   "functions/ctanh.html\n"
+   "ctanhf()\t"
+   "functions/ctanhf.html\n"
+   "ctanhl()\t"
+   "functions/ctanhl.html\n"
+   "ctanl()\t"
+   "functions/ctanl.html\n"
+   "ctermid()\t"
+   "functions/ctermid.html\n"
+   "ctime()\t"
+   "functions/ctime.html\n"
+   "ctime_r()\t"
+   "functions/ctime_r.html\n"
+   "ctype.h\t"
+   "basedefs/ctype.h.html\n"
+   "cut\t"
+   "utilities/cut.html\n"
+   "cxref\t"
+   "utilities/cxref.html\n"
+   "date\t"
+   "utilities/date.html\n"
+   "daylight\t"
+   "functions/daylight.html\n"
+   "dbm_clearerr()\t"
+   "functions/dbm_clearerr.html\n"
+   "dbm_close()\t"
+   "functions/dbm_close.html\n"
+   "dbm_delete()\t"
+   "functions/dbm_delete.html\n"
+   "dbm_error()\t"
+   "functions/dbm_error.html\n"
+   "dbm_fetch()\t"
+   "functions/dbm_fetch.html\n"
+   "dbm_firstkey()\t"
+   "functions/dbm_firstkey.html\n"
+   "dbm_nextkey()\t"
+   "functions/dbm_nextkey.html\n"
+   "dbm_open()\t"
+   "functions/dbm_open.html\n"
+   "dbm_store()\t"
+   "functions/dbm_store.html\n"
+   "dd\t"
+   "utilities/dd.html\n"
+   "delta\t"
+   "utilities/delta.html\n"
+   "df\t"
+   "utilities/df.html\n"
+   "diff\t"
+   "utilities/diff.html\n"
+   "difftime()\t"
+   "functions/difftime.html\n"
+   "dirent.h\t"
+   "basedefs/dirent.h.html\n"
+   "dirfd()\t"
+   "functions/dirfd.html\n"
+   "dirname\t"
+   "utilities/dirname.html\n"
+   "dirname()\t"
+   "functions/dirname.html\n"
+   "div()\t"
+   "functions/div.html\n"
+   "dlclose()\t"
+   "functions/dlclose.html\n"
+   "dlerror()\t"
+   "functions/dlerror.html\n"
+   "dlfcn.h\t"
+   "basedefs/dlfcn.h.html\n"
+   "dlopen()\t"
+   "functions/dlopen.html\n"
+   "dlsym()\t"
+   "functions/dlsym.html\n"
+   "dot\t"
+   "utilities/V3_chap02.html#dot\n"
+   "dprintf()\t"
+   "functions/dprintf.html\n"
+   "drand48()\t"
+   "functions/drand48.html\n"
+   "du\t"
+   "utilities/du.html\n"
+   "dup()\t"
+   "functions/dup.html\n"
+   "dup2()\t"
+   "functions/dup2.html\n"
+   "duplocale()\t"
+   "functions/duplocale.html\n"
+   "echo\t"
+   "utilities/echo.html\n"
+   "ed\t"
+   "utilities/ed.html\n"
+   "encrypt()\t"
+   "functions/encrypt.html\n"
+   "endgrent()\t"
+   "functions/endgrent.html\n"
+   "endhostent()\t"
+   "functions/endhostent.html\n"
+   "endnetent()\t"
+   "functions/endnetent.html\n"
+   "endprotoent()\t"
+   "functions/endprotoent.html\n"
+   "endpwent()\t"
+   "functions/endpwent.html\n"
+   "endservent()\t"
+   "functions/endservent.html\n"
+   "endutxent()\t"
+   "functions/endutxent.html\n"
+   "env\t"
+   "utilities/env.html\n"
+   "environ\t"
+   "functions/environ.html\n"
+   "erand48()\t"
+   "functions/erand48.html\n"
+   "erf()\t"
+   "functions/erf.html\n"
+   "erfc()\t"
+   "functions/erfc.html\n"
+   "erfcf()\t"
+   "functions/erfcf.html\n"
+   "erfcl()\t"
+   "functions/erfcl.html\n"
+   "erff()\t"
+   "functions/erff.html\n"
+   "erfl()\t"
+   "functions/erfl.html\n"
+   "errno\t"
+   "functions/errno.html\n"
+   "errno.h\t"
+   "basedefs/errno.h.html\n"
+   "eval\t"
+   "utilities/V3_chap02.html#eval\n"
+   "ex\t"
+   "utilities/ex.html\n"
+   "exec\t"
+   "utilities/V3_chap02.html#exec\n"
+   "execl()\t"
+   "functions/execl.html\n"
+   "execle()\t"
+   "functions/execle.html\n"
+   "execlp()\t"
+   "functions/execlp.html\n"
+   "execv()\t"
+   "functions/execv.html\n"
+   "execve()\t"
+   "functions/execve.html\n"
+   "execvp()\t"
+   "functions/execvp.html\n"
+   "exit\t"
+   "utilities/V3_chap02.html#exit\n"
+   "exit()\t"
+   "functions/exit.html\n"
+   "exp()\t"
+   "functions/exp.html\n"
+   "exp2()\t"
+   "functions/exp2.html\n"
+   "exp2f()\t"
+   "functions/exp2f.html\n"
+   "exp2l()\t"
+   "functions/exp2l.html\n"
+   "expand\t"
+   "utilities/expand.html\n"
+   "expf()\t"
+   "functions/expf.html\n"
+   "expl()\t"
+   "functions/expl.html\n"
+   "expm1()\t"
+   "functions/expm1.html\n"
+   "expm1f()\t"
+   "functions/expm1f.html\n"
+   "expm1l()\t"
+   "functions/expm1l.html\n"
+   "export\t"
+   "utilities/V3_chap02.html#export\n"
+   "expr\t"
+   "utilities/expr.html\n"
+   "fabs()\t"
+   "functions/fabs.html\n"
+   "fabsf()\t"
+   "functions/fabsf.html\n"
+   "fabsl()\t"
+   "functions/fabsl.html\n"
+   "faccessat()\t"
+   "functions/faccessat.html\n"
+   "false\t"
+   "utilities/false.html\n"
+   "fattach()\t"
+   "functions/fattach.html\n"
+   "fc\t"
+   "utilities/fc.html\n"
+   "fchdir()\t"
+   "functions/fchdir.html\n"
+   "fchmod()\t"
+   "functions/fchmod.html\n"
+   "fchmodat()\t"
+   "functions/fchmodat.html\n"
+   "fchown()\t"
+   "functions/fchown.html\n"
+   "fchownat()\t"
+   "functions/fchownat.html\n"
+   "fclose()\t"
+   "functions/fclose.html\n"
+   "fcntl()\t"
+   "functions/fcntl.html\n"
+   "fcntl.h\t"
+   "basedefs/fcntl.h.html\n"
+   "fdatasync()\t"
+   "functions/fdatasync.html\n"
+   "fdetach()\t"
+   "functions/fdetach.html\n"
+   "fdim()\t"
+   "functions/fdim.html\n"
+   "fdimf()\t"
+   "functions/fdimf.html\n"
+   "fdiml()\t"
+   "functions/fdiml.html\n"
+   "fdopen()\t"
+   "functions/fdopen.html\n"
+   "fdopendir()\t"
+   "functions/fdopendir.html\n"
+   "feclearexcept()\t"
+   "functions/feclearexcept.html\n"
+   "fegetenv()\t"
+   "functions/fegetenv.html\n"
+   "fegetexceptflag()\t"
+   "functions/fegetexceptflag.html\n"
+   "fegetround()\t"
+   "functions/fegetround.html\n"
+   "feholdexcept()\t"
+   "functions/feholdexcept.html\n"
+   "fenv.h\t"
+   "basedefs/fenv.h.html\n"
+   "feof()\t"
+   "functions/feof.html\n"
+   "feraiseexcept()\t"
+   "functions/feraiseexcept.html\n"
+   "ferror()\t"
+   "functions/ferror.html\n"
+   "fesetenv()\t"
+   "functions/fesetenv.html\n"
+   "fesetexceptflag()\t"
+   "functions/fesetexceptflag.html\n"
+   "fesetround()\t"
+   "functions/fesetround.html\n"
+   "fetestexcept()\t"
+   "functions/fetestexcept.html\n"
+   "feupdateenv()\t"
+   "functions/feupdateenv.html\n"
+   "fexecve()\t"
+   "functions/fexecve.html\n"
+   "fflush()\t"
+   "functions/fflush.html\n"
+   "ffs()\t"
+   "functions/ffs.html\n"
+   "fg\t"
+   "utilities/fg.html\n"
+   "fgetc()\t"
+   "functions/fgetc.html\n"
+   "fgetpos()\t"
+   "functions/fgetpos.html\n"
+   "fgets()\t"
+   "functions/fgets.html\n"
+   "fgetwc()\t"
+   "functions/fgetwc.html\n"
+   "fgetws()\t"
+   "functions/fgetws.html\n"
+   "file\t"
+   "utilities/file.html\n"
+   "fileno()\t"
+   "functions/fileno.html\n"
+   "find\t"
+   "utilities/find.html\n"
+   "float.h\t"
+   "basedefs/float.h.html\n"
+   "flockfile()\t"
+   "functions/flockfile.html\n"
+   "floor()\t"
+   "functions/floor.html\n"
+   "floorf()\t"
+   "functions/floorf.html\n"
+   "floorl()\t"
+   "functions/floorl.html\n"
+   "fma()\t"
+   "functions/fma.html\n"
+   "fmaf()\t"
+   "functions/fmaf.html\n"
+   "fmal()\t"
+   "functions/fmal.html\n"
+   "fmax()\t"
+   "functions/fmax.html\n"
+   "fmaxf()\t"
+   "functions/fmaxf.html\n"
+   "fmaxl()\t"
+   "functions/fmaxl.html\n"
+   "fmemopen()\t"
+   "functions/fmemopen.html\n"
+   "fmin()\t"
+   "functions/fmin.html\n"
+   "fminf()\t"
+   "functions/fminf.html\n"
+   "fminl()\t"
+   "functions/fminl.html\n"
+   "fmod()\t"
+   "functions/fmod.html\n"
+   "fmodf()\t"
+   "functions/fmodf.html\n"
+   "fmodl()\t"
+   "functions/fmodl.html\n"
+   "fmtmsg()\t"
+   "functions/fmtmsg.html\n"
+   "fmtmsg.h\t"
+   "basedefs/fmtmsg.h.html\n"
+   "fnmatch()\t"
+   "functions/fnmatch.html\n"
+   "fnmatch.h\t"
+   "basedefs/fnmatch.h.html\n"
+   "fold\t"
+   "utilities/fold.html\n"
+   "fopen()\t"
+   "functions/fopen.html\n"
+   "fork()\t"
+   "functions/fork.html\n"
+   "fort77\t"
+   "utilities/fort77.html\n"
+   "fpathconf()\t"
+   "functions/fpathconf.html\n"
+   "fpclassify()\t"
+   "functions/fpclassify.html\n"
+   "fprintf()\t"
+   "functions/fprintf.html\n"
+   "fputc()\t"
+   "functions/fputc.html\n"
+   "fputs()\t"
+   "functions/fputs.html\n"
+   "fputwc()\t"
+   "functions/fputwc.html\n"
+   "fputws()\t"
+   "functions/fputws.html\n"
+   "fread()\t"
+   "functions/fread.html\n"
+   "free()\t"
+   "functions/free.html\n"
+   "freeaddrinfo()\t"
+   "functions/freeaddrinfo.html\n"
+   "freelocale()\t"
+   "functions/freelocale.html\n"
+   "freopen()\t"
+   "functions/freopen.html\n"
+   "frexp()\t"
+   "functions/frexp.html\n"
+   "frexpf()\t"
+   "functions/frexpf.html\n"
+   "frexpl()\t"
+   "functions/frexpl.html\n"
+   "fscanf()\t"
+   "functions/fscanf.html\n"
+   "fseek()\t"
+   "functions/fseek.html\n"
+   "fseeko()\t"
+   "functions/fseeko.html\n"
+   "fsetpos()\t"
+   "functions/fsetpos.html\n"
+   "fstat()\t"
+   "functions/fstat.html\n"
+   "fstatat()\t"
+   "functions/fstatat.html\n"
+   "fstatvfs()\t"
+   "functions/fstatvfs.html\n"
+   "fsync()\t"
+   "functions/fsync.html\n"
+   "ftell()\t"
+   "functions/ftell.html\n"
+   "ftello()\t"
+   "functions/ftello.html\n"
+   "ftok()\t"
+   "functions/ftok.html\n"
+   "ftruncate()\t"
+   "functions/ftruncate.html\n"
+   "ftrylockfile()\t"
+   "functions/ftrylockfile.html\n"
+   "ftw()\t"
+   "functions/ftw.html\n"
+   "ftw.h\t"
+   "basedefs/ftw.h.html\n"
+   "funlockfile()\t"
+   "functions/funlockfile.html\n"
+   "fuser\t"
+   "utilities/fuser.html\n"
+   "futimens()\t"
+   "functions/futimens.html\n"
+   "fwide()\t"
+   "functions/fwide.html\n"
+   "fwprintf()\t"
+   "functions/fwprintf.html\n"
+   "fwrite()\t"
+   "functions/fwrite.html\n"
+   "fwscanf()\t"
+   "functions/fwscanf.html\n"
+   "gai_strerror()\t"
+   "functions/gai_strerror.html\n"
+   "gencat\t"
+   "utilities/gencat.html\n"
+   "get\t"
+   "utilities/get.html\n"
+   "getaddrinfo()\t"
+   "functions/getaddrinfo.html\n"
+   "getc()\t"
+   "functions/getc.html\n"
+   "getc_unlocked()\t"
+   "functions/getc_unlocked.html\n"
+   "getchar()\t"
+   "functions/getchar.html\n"
+   "getchar_unlocked()\t"
+   "functions/getchar_unlocked.html\n"
+   "getconf\t"
+   "utilities/getconf.html\n"
+   "getcwd()\t"
+   "functions/getcwd.html\n"
+   "getdate()\t"
+   "functions/getdate.html\n"
+   "getdate_err\t"
+   "functions/getdate_err.html\n"
+   "getdelim()\t"
+   "functions/getdelim.html\n"
+   "getegid()\t"
+   "functions/getegid.html\n"
+   "getenv()\t"
+   "functions/getenv.html\n"
+   "geteuid()\t"
+   "functions/geteuid.html\n"
+   "getgid()\t"
+   "functions/getgid.html\n"
+   "getgrent()\t"
+   "functions/getgrent.html\n"
+   "getgrgid()\t"
+   "functions/getgrgid.html\n"
+   "getgrgid_r()\t"
+   "functions/getgrgid_r.html\n"
+   "getgrnam()\t"
+   "functions/getgrnam.html\n"
+   "getgrnam_r()\t"
+   "functions/getgrnam_r.html\n"
+   "getgroups()\t"
+   "functions/getgroups.html\n"
+   "gethostent()\t"
+   "functions/gethostent.html\n"
+   "gethostid()\t"
+   "functions/gethostid.html\n"
+   "gethostname()\t"
+   "functions/gethostname.html\n"
+   "getitimer()\t"
+   "functions/getitimer.html\n"
+   "getline()\t"
+   "functions/getline.html\n"
+   "getlogin()\t"
+   "functions/getlogin.html\n"
+   "getlogin_r()\t"
+   "functions/getlogin_r.html\n"
+   "getmsg()\t"
+   "functions/getmsg.html\n"
+   "getnameinfo()\t"
+   "functions/getnameinfo.html\n"
+   "getnetbyaddr()\t"
+   "functions/getnetbyaddr.html\n"
+   "getnetbyname()\t"
+   "functions/getnetbyname.html\n"
+   "getnetent()\t"
+   "functions/getnetent.html\n"
+   "getopt()\t"
+   "functions/getopt.html\n"
+   "getopts\t"
+   "utilities/getopts.html\n"
+   "getpeername()\t"
+   "functions/getpeername.html\n"
+   "getpgid()\t"
+   "functions/getpgid.html\n"
+   "getpgrp()\t"
+   "functions/getpgrp.html\n"
+   "getpid()\t"
+   "functions/getpid.html\n"
+   "getpmsg()\t"
+   "functions/getpmsg.html\n"
+   "getppid()\t"
+   "functions/getppid.html\n"
+   "getpriority()\t"
+   "functions/getpriority.html\n"
+   "getprotobyname()\t"
+   "functions/getprotobyname.html\n"
+   "getprotobynumber()\t"
+   "functions/getprotobynumber.html\n"
+   "getprotoent()\t"
+   "functions/getprotoent.html\n"
+   "getpwent()\t"
+   "functions/getpwent.html\n"
+   "getpwnam()\t"
+   "functions/getpwnam.html\n"
+   "getpwnam_r()\t"
+   "functions/getpwnam_r.html\n"
+   "getpwuid()\t"
+   "functions/getpwuid.html\n"
+   "getpwuid_r()\t"
+   "functions/getpwuid_r.html\n"
+   "getrlimit()\t"
+   "functions/getrlimit.html\n"
+   "getrusage()\t"
+   "functions/getrusage.html\n"
+   "gets()\t"
+   "functions/gets.html\n"
+   "getservbyname()\t"
+   "functions/getservbyname.html\n"
+   "getservbyport()\t"
+   "functions/getservbyport.html\n"
+   "getservent()\t"
+   "functions/getservent.html\n"
+   "getsid()\t"
+   "functions/getsid.html\n"
+   "getsockname()\t"
+   "functions/getsockname.html\n"
+   "getsockopt()\t"
+   "functions/getsockopt.html\n"
+   "getsubopt()\t"
+   "functions/getsubopt.html\n"
+   "gettimeofday()\t"
+   "functions/gettimeofday.html\n"
+   "getuid()\t"
+   "functions/getuid.html\n"
+   "getutxent()\t"
+   "functions/getutxent.html\n"
+   "getutxid()\t"
+   "functions/getutxid.html\n"
+   "getutxline()\t"
+   "functions/getutxline.html\n"
+   "getwc()\t"
+   "functions/getwc.html\n"
+   "getwchar()\t"
+   "functions/getwchar.html\n"
+   "glob()\t"
+   "functions/glob.html\n"
+   "glob.h\t"
+   "basedefs/glob.h.html\n"
+   "globfree()\t"
+   "functions/globfree.html\n"
+   "gmtime()\t"
+   "functions/gmtime.html\n"
+   "gmtime_r()\t"
+   "functions/gmtime_r.html\n"
+   "grantpt()\t"
+   "functions/grantpt.html\n"
+   "grep\t"
+   "utilities/grep.html\n"
+   "grp.h\t"
+   "basedefs/grp.h.html\n"
+   "hash\t"
+   "utilities/hash.html\n"
+   "hcreate()\t"
+   "functions/hcreate.html\n"
+   "hdestroy()\t"
+   "functions/hdestroy.html\n"
+   "head\t"
+   "utilities/head.html\n"
+   "hsearch()\t"
+   "functions/hsearch.html\n"
+   "htonl()\t"
+   "functions/htonl.html\n"
+   "htons()\t"
+   "functions/htons.html\n"
+   "hypot()\t"
+   "functions/hypot.html\n"
+   "hypotf()\t"
+   "functions/hypotf.html\n"
+   "hypotl()\t"
+   "functions/hypotl.html\n"
+   "iconv\t"
+   "utilities/iconv.html\n"
+   "iconv()\t"
+   "functions/iconv.html\n"
+   "iconv.h\t"
+   "basedefs/iconv.h.html\n"
+   "iconv_close()\t"
+   "functions/iconv_close.html\n"
+   "iconv_open()\t"
+   "functions/iconv_open.html\n"
+   "id\t"
+   "utilities/id.html\n"
+   "if_freenameindex()\t"
+   "functions/if_freenameindex.html\n"
+   "if_indextoname()\t"
+   "functions/if_indextoname.html\n"
+   "if_nameindex()\t"
+   "functions/if_nameindex.html\n"
+   "if_nametoindex()\t"
+   "functions/if_nametoindex.html\n"
+   "ilogb()\t"
+   "functions/ilogb.html\n"
+   "ilogbf()\t"
+   "functions/ilogbf.html\n"
+   "ilogbl()\t"
+   "functions/ilogbl.html\n"
+   "imaxabs()\t"
+   "functions/imaxabs.html\n"
+   "imaxdiv()\t"
+   "functions/imaxdiv.html\n"
+   "inet_addr()\t"
+   "functions/inet_addr.html\n"
+   "inet_ntoa()\t"
+   "functions/inet_ntoa.html\n"
+   "inet_ntop()\t"
+   "functions/inet_ntop.html\n"
+   "inet_pton()\t"
+   "functions/inet_pton.html\n"
+   "initstate()\t"
+   "functions/initstate.html\n"
+   "insque()\t"
+   "functions/insque.html\n"
+   "inttypes.h\t"
+   "basedefs/inttypes.h.html\n"
+   "ioctl()\t"
+   "functions/ioctl.html\n"
+   "ipcrm\t"
+   "utilities/ipcrm.html\n"
+   "ipcs\t"
+   "utilities/ipcs.html\n"
+   "isalnum()\t"
+   "functions/isalnum.html\n"
+   "isalnum_l()\t"
+   "functions/isalnum_l.html\n"
+   "isalpha()\t"
+   "functions/isalpha.html\n"
+   "isalpha_l()\t"
+   "functions/isalpha_l.html\n"
+   "isascii()\t"
+   "functions/isascii.html\n"
+   "isastream()\t"
+   "functions/isastream.html\n"
+   "isatty()\t"
+   "functions/isatty.html\n"
+   "isblank()\t"
+   "functions/isblank.html\n"
+   "isblank_l()\t"
+   "functions/isblank_l.html\n"
+   "iscntrl()\t"
+   "functions/iscntrl.html\n"
+   "iscntrl_l()\t"
+   "functions/iscntrl_l.html\n"
+   "isdigit()\t"
+   "functions/isdigit.html\n"
+   "isdigit_l()\t"
+   "functions/isdigit_l.html\n"
+   "isfinite()\t"
+   "functions/isfinite.html\n"
+   "isgraph()\t"
+   "functions/isgraph.html\n"
+   "isgraph_l()\t"
+   "functions/isgraph_l.html\n"
+   "isgreater()\t"
+   "functions/isgreater.html\n"
+   "isgreaterequal()\t"
+   "functions/isgreaterequal.html\n"
+   "isinf()\t"
+   "functions/isinf.html\n"
+   "isless()\t"
+   "functions/isless.html\n"
+   "islessequal()\t"
+   "functions/islessequal.html\n"
+   "islessgreater()\t"
+   "functions/islessgreater.html\n"
+   "islower()\t"
+   "functions/islower.html\n"
+   "islower_l()\t"
+   "functions/islower_l.html\n"
+   "isnan()\t"
+   "functions/isnan.html\n"
+   "isnormal()\t"
+   "functions/isnormal.html\n"
+   "iso646.h\t"
+   "basedefs/iso646.h.html\n"
+   "isprint()\t"
+   "functions/isprint.html\n"
+   "isprint_l()\t"
+   "functions/isprint_l.html\n"
+   "ispunct()\t"
+   "functions/ispunct.html\n"
+   "ispunct_l()\t"
+   "functions/ispunct_l.html\n"
+   "isspace()\t"
+   "functions/isspace.html\n"
+   "isspace_l()\t"
+   "functions/isspace_l.html\n"
+   "isunordered()\t"
+   "functions/isunordered.html\n"
+   "isupper()\t"
+   "functions/isupper.html\n"
+   "isupper_l()\t"
+   "functions/isupper_l.html\n"
+   "iswalnum()\t"
+   "functions/iswalnum.html\n"
+   "iswalnum_l()\t"
+   "functions/iswalnum_l.html\n"
+   "iswalpha()\t"
+   "functions/iswalpha.html\n"
+   "iswalpha_l()\t"
+   "functions/iswalpha_l.html\n"
+   "iswblank()\t"
+   "functions/iswblank.html\n"
+   "iswblank_l()\t"
+   "functions/iswblank_l.html\n"
+   "iswcntrl()\t"
+   "functions/iswcntrl.html\n"
+   "iswcntrl_l()\t"
+   "functions/iswcntrl_l.html\n"
+   "iswctype()\t"
+   "functions/iswctype.html\n"
+   "iswctype_l()\t"
+   "functions/iswctype_l.html\n"
+   "iswdigit()\t"
+   "functions/iswdigit.html\n"
+   "iswdigit_l()\t"
+   "functions/iswdigit_l.html\n"
+   "iswgraph()\t"
+   "functions/iswgraph.html\n"
+   "iswgraph_l()\t"
+   "functions/iswgraph_l.html\n"
+   "iswlower()\t"
+   "functions/iswlower.html\n"
+   "iswlower_l()\t"
+   "functions/iswlower_l.html\n"
+   "iswprint()\t"
+   "functions/iswprint.html\n"
+   "iswprint_l()\t"
+   "functions/iswprint_l.html\n"
+   "iswpunct()\t"
+   "functions/iswpunct.html\n"
+   "iswpunct_l()\t"
+   "functions/iswpunct_l.html\n"
+   "iswspace()\t"
+   "functions/iswspace.html\n"
+   "iswspace_l()\t"
+   "functions/iswspace_l.html\n"
+   "iswupper()\t"
+   "functions/iswupper.html\n"
+   "iswupper_l()\t"
+   "functions/iswupper_l.html\n"
+   "iswxdigit()\t"
+   "functions/iswxdigit.html\n"
+   "iswxdigit_l()\t"
+   "functions/iswxdigit_l.html\n"
+   "isxdigit()\t"
+   "functions/isxdigit.html\n"
+   "isxdigit_l()\t"
+   "functions/isxdigit_l.html\n"
+   "j0()\t"
+   "functions/j0.html\n"
+   "j1()\t"
+   "functions/j1.html\n"
+   "jn()\t"
+   "functions/jn.html\n"
+   "jobs\t"
+   "utilities/jobs.html\n"
+   "join\t"
+   "utilities/join.html\n"
+   "jrand48()\t"
+   "functions/jrand48.html\n"
+   "kill\t"
+   "utilities/kill.html\n"
+   "kill()\t"
+   "functions/kill.html\n"
+   "killpg()\t"
+   "functions/killpg.html\n"
+   "l64a()\t"
+   "functions/l64a.html\n"
+   "labs()\t"
+   "functions/labs.html\n"
+   "langinfo.h\t"
+   "basedefs/langinfo.h.html\n"
+   "lchown()\t"
+   "functions/lchown.html\n"
+   "lcong48()\t"
+   "functions/lcong48.html\n"
+   "ldexp()\t"
+   "functions/ldexp.html\n"
+   "ldexpf()\t"
+   "functions/ldexpf.html\n"
+   "ldexpl()\t"
+   "functions/ldexpl.html\n"
+   "ldiv()\t"
+   "functions/ldiv.html\n"
+   "lex\t"
+   "utilities/lex.html\n"
+   "lfind()\t"
+   "functions/lfind.html\n"
+   "lgamma()\t"
+   "functions/lgamma.html\n"
+   "lgammaf()\t"
+   "functions/lgammaf.html\n"
+   "lgammal()\t"
+   "functions/lgammal.html\n"
+   "libgen.h\t"
+   "basedefs/libgen.h.html\n"
+   "limits.h\t"
+   "basedefs/limits.h.html\n"
+   "link\t"
+   "utilities/link.html\n"
+   "link()\t"
+   "functions/link.html\n"
+   "linkat()\t"
+   "functions/linkat.html\n"
+   "lio_listio()\t"
+   "functions/lio_listio.html\n"
+   "listen()\t"
+   "functions/listen.html\n"
+   "llabs()\t"
+   "functions/llabs.html\n"
+   "lldiv()\t"
+   "functions/lldiv.html\n"
+   "llrint()\t"
+   "functions/llrint.html\n"
+   "llrintf()\t"
+   "functions/llrintf.html\n"
+   "llrintl()\t"
+   "functions/llrintl.html\n"
+   "llround()\t"
+   "functions/llround.html\n"
+   "llroundf()\t"
+   "functions/llroundf.html\n"
+   "llroundl()\t"
+   "functions/llroundl.html\n"
+   "ln\t"
+   "utilities/ln.html\n"
+   "locale\t"
+   "utilities/locale.html\n"
+   "locale.h\t"
+   "basedefs/locale.h.html\n"
+   "localeconv()\t"
+   "functions/localeconv.html\n"
+   "localedef\t"
+   "utilities/localedef.html\n"
+   "localtime()\t"
+   "functions/localtime.html\n"
+   "localtime_r()\t"
+   "functions/localtime_r.html\n"
+   "lockf()\t"
+   "functions/lockf.html\n"
+   "log()\t"
+   "functions/log.html\n"
+   "log10()\t"
+   "functions/log10.html\n"
+   "log10f()\t"
+   "functions/log10f.html\n"
+   "log10l()\t"
+   "functions/log10l.html\n"
+   "log1p()\t"
+   "functions/log1p.html\n"
+   "log1pf()\t"
+   "functions/log1pf.html\n"
+   "log1pl()\t"
+   "functions/log1pl.html\n"
+   "log2()\t"
+   "functions/log2.html\n"
+   "log2f()\t"
+   "functions/log2f.html\n"
+   "log2l()\t"
+   "functions/log2l.html\n"
+   "logb()\t"
+   "functions/logb.html\n"
+   "logbf()\t"
+   "functions/logbf.html\n"
+   "logbl()\t"
+   "functions/logbl.html\n"
+   "logf()\t"
+   "functions/logf.html\n"
+   "logger\t"
+   "utilities/logger.html\n"
+   "logl()\t"
+   "functions/logl.html\n"
+   "logname\t"
+   "utilities/logname.html\n"
+   "longjmp()\t"
+   "functions/longjmp.html\n"
+   "lp\t"
+   "utilities/lp.html\n"
+   "lrand48()\t"
+   "functions/lrand48.html\n"
+   "lrint()\t"
+   "functions/lrint.html\n"
+   "lrintf()\t"
+   "functions/lrintf.html\n"
+   "lrintl()\t"
+   "functions/lrintl.html\n"
+   "lround()\t"
+   "functions/lround.html\n"
+   "lroundf()\t"
+   "functions/lroundf.html\n"
+   "lroundl()\t"
+   "functions/lroundl.html\n"
+   "ls\t"
+   "utilities/ls.html\n"
+   "lsearch()\t"
+   "functions/lsearch.html\n"
+   "lseek()\t"
+   "functions/lseek.html\n"
+   "lstat()\t"
+   "functions/lstat.html\n"
+   "m4\t"
+   "utilities/m4.html\n"
+   "mailx\t"
+   "utilities/mailx.html\n"
+   "make\t"
+   "utilities/make.html\n"
+   "malloc()\t"
+   "functions/malloc.html\n"
+   "man\t"
+   "utilities/man.html\n"
+   "math.h\t"
+   "basedefs/math.h.html\n"
+   "mblen()\t"
+   "functions/mblen.html\n"
+   "mbrlen()\t"
+   "functions/mbrlen.html\n"
+   "mbrtowc()\t"
+   "functions/mbrtowc.html\n"
+   "mbsinit()\t"
+   "functions/mbsinit.html\n"
+   "mbsnrtowcs()\t"
+   "functions/mbsnrtowcs.html\n"
+   "mbsrtowcs()\t"
+   "functions/mbsrtowcs.html\n"
+   "mbstowcs()\t"
+   "functions/mbstowcs.html\n"
+   "mbtowc()\t"
+   "functions/mbtowc.html\n"
+   "memccpy()\t"
+   "functions/memccpy.html\n"
+   "memchr()\t"
+   "functions/memchr.html\n"
+   "memcmp()\t"
+   "functions/memcmp.html\n"
+   "memcpy()\t"
+   "functions/memcpy.html\n"
+   "memmove()\t"
+   "functions/memmove.html\n"
+   "memset()\t"
+   "functions/memset.html\n"
+   "mesg\t"
+   "utilities/mesg.html\n"
+   "mkdir\t"
+   "utilities/mkdir.html\n"
+   "mkdir()\t"
+   "functions/mkdir.html\n"
+   "mkdirat()\t"
+   "functions/mkdirat.html\n"
+   "mkdtemp()\t"
+   "functions/mkdtemp.html\n"
+   "mkfifo\t"
+   "utilities/mkfifo.html\n"
+   "mkfifo()\t"
+   "functions/mkfifo.html\n"
+   "mkfifoat()\t"
+   "functions/mkfifoat.html\n"
+   "mknod()\t"
+   "functions/mknod.html\n"
+   "mknodat()\t"
+   "functions/mknodat.html\n"
+   "mkstemp()\t"
+   "functions/mkstemp.html\n"
+   "mktime()\t"
+   "functions/mktime.html\n"
+   "mlock()\t"
+   "functions/mlock.html\n"
+   "mlockall()\t"
+   "functions/mlockall.html\n"
+   "mmap()\t"
+   "functions/mmap.html\n"
+   "modf()\t"
+   "functions/modf.html\n"
+   "modff()\t"
+   "functions/modff.html\n"
+   "modfl()\t"
+   "functions/modfl.html\n"
+   "monetary.h\t"
+   "basedefs/monetary.h.html\n"
+   "more\t"
+   "utilities/more.html\n"
+   "mprotect()\t"
+   "functions/mprotect.html\n"
+   "mq_close()\t"
+   "functions/mq_close.html\n"
+   "mq_getattr()\t"
+   "functions/mq_getattr.html\n"
+   "mq_notify()\t"
+   "functions/mq_notify.html\n"
+   "mq_open()\t"
+   "functions/mq_open.html\n"
+   "mq_receive()\t"
+   "functions/mq_receive.html\n"
+   "mq_send()\t"
+   "functions/mq_send.html\n"
+   "mq_setattr()\t"
+   "functions/mq_setattr.html\n"
+   "mq_timedreceive()\t"
+   "functions/mq_timedreceive.html\n"
+   "mq_timedsend()\t"
+   "functions/mq_timedsend.html\n"
+   "mq_unlink()\t"
+   "functions/mq_unlink.html\n"
+   "mqueue.h\t"
+   "basedefs/mqueue.h.html\n"
+   "mrand48()\t"
+   "functions/mrand48.html\n"
+   "msgctl()\t"
+   "functions/msgctl.html\n"
+   "msgget()\t"
+   "functions/msgget.html\n"
+   "msgrcv()\t"
+   "functions/msgrcv.html\n"
+   "msgsnd()\t"
+   "functions/msgsnd.html\n"
+   "msync()\t"
+   "functions/msync.html\n"
+   "munlock()\t"
+   "functions/munlock.html\n"
+   "munlockall()\t"
+   "functions/munlockall.html\n"
+   "munmap()\t"
+   "functions/munmap.html\n"
+   "mv\t"
+   "utilities/mv.html\n"
+   "nan()\t"
+   "functions/nan.html\n"
+   "nanf()\t"
+   "functions/nanf.html\n"
+   "nanl()\t"
+   "functions/nanl.html\n"
+   "nanosleep()\t"
+   "functions/nanosleep.html\n"
+   "ndbm.h\t"
+   "basedefs/ndbm.h.html\n"
+   "nearbyint()\t"
+   "functions/nearbyint.html\n"
+   "nearbyintf()\t"
+   "functions/nearbyintf.html\n"
+   "nearbyintl()\t"
+   "functions/nearbyintl.html\n"
+   "net/if.h\t"
+   "basedefs/net_if.h.html\n"
+   "netdb.h\t"
+   "basedefs/netdb.h.html\n"
+   "netinet/in.h\t"
+   "basedefs/netinet_in.h.html\n"
+   "netinet/tcp.h\t"
+   "basedefs/netinet_tcp.h.html\n"
+   "newgrp\t"
+   "utilities/newgrp.html\n"
+   "newlocale()\t"
+   "functions/newlocale.html\n"
+   "nextafter()\t"
+   "functions/nextafter.html\n"
+   "nextafterf()\t"
+   "functions/nextafterf.html\n"
+   "nextafterl()\t"
+   "functions/nextafterl.html\n"
+   "nexttoward()\t"
+   "functions/nexttoward.html\n"
+   "nexttowardf()\t"
+   "functions/nexttowardf.html\n"
+   "nexttowardl()\t"
+   "functions/nexttowardl.html\n"
+   "nftw()\t"
+   "functions/nftw.html\n"
+   "nice\t"
+   "utilities/nice.html\n"
+   "nice()\t"
+   "functions/nice.html\n"
+   "nl\t"
+   "utilities/nl.html\n"
+   "nl_langinfo()\t"
+   "functions/nl_langinfo.html\n"
+   "nl_langinfo_l()\t"
+   "functions/nl_langinfo_l.html\n"
+   "nl_types.h\t"
+   "basedefs/nl_types.h.html\n"
+   "nm\t"
+   "utilities/nm.html\n"
+   "nohup\t"
+   "utilities/nohup.html\n"
+   "nrand48()\t"
+   "functions/nrand48.html\n"
+   "ntohl()\t"
+   "functions/ntohl.html\n"
+   "ntohs()\t"
+   "functions/ntohs.html\n"
+   "od\t"
+   "utilities/od.html\n"
+   "open()\t"
+   "functions/open.html\n"
+   "open_memstream()\t"
+   "functions/open_memstream.html\n"
+   "open_wmemstream()\t"
+   "functions/open_wmemstream.html\n"
+   "openat()\t"
+   "functions/openat.html\n"
+   "opendir()\t"
+   "functions/opendir.html\n"
+   "openlog()\t"
+   "functions/openlog.html\n"
+   "optarg\t"
+   "functions/optarg.html\n"
+   "opterr\t"
+   "functions/opterr.html\n"
+   "optind\t"
+   "functions/optind.html\n"
+   "optopt\t"
+   "functions/optopt.html\n"
+   "paste\t"
+   "utilities/paste.html\n"
+   "patch\t"
+   "utilities/patch.html\n"
+   "pathchk\t"
+   "utilities/pathchk.html\n"
+   "pathconf()\t"
+   "functions/pathconf.html\n"
+   "pause()\t"
+   "functions/pause.html\n"
+   "pax\t"
+   "utilities/pax.html\n"
+   "pclose()\t"
+   "functions/pclose.html\n"
+   "perror()\t"
+   "functions/perror.html\n"
+   "pipe()\t"
+   "functions/pipe.html\n"
+   "poll()\t"
+   "functions/poll.html\n"
+   "poll.h\t"
+   "basedefs/poll.h.html\n"
+   "popen()\t"
+   "functions/popen.html\n"
+   "posix_fadvise()\t"
+   "functions/posix_fadvise.html\n"
+   "posix_fallocate()\t"
+   "functions/posix_fallocate.html\n"
+   "posix_madvise()\t"
+   "functions/posix_madvise.html\n"
+   "posix_mem_offset()\t"
+   "functions/posix_mem_offset.html\n"
+   "posix_memalign()\t"
+   "functions/posix_memalign.html\n"
+   "posix_openpt()\t"
+   "functions/posix_openpt.html\n"
+   "posix_spawn()\t"
+   "functions/posix_spawn.html\n"
+   "posix_spawn_file_actions_addclose()\t"
+   "functions/posix_spawn_file_actions_addclose.html\n"
+   "posix_spawn_file_actions_adddup2()\t"
+   "functions/posix_spawn_file_actions_adddup2.html\n"
+   "posix_spawn_file_actions_addopen()\t"
+   "functions/posix_spawn_file_actions_addopen.html\n"
+   "posix_spawn_file_actions_destroy()\t"
+   "functions/posix_spawn_file_actions_destroy.html\n"
+   "posix_spawn_file_actions_init()\t"
+   "functions/posix_spawn_file_actions_init.html\n"
+   "posix_spawnattr_destroy()\t"
+   "functions/posix_spawnattr_destroy.html\n"
+   "posix_spawnattr_getflags()\t"
+   "functions/posix_spawnattr_getflags.html\n"
+   "posix_spawnattr_getpgroup()\t"
+   "functions/posix_spawnattr_getpgroup.html\n"
+   "posix_spawnattr_getschedparam()\t"
+   "functions/posix_spawnattr_getschedparam.html\n"
+   "posix_spawnattr_getschedpolicy()\t"
+   "functions/posix_spawnattr_getschedpolicy.html\n"
+   "posix_spawnattr_getsigdefault()\t"
+   "functions/posix_spawnattr_getsigdefault.html\n"
+   "posix_spawnattr_getsigmask()\t"
+   "functions/posix_spawnattr_getsigmask.html\n"
+   "posix_spawnattr_init()\t"
+   "functions/posix_spawnattr_init.html\n"
+   "posix_spawnattr_setflags()\t"
+   "functions/posix_spawnattr_setflags.html\n"
+   "posix_spawnattr_setpgroup()\t"
+   "functions/posix_spawnattr_setpgroup.html\n"
+   "posix_spawnattr_setschedparam()\t"
+   "functions/posix_spawnattr_setschedparam.html\n"
+   "posix_spawnattr_setschedpolicy()\t"
+   "functions/posix_spawnattr_setschedpolicy.html\n"
+   "posix_spawnattr_setsigdefault()\t"
+   "functions/posix_spawnattr_setsigdefault.html\n"
+   "posix_spawnattr_setsigmask()\t"
+   "functions/posix_spawnattr_setsigmask.html\n"
+   "posix_spawnp()\t"
+   "functions/posix_spawnp.html\n"
+   "posix_trace_attr_destroy()\t"
+   "functions/posix_trace_attr_destroy.html\n"
+   "posix_trace_attr_getclockres()\t"
+   "functions/posix_trace_attr_getclockres.html\n"
+   "posix_trace_attr_getcreatetime()\t"
+   "functions/posix_trace_attr_getcreatetime.html\n"
+   "posix_trace_attr_getgenversion()\t"
+   "functions/posix_trace_attr_getgenversion.html\n"
+   "posix_trace_attr_getinherited()\t"
+   "functions/posix_trace_attr_getinherited.html\n"
+   "posix_trace_attr_getlogfullpolicy()\t"
+   "functions/posix_trace_attr_getlogfullpolicy.html\n"
+   "posix_trace_attr_getlogsize()\t"
+   "functions/posix_trace_attr_getlogsize.html\n"
+   "posix_trace_attr_getmaxdatasize()\t"
+   "functions/posix_trace_attr_getmaxdatasize.html\n"
+   "posix_trace_attr_getmaxsystemeventsize()\t"
+   "functions/posix_trace_attr_getmaxsystemeventsize.html\n"
+   "posix_trace_attr_getmaxusereventsize()\t"
+   "functions/posix_trace_attr_getmaxusereventsize.html\n"
+   "posix_trace_attr_getname()\t"
+   "functions/posix_trace_attr_getname.html\n"
+   "posix_trace_attr_getstreamfullpolicy()\t"
+   "functions/posix_trace_attr_getstreamfullpolicy.html\n"
+   "posix_trace_attr_getstreamsize()\t"
+   "functions/posix_trace_attr_getstreamsize.html\n"
+   "posix_trace_attr_init()\t"
+   "functions/posix_trace_attr_init.html\n"
+   "posix_trace_attr_setinherited()\t"
+   "functions/posix_trace_attr_setinherited.html\n"
+   "posix_trace_attr_setlogfullpolicy()\t"
+   "functions/posix_trace_attr_setlogfullpolicy.html\n"
+   "posix_trace_attr_setlogsize()\t"
+   "functions/posix_trace_attr_setlogsize.html\n"
+   "posix_trace_attr_setmaxdatasize()\t"
+   "functions/posix_trace_attr_setmaxdatasize.html\n"
+   "posix_trace_attr_setname()\t"
+   "functions/posix_trace_attr_setname.html\n"
+   "posix_trace_attr_setstreamfullpolicy()\t"
+   "functions/posix_trace_attr_setstreamfullpolicy.html\n"
+   "posix_trace_attr_setstreamsize()\t"
+   "functions/posix_trace_attr_setstreamsize.html\n"
+   "posix_trace_clear()\t"
+   "functions/posix_trace_clear.html\n"
+   "posix_trace_close()\t"
+   "functions/posix_trace_close.html\n"
+   "posix_trace_create()\t"
+   "functions/posix_trace_create.html\n"
+   "posix_trace_create_withlog()\t"
+   "functions/posix_trace_create_withlog.html\n"
+   "posix_trace_event()\t"
+   "functions/posix_trace_event.html\n"
+   "posix_trace_eventid_equal()\t"
+   "functions/posix_trace_eventid_equal.html\n"
+   "posix_trace_eventid_get_name()\t"
+   "functions/posix_trace_eventid_get_name.html\n"
+   "posix_trace_eventid_open()\t"
+   "functions/posix_trace_eventid_open.html\n"
+   "posix_trace_eventset_add()\t"
+   "functions/posix_trace_eventset_add.html\n"
+   "posix_trace_eventset_del()\t"
+   "functions/posix_trace_eventset_del.html\n"
+   "posix_trace_eventset_empty()\t"
+   "functions/posix_trace_eventset_empty.html\n"
+   "posix_trace_eventset_fill()\t"
+   "functions/posix_trace_eventset_fill.html\n"
+   "posix_trace_eventset_ismember()\t"
+   "functions/posix_trace_eventset_ismember.html\n"
+   "posix_trace_eventtypelist_getnext_id()\t"
+   "functions/posix_trace_eventtypelist_getnext_id.html\n"
+   "posix_trace_eventtypelist_rewind()\t"
+   "functions/posix_trace_eventtypelist_rewind.html\n"
+   "posix_trace_flush()\t"
+   "functions/posix_trace_flush.html\n"
+   "posix_trace_get_attr()\t"
+   "functions/posix_trace_get_attr.html\n"
+   "posix_trace_get_filter()\t"
+   "functions/posix_trace_get_filter.html\n"
+   "posix_trace_get_status()\t"
+   "functions/posix_trace_get_status.html\n"
+   "posix_trace_getnext_event()\t"
+   "functions/posix_trace_getnext_event.html\n"
+   "posix_trace_open()\t"
+   "functions/posix_trace_open.html\n"
+   "posix_trace_rewind()\t"
+   "functions/posix_trace_rewind.html\n"
+   "posix_trace_set_filter()\t"
+   "functions/posix_trace_set_filter.html\n"
+   "posix_trace_shutdown()\t"
+   "functions/posix_trace_shutdown.html\n"
+   "posix_trace_start()\t"
+   "functions/posix_trace_start.html\n"
+   "posix_trace_stop()\t"
+   "functions/posix_trace_stop.html\n"
+   "posix_trace_timedgetnext_event()\t"
+   "functions/posix_trace_timedgetnext_event.html\n"
+   "posix_trace_trid_eventid_open()\t"
+   "functions/posix_trace_trid_eventid_open.html\n"
+   "posix_trace_trygetnext_event()\t"
+   "functions/posix_trace_trygetnext_event.html\n"
+   "posix_typed_mem_get_info()\t"
+   "functions/posix_typed_mem_get_info.html\n"
+   "posix_typed_mem_open()\t"
+   "functions/posix_typed_mem_open.html\n"
+   "pow()\t"
+   "functions/pow.html\n"
+   "powf()\t"
+   "functions/powf.html\n"
+   "powl()\t"
+   "functions/powl.html\n"
+   "pr\t"
+   "utilities/pr.html\n"
+   "pread()\t"
+   "functions/pread.html\n"
+   "printf\t"
+   "utilities/printf.html\n"
+   "printf()\t"
+   "functions/printf.html\n"
+   "prs\t"
+   "utilities/prs.html\n"
+   "ps\t"
+   "utilities/ps.html\n"
+   "pselect()\t"
+   "functions/pselect.html\n"
+   "psiginfo()\t"
+   "functions/psiginfo.html\n"
+   "psignal()\t"
+   "functions/psignal.html\n"
+   "pthread.h\t"
+   "basedefs/pthread.h.html\n"
+   "pthread_atfork()\t"
+   "functions/pthread_atfork.html\n"
+   "pthread_attr_destroy()\t"
+   "functions/pthread_attr_destroy.html\n"
+   "pthread_attr_getdetachstate()\t"
+   "functions/pthread_attr_getdetachstate.html\n"
+   "pthread_attr_getguardsize()\t"
+   "functions/pthread_attr_getguardsize.html\n"
+   "pthread_attr_getinheritsched()\t"
+   "functions/pthread_attr_getinheritsched.html\n"
+   "pthread_attr_getschedparam()\t"
+   "functions/pthread_attr_getschedparam.html\n"
+   "pthread_attr_getschedpolicy()\t"
+   "functions/pthread_attr_getschedpolicy.html\n"
+   "pthread_attr_getscope()\t"
+   "functions/pthread_attr_getscope.html\n"
+   "pthread_attr_getstack()\t"
+   "functions/pthread_attr_getstack.html\n"
+   "pthread_attr_getstacksize()\t"
+   "functions/pthread_attr_getstacksize.html\n"
+   "pthread_attr_init()\t"
+   "functions/pthread_attr_init.html\n"
+   "pthread_attr_setdetachstate()\t"
+   "functions/pthread_attr_setdetachstate.html\n"
+   "pthread_attr_setguardsize()\t"
+   "functions/pthread_attr_setguardsize.html\n"
+   "pthread_attr_setinheritsched()\t"
+   "functions/pthread_attr_setinheritsched.html\n"
+   "pthread_attr_setschedparam()\t"
+   "functions/pthread_attr_setschedparam.html\n"
+   "pthread_attr_setschedpolicy()\t"
+   "functions/pthread_attr_setschedpolicy.html\n"
+   "pthread_attr_setscope()\t"
+   "functions/pthread_attr_setscope.html\n"
+   "pthread_attr_setstack()\t"
+   "functions/pthread_attr_setstack.html\n"
+   "pthread_attr_setstacksize()\t"
+   "functions/pthread_attr_setstacksize.html\n"
+   "pthread_barrier_destroy()\t"
+   "functions/pthread_barrier_destroy.html\n"
+   "pthread_barrier_init()\t"
+   "functions/pthread_barrier_init.html\n"
+   "pthread_barrier_wait()\t"
+   "functions/pthread_barrier_wait.html\n"
+   "pthread_barrierattr_destroy()\t"
+   "functions/pthread_barrierattr_destroy.html\n"
+   "pthread_barrierattr_getpshared()\t"
+   "functions/pthread_barrierattr_getpshared.html\n"
+   "pthread_barrierattr_init()\t"
+   "functions/pthread_barrierattr_init.html\n"
+   "pthread_barrierattr_setpshared()\t"
+   "functions/pthread_barrierattr_setpshared.html\n"
+   "pthread_cancel()\t"
+   "functions/pthread_cancel.html\n"
+   "pthread_cleanup_pop()\t"
+   "functions/pthread_cleanup_pop.html\n"
+   "pthread_cleanup_push()\t"
+   "functions/pthread_cleanup_push.html\n"
+   "pthread_cond_broadcast()\t"
+   "functions/pthread_cond_broadcast.html\n"
+   "pthread_cond_destroy()\t"
+   "functions/pthread_cond_destroy.html\n"
+   "pthread_cond_init()\t"
+   "functions/pthread_cond_init.html\n"
+   "pthread_cond_signal()\t"
+   "functions/pthread_cond_signal.html\n"
+   "pthread_cond_timedwait()\t"
+   "functions/pthread_cond_timedwait.html\n"
+   "pthread_cond_wait()\t"
+   "functions/pthread_cond_wait.html\n"
+   "pthread_condattr_destroy()\t"
+   "functions/pthread_condattr_destroy.html\n"
+   "pthread_condattr_getclock()\t"
+   "functions/pthread_condattr_getclock.html\n"
+   "pthread_condattr_getpshared()\t"
+   "functions/pthread_condattr_getpshared.html\n"
+   "pthread_condattr_init()\t"
+   "functions/pthread_condattr_init.html\n"
+   "pthread_condattr_setclock()\t"
+   "functions/pthread_condattr_setclock.html\n"
+   "pthread_condattr_setpshared()\t"
+   "functions/pthread_condattr_setpshared.html\n"
+   "pthread_create()\t"
+   "functions/pthread_create.html\n"
+   "pthread_detach()\t"
+   "functions/pthread_detach.html\n"
+   "pthread_equal()\t"
+   "functions/pthread_equal.html\n"
+   "pthread_exit()\t"
+   "functions/pthread_exit.html\n"
+   "pthread_getconcurrency()\t"
+   "functions/pthread_getconcurrency.html\n"
+   "pthread_getcpuclockid()\t"
+   "functions/pthread_getcpuclockid.html\n"
+   "pthread_getschedparam()\t"
+   "functions/pthread_getschedparam.html\n"
+   "pthread_getspecific()\t"
+   "functions/pthread_getspecific.html\n"
+   "pthread_join()\t"
+   "functions/pthread_join.html\n"
+   "pthread_key_create()\t"
+   "functions/pthread_key_create.html\n"
+   "pthread_key_delete()\t"
+   "functions/pthread_key_delete.html\n"
+   "pthread_kill()\t"
+   "functions/pthread_kill.html\n"
+   "pthread_mutex_consistent()\t"
+   "functions/pthread_mutex_consistent.html\n"
+   "pthread_mutex_destroy()\t"
+   "functions/pthread_mutex_destroy.html\n"
+   "pthread_mutex_getprioceiling()\t"
+   "functions/pthread_mutex_getprioceiling.html\n"
+   "pthread_mutex_init()\t"
+   "functions/pthread_mutex_init.html\n"
+   "pthread_mutex_lock()\t"
+   "functions/pthread_mutex_lock.html\n"
+   "pthread_mutex_setprioceiling()\t"
+   "functions/pthread_mutex_setprioceiling.html\n"
+   "pthread_mutex_timedlock()\t"
+   "functions/pthread_mutex_timedlock.html\n"
+   "pthread_mutex_trylock()\t"
+   "functions/pthread_mutex_trylock.html\n"
+   "pthread_mutex_unlock()\t"
+   "functions/pthread_mutex_unlock.html\n"
+   "pthread_mutexattr_destroy()\t"
+   "functions/pthread_mutexattr_destroy.html\n"
+   "pthread_mutexattr_getprioceiling()\t"
+   "functions/pthread_mutexattr_getprioceiling.html\n"
+   "pthread_mutexattr_getprotocol()\t"
+   "functions/pthread_mutexattr_getprotocol.html\n"
+   "pthread_mutexattr_getpshared()\t"
+   "functions/pthread_mutexattr_getpshared.html\n"
+   "pthread_mutexattr_getrobust()\t"
+   "functions/pthread_mutexattr_getrobust.html\n"
+   "pthread_mutexattr_gettype()\t"
+   "functions/pthread_mutexattr_gettype.html\n"
+   "pthread_mutexattr_init()\t"
+   "functions/pthread_mutexattr_init.html\n"
+   "pthread_mutexattr_setprioceiling()\t"
+   "functions/pthread_mutexattr_setprioceiling.html\n"
+   "pthread_mutexattr_setprotocol()\t"
+   "functions/pthread_mutexattr_setprotocol.html\n"
+   "pthread_mutexattr_setpshared()\t"
+   "functions/pthread_mutexattr_setpshared.html\n"
+   "pthread_mutexattr_setrobust()\t"
+   "functions/pthread_mutexattr_setrobust.html\n"
+   "pthread_mutexattr_settype()\t"
+   "functions/pthread_mutexattr_settype.html\n"
+   "pthread_once()\t"
+   "functions/pthread_once.html\n"
+   "pthread_rwlock_destroy()\t"
+   "functions/pthread_rwlock_destroy.html\n"
+   "pthread_rwlock_init()\t"
+   "functions/pthread_rwlock_init.html\n"
+   "pthread_rwlock_rdlock()\t"
+   "functions/pthread_rwlock_rdlock.html\n"
+   "pthread_rwlock_timedrdlock()\t"
+   "functions/pthread_rwlock_timedrdlock.html\n"
+   "pthread_rwlock_timedwrlock()\t"
+   "functions/pthread_rwlock_timedwrlock.html\n"
+   "pthread_rwlock_tryrdlock()\t"
+   "functions/pthread_rwlock_tryrdlock.html\n"
+   "pthread_rwlock_trywrlock()\t"
+   "functions/pthread_rwlock_trywrlock.html\n"
+   "pthread_rwlock_unlock()\t"
+   "functions/pthread_rwlock_unlock.html\n"
+   "pthread_rwlock_wrlock()\t"
+   "functions/pthread_rwlock_wrlock.html\n"
+   "pthread_rwlockattr_destroy()\t"
+   "functions/pthread_rwlockattr_destroy.html\n"
+   "pthread_rwlockattr_getpshared()\t"
+   "functions/pthread_rwlockattr_getpshared.html\n"
+   "pthread_rwlockattr_init()\t"
+   "functions/pthread_rwlockattr_init.html\n"
+   "pthread_rwlockattr_setpshared()\t"
+   "functions/pthread_rwlockattr_setpshared.html\n"
+   "pthread_self()\t"
+   "functions/pthread_self.html\n"
+   "pthread_setcancelstate()\t"
+   "functions/pthread_setcancelstate.html\n"
+   "pthread_setcanceltype()\t"
+   "functions/pthread_setcanceltype.html\n"
+   "pthread_setconcurrency()\t"
+   "functions/pthread_setconcurrency.html\n"
+   "pthread_setschedparam()\t"
+   "functions/pthread_setschedparam.html\n"
+   "pthread_setschedprio()\t"
+   "functions/pthread_setschedprio.html\n"
+   "pthread_setspecific()\t"
+   "functions/pthread_setspecific.html\n"
+   "pthread_sigmask()\t"
+   "functions/pthread_sigmask.html\n"
+   "pthread_spin_destroy()\t"
+   "functions/pthread_spin_destroy.html\n"
+   "pthread_spin_init()\t"
+   "functions/pthread_spin_init.html\n"
+   "pthread_spin_lock()\t"
+   "functions/pthread_spin_lock.html\n"
+   "pthread_spin_trylock()\t"
+   "functions/pthread_spin_trylock.html\n"
+   "pthread_spin_unlock()\t"
+   "functions/pthread_spin_unlock.html\n"
+   "pthread_testcancel()\t"
+   "functions/pthread_testcancel.html\n"
+   "ptsname()\t"
+   "functions/ptsname.html\n"
+   "putc()\t"
+   "functions/putc.html\n"
+   "putc_unlocked()\t"
+   "functions/putc_unlocked.html\n"
+   "putchar()\t"
+   "functions/putchar.html\n"
+   "putchar_unlocked()\t"
+   "functions/putchar_unlocked.html\n"
+   "putenv()\t"
+   "functions/putenv.html\n"
+   "putmsg()\t"
+   "functions/putmsg.html\n"
+   "putpmsg()\t"
+   "functions/putpmsg.html\n"
+   "puts()\t"
+   "functions/puts.html\n"
+   "pututxline()\t"
+   "functions/pututxline.html\n"
+   "putwc()\t"
+   "functions/putwc.html\n"
+   "putwchar()\t"
+   "functions/putwchar.html\n"
+   "pwd\t"
+   "utilities/pwd.html\n"
+   "pwd.h\t"
+   "basedefs/pwd.h.html\n"
+   "pwrite()\t"
+   "functions/pwrite.html\n"
+   "qalter\t"
+   "utilities/qalter.html\n"
+   "qdel\t"
+   "utilities/qdel.html\n"
+   "qhold\t"
+   "utilities/qhold.html\n"
+   "qmove\t"
+   "utilities/qmove.html\n"
+   "qmsg\t"
+   "utilities/qmsg.html\n"
+   "qrerun\t"
+   "utilities/qrerun.html\n"
+   "qrls\t"
+   "utilities/qrls.html\n"
+   "qselect\t"
+   "utilities/qselect.html\n"
+   "qsig\t"
+   "utilities/qsig.html\n"
+   "qsort()\t"
+   "functions/qsort.html\n"
+   "qstat\t"
+   "utilities/qstat.html\n"
+   "qsub\t"
+   "utilities/qsub.html\n"
+   "raise()\t"
+   "functions/raise.html\n"
+   "rand()\t"
+   "functions/rand.html\n"
+   "rand_r()\t"
+   "functions/rand_r.html\n"
+   "random()\t"
+   "functions/random.html\n"
+   "read\t"
+   "utilities/read.html\n"
+   "read()\t"
+   "functions/read.html\n"
+   "readdir()\t"
+   "functions/readdir.html\n"
+   "readdir_r()\t"
+   "functions/readdir_r.html\n"
+   "readlink()\t"
+   "functions/readlink.html\n"
+   "readlinkat()\t"
+   "functions/readlinkat.html\n"
+   "readonly\t"
+   "utilities/V3_chap02.html#readonly\n"
+   "readv()\t"
+   "functions/readv.html\n"
+   "realloc()\t"
+   "functions/realloc.html\n"
+   "realpath()\t"
+   "functions/realpath.html\n"
+   "recv()\t"
+   "functions/recv.html\n"
+   "recvfrom()\t"
+   "functions/recvfrom.html\n"
+   "recvmsg()\t"
+   "functions/recvmsg.html\n"
+   "regcomp()\t"
+   "functions/regcomp.html\n"
+   "regerror()\t"
+   "functions/regerror.html\n"
+   "regex.h\t"
+   "basedefs/regex.h.html\n"
+   "regexec()\t"
+   "functions/regexec.html\n"
+   "regfree()\t"
+   "functions/regfree.html\n"
+   "remainder()\t"
+   "functions/remainder.html\n"
+   "remainderf()\t"
+   "functions/remainderf.html\n"
+   "remainderl()\t"
+   "functions/remainderl.html\n"
+   "remove()\t"
+   "functions/remove.html\n"
+   "remque()\t"
+   "functions/remque.html\n"
+   "remquo()\t"
+   "functions/remquo.html\n"
+   "remquof()\t"
+   "functions/remquof.html\n"
+   "remquol()\t"
+   "functions/remquol.html\n"
+   "rename()\t"
+   "functions/rename.html\n"
+   "renameat()\t"
+   "functions/renameat.html\n"
+   "renice\t"
+   "utilities/renice.html\n"
+   "return\t"
+   "utilities/V3_chap02.html#return\n"
+   "rewind()\t"
+   "functions/rewind.html\n"
+   "rewinddir()\t"
+   "functions/rewinddir.html\n"
+   "rint()\t"
+   "functions/rint.html\n"
+   "rintf()\t"
+   "functions/rintf.html\n"
+   "rintl()\t"
+   "functions/rintl.html\n"
+   "rm\t"
+   "utilities/rm.html\n"
+   "rmdel\t"
+   "utilities/rmdel.html\n"
+   "rmdir\t"
+   "utilities/rmdir.html\n"
+   "rmdir()\t"
+   "functions/rmdir.html\n"
+   "round()\t"
+   "functions/round.html\n"
+   "roundf()\t"
+   "functions/roundf.html\n"
+   "roundl()\t"
+   "functions/roundl.html\n"
+   "sact\t"
+   "utilities/sact.html\n"
+   "scalbln()\t"
+   "functions/scalbln.html\n"
+   "scalblnf()\t"
+   "functions/scalblnf.html\n"
+   "scalblnl()\t"
+   "functions/scalblnl.html\n"
+   "scalbn()\t"
+   "functions/scalbn.html\n"
+   "scalbnf()\t"
+   "functions/scalbnf.html\n"
+   "scalbnl()\t"
+   "functions/scalbnl.html\n"
+   "scandir()\t"
+   "functions/scandir.html\n"
+   "scanf()\t"
+   "functions/scanf.html\n"
+   "sccs\t"
+   "utilities/sccs.html\n"
+   "sched.h\t"
+   "basedefs/sched.h.html\n"
+   "sched_get_priority_max()\t"
+   "functions/sched_get_priority_max.html\n"
+   "sched_get_priority_min()\t"
+   "functions/sched_get_priority_min.html\n"
+   "sched_getparam()\t"
+   "functions/sched_getparam.html\n"
+   "sched_getscheduler()\t"
+   "functions/sched_getscheduler.html\n"
+   "sched_rr_get_interval()\t"
+   "functions/sched_rr_get_interval.html\n"
+   "sched_setparam()\t"
+   "functions/sched_setparam.html\n"
+   "sched_setscheduler()\t"
+   "functions/sched_setscheduler.html\n"
+   "sched_yield()\t"
+   "functions/sched_yield.html\n"
+   "search.h\t"
+   "basedefs/search.h.html\n"
+   "sed\t"
+   "utilities/sed.html\n"
+   "seed48()\t"
+   "functions/seed48.html\n"
+   "seekdir()\t"
+   "functions/seekdir.html\n"
+   "select()\t"
+   "functions/select.html\n"
+   "sem_close()\t"
+   "functions/sem_close.html\n"
+   "sem_destroy()\t"
+   "functions/sem_destroy.html\n"
+   "sem_getvalue()\t"
+   "functions/sem_getvalue.html\n"
+   "sem_init()\t"
+   "functions/sem_init.html\n"
+   "sem_open()\t"
+   "functions/sem_open.html\n"
+   "sem_post()\t"
+   "functions/sem_post.html\n"
+   "sem_timedwait()\t"
+   "functions/sem_timedwait.html\n"
+   "sem_trywait()\t"
+   "functions/sem_trywait.html\n"
+   "sem_unlink()\t"
+   "functions/sem_unlink.html\n"
+   "sem_wait()\t"
+   "functions/sem_wait.html\n"
+   "semaphore.h\t"
+   "basedefs/semaphore.h.html\n"
+   "semctl()\t"
+   "functions/semctl.html\n"
+   "semget()\t"
+   "functions/semget.html\n"
+   "semop()\t"
+   "functions/semop.html\n"
+   "send()\t"
+   "functions/send.html\n"
+   "sendmsg()\t"
+   "functions/sendmsg.html\n"
+   "sendto()\t"
+   "functions/sendto.html\n"
+   "set\t"
+   "utilities/V3_chap02.html#set\n"
+   "setbuf()\t"
+   "functions/setbuf.html\n"
+   "setegid()\t"
+   "functions/setegid.html\n"
+   "setenv()\t"
+   "functions/setenv.html\n"
+   "seteuid()\t"
+   "functions/seteuid.html\n"
+   "setgid()\t"
+   "functions/setgid.html\n"
+   "setgrent()\t"
+   "functions/setgrent.html\n"
+   "sethostent()\t"
+   "functions/sethostent.html\n"
+   "setitimer()\t"
+   "functions/setitimer.html\n"
+   "setjmp()\t"
+   "functions/setjmp.html\n"
+   "setjmp.h\t"
+   "basedefs/setjmp.h.html\n"
+   "setkey()\t"
+   "functions/setkey.html\n"
+   "setlocale()\t"
+   "functions/setlocale.html\n"
+   "setlogmask()\t"
+   "functions/setlogmask.html\n"
+   "setnetent()\t"
+   "functions/setnetent.html\n"
+   "setpgid()\t"
+   "functions/setpgid.html\n"
+   "setpgrp()\t"
+   "functions/setpgrp.html\n"
+   "setpriority()\t"
+   "functions/setpriority.html\n"
+   "setprotoent()\t"
+   "functions/setprotoent.html\n"
+   "setpwent()\t"
+   "functions/setpwent.html\n"
+   "setregid()\t"
+   "functions/setregid.html\n"
+   "setreuid()\t"
+   "functions/setreuid.html\n"
+   "setrlimit()\t"
+   "functions/setrlimit.html\n"
+   "setservent()\t"
+   "functions/setservent.html\n"
+   "setsid()\t"
+   "functions/setsid.html\n"
+   "setsockopt()\t"
+   "functions/setsockopt.html\n"
+   "setstate()\t"
+   "functions/setstate.html\n"
+   "setuid()\t"
+   "functions/setuid.html\n"
+   "setutxent()\t"
+   "functions/setutxent.html\n"
+   "setvbuf()\t"
+   "functions/setvbuf.html\n"
+   "sh\t"
+   "utilities/sh.html\n"
+   "shift\t"
+   "utilities/V3_chap02.html#shift\n"
+   "shm_open()\t"
+   "functions/shm_open.html\n"
+   "shm_unlink()\t"
+   "functions/shm_unlink.html\n"
+   "shmat()\t"
+   "functions/shmat.html\n"
+   "shmctl()\t"
+   "functions/shmctl.html\n"
+   "shmdt()\t"
+   "functions/shmdt.html\n"
+   "shmget()\t"
+   "functions/shmget.html\n"
+   "shutdown()\t"
+   "functions/shutdown.html\n"
+   "sigaction()\t"
+   "functions/sigaction.html\n"
+   "sigaddset()\t"
+   "functions/sigaddset.html\n"
+   "sigaltstack()\t"
+   "functions/sigaltstack.html\n"
+   "sigdelset()\t"
+   "functions/sigdelset.html\n"
+   "sigemptyset()\t"
+   "functions/sigemptyset.html\n"
+   "sigfillset()\t"
+   "functions/sigfillset.html\n"
+   "sighold()\t"
+   "functions/sighold.html\n"
+   "sigignore()\t"
+   "functions/sigignore.html\n"
+   "siginterrupt()\t"
+   "functions/siginterrupt.html\n"
+   "sigismember()\t"
+   "functions/sigismember.html\n"
+   "siglongjmp()\t"
+   "functions/siglongjmp.html\n"
+   "signal()\t"
+   "functions/signal.html\n"
+   "signal.h\t"
+   "basedefs/signal.h.html\n"
+   "signbit()\t"
+   "functions/signbit.html\n"
+   "signgam\t"
+   "functions/signgam.html\n"
+   "sigpause()\t"
+   "functions/sigpause.html\n"
+   "sigpending()\t"
+   "functions/sigpending.html\n"
+   "sigprocmask()\t"
+   "functions/sigprocmask.html\n"
+   "sigqueue()\t"
+   "functions/sigqueue.html\n"
+   "sigrelse()\t"
+   "functions/sigrelse.html\n"
+   "sigset()\t"
+   "functions/sigset.html\n"
+   "sigsetjmp()\t"
+   "functions/sigsetjmp.html\n"
+   "sigsuspend()\t"
+   "functions/sigsuspend.html\n"
+   "sigtimedwait()\t"
+   "functions/sigtimedwait.html\n"
+   "sigwait()\t"
+   "functions/sigwait.html\n"
+   "sigwaitinfo()\t"
+   "functions/sigwaitinfo.html\n"
+   "sin()\t"
+   "functions/sin.html\n"
+   "sinf()\t"
+   "functions/sinf.html\n"
+   "sinh()\t"
+   "functions/sinh.html\n"
+   "sinhf()\t"
+   "functions/sinhf.html\n"
+   "sinhl()\t"
+   "functions/sinhl.html\n"
+   "sinl()\t"
+   "functions/sinl.html\n"
+   "sleep\t"
+   "utilities/sleep.html\n"
+   "sleep()\t"
+   "functions/sleep.html\n"
+   "snprintf()\t"
+   "functions/snprintf.html\n"
+   "sockatmark()\t"
+   "functions/sockatmark.html\n"
+   "socket()\t"
+   "functions/socket.html\n"
+   "socketpair()\t"
+   "functions/socketpair.html\n"
+   "sort\t"
+   "utilities/sort.html\n"
+   "spawn.h\t"
+   "basedefs/spawn.h.html\n"
+   "split\t"
+   "utilities/split.html\n"
+   "sprintf()\t"
+   "functions/sprintf.html\n"
+   "sqrt()\t"
+   "functions/sqrt.html\n"
+   "sqrtf()\t"
+   "functions/sqrtf.html\n"
+   "sqrtl()\t"
+   "functions/sqrtl.html\n"
+   "srand()\t"
+   "functions/srand.html\n"
+   "srand48()\t"
+   "functions/srand48.html\n"
+   "srandom()\t"
+   "functions/srandom.html\n"
+   "sscanf()\t"
+   "functions/sscanf.html\n"
+   "stat()\t"
+   "functions/stat.html\n"
+   "statvfs()\t"
+   "functions/statvfs.html\n"
+   "stdarg.h\t"
+   "basedefs/stdarg.h.html\n"
+   "stdbool.h\t"
+   "basedefs/stdbool.h.html\n"
+   "stddef.h\t"
+   "basedefs/stddef.h.html\n"
+   "stderr\t"
+   "functions/stderr.html\n"
+   "stdin\t"
+   "functions/stdin.html\n"
+   "stdint.h\t"
+   "basedefs/stdint.h.html\n"
+   "stdio.h\t"
+   "basedefs/stdio.h.html\n"
+   "stdlib.h\t"
+   "basedefs/stdlib.h.html\n"
+   "stdout\t"
+   "functions/stdout.html\n"
+   "stpcpy()\t"
+   "functions/stpcpy.html\n"
+   "stpncpy()\t"
+   "functions/stpncpy.html\n"
+   "strcasecmp()\t"
+   "functions/strcasecmp.html\n"
+   "strcasecmp_l()\t"
+   "functions/strcasecmp_l.html\n"
+   "strcat()\t"
+   "functions/strcat.html\n"
+   "strchr()\t"
+   "functions/strchr.html\n"
+   "strcmp()\t"
+   "functions/strcmp.html\n"
+   "strcoll()\t"
+   "functions/strcoll.html\n"
+   "strcoll_l()\t"
+   "functions/strcoll_l.html\n"
+   "strcpy()\t"
+   "functions/strcpy.html\n"
+   "strcspn()\t"
+   "functions/strcspn.html\n"
+   "strdup()\t"
+   "functions/strdup.html\n"
+   "strerror()\t"
+   "functions/strerror.html\n"
+   "strerror_l()\t"
+   "functions/strerror_l.html\n"
+   "strerror_r()\t"
+   "functions/strerror_r.html\n"
+   "strfmon()\t"
+   "functions/strfmon.html\n"
+   "strfmon_l()\t"
+   "functions/strfmon_l.html\n"
+   "strftime()\t"
+   "functions/strftime.html\n"
+   "strftime_l()\t"
+   "functions/strftime_l.html\n"
+   "string.h\t"
+   "basedefs/string.h.html\n"
+   "strings\t"
+   "utilities/strings.html\n"
+   "strings.h\t"
+   "basedefs/strings.h.html\n"
+   "strip\t"
+   "utilities/strip.html\n"
+   "strlen()\t"
+   "functions/strlen.html\n"
+   "strncasecmp()\t"
+   "functions/strncasecmp.html\n"
+   "strncasecmp_l()\t"
+   "functions/strncasecmp_l.html\n"
+   "strncat()\t"
+   "functions/strncat.html\n"
+   "strncmp()\t"
+   "functions/strncmp.html\n"
+   "strncpy()\t"
+   "functions/strncpy.html\n"
+   "strndup()\t"
+   "functions/strndup.html\n"
+   "strnlen()\t"
+   "functions/strnlen.html\n"
+   "stropts.h\t"
+   "basedefs/stropts.h.html\n"
+   "strpbrk()\t"
+   "functions/strpbrk.html\n"
+   "strptime()\t"
+   "functions/strptime.html\n"
+   "strrchr()\t"
+   "functions/strrchr.html\n"
+   "strsignal()\t"
+   "functions/strsignal.html\n"
+   "strspn()\t"
+   "functions/strspn.html\n"
+   "strstr()\t"
+   "functions/strstr.html\n"
+   "strtod()\t"
+   "functions/strtod.html\n"
+   "strtof()\t"
+   "functions/strtof.html\n"
+   "strtoimax()\t"
+   "functions/strtoimax.html\n"
+   "strtok()\t"
+   "functions/strtok.html\n"
+   "strtok_r()\t"
+   "functions/strtok_r.html\n"
+   "strtol()\t"
+   "functions/strtol.html\n"
+   "strtold()\t"
+   "functions/strtold.html\n"
+   "strtoll()\t"
+   "functions/strtoll.html\n"
+   "strtoul()\t"
+   "functions/strtoul.html\n"
+   "strtoull()\t"
+   "functions/strtoull.html\n"
+   "strtoumax()\t"
+   "functions/strtoumax.html\n"
+   "strxfrm()\t"
+   "functions/strxfrm.html\n"
+   "strxfrm_l()\t"
+   "functions/strxfrm_l.html\n"
+   "stty\t"
+   "utilities/stty.html\n"
+   "swab()\t"
+   "functions/swab.html\n"
+   "swprintf()\t"
+   "functions/swprintf.html\n"
+   "swscanf()\t"
+   "functions/swscanf.html\n"
+   "symlink()\t"
+   "functions/symlink.html\n"
+   "symlinkat()\t"
+   "functions/symlinkat.html\n"
+   "sync()\t"
+   "functions/sync.html\n"
+   "sys/ipc.h\t"
+   "basedefs/sys_ipc.h.html\n"
+   "sys/mman.h\t"
+   "basedefs/sys_mman.h.html\n"
+   "sys/msg.h\t"
+   "basedefs/sys_msg.h.html\n"
+   "sys/resource.h\t"
+   "basedefs/sys_resource.h.html\n"
+   "sys/select.h\t"
+   "basedefs/sys_select.h.html\n"
+   "sys/sem.h\t"
+   "basedefs/sys_sem.h.html\n"
+   "sys/shm.h\t"
+   "basedefs/sys_shm.h.html\n"
+   "sys/socket.h\t"
+   "basedefs/sys_socket.h.html\n"
+   "sys/stat.h\t"
+   "basedefs/sys_stat.h.html\n"
+   "sys/statvfs.h\t"
+   "basedefs/sys_statvfs.h.html\n"
+   "sys/time.h\t"
+   "basedefs/sys_time.h.html\n"
+   "sys/times.h\t"
+   "basedefs/sys_times.h.html\n"
+   "sys/types.h\t"
+   "basedefs/sys_types.h.html\n"
+   "sys/uio.h\t"
+   "basedefs/sys_uio.h.html\n"
+   "sys/un.h\t"
+   "basedefs/sys_un.h.html\n"
+   "sys/utsname.h\t"
+   "basedefs/sys_utsname.h.html\n"
+   "sys/wait.h\t"
+   "basedefs/sys_wait.h.html\n"
+   "sysconf()\t"
+   "functions/sysconf.html\n"
+   "syslog()\t"
+   "functions/syslog.html\n"
+   "syslog.h\t"
+   "basedefs/syslog.h.html\n"
+   "system()\t"
+   "functions/system.html\n"
+   "tabs\t"
+   "utilities/tabs.html\n"
+   "tail\t"
+   "utilities/tail.html\n"
+   "talk\t"
+   "utilities/talk.html\n"
+   "tan()\t"
+   "functions/tan.html\n"
+   "tanf()\t"
+   "functions/tanf.html\n"
+   "tanh()\t"
+   "functions/tanh.html\n"
+   "tanhf()\t"
+   "functions/tanhf.html\n"
+   "tanhl()\t"
+   "functions/tanhl.html\n"
+   "tanl()\t"
+   "functions/tanl.html\n"
+   "tar.h\t"
+   "basedefs/tar.h.html\n"
+   "tcdrain()\t"
+   "functions/tcdrain.html\n"
+   "tcflow()\t"
+   "functions/tcflow.html\n"
+   "tcflush()\t"
+   "functions/tcflush.html\n"
+   "tcgetattr()\t"
+   "functions/tcgetattr.html\n"
+   "tcgetpgrp()\t"
+   "functions/tcgetpgrp.html\n"
+   "tcgetsid()\t"
+   "functions/tcgetsid.html\n"
+   "tcsendbreak()\t"
+   "functions/tcsendbreak.html\n"
+   "tcsetattr()\t"
+   "functions/tcsetattr.html\n"
+   "tcsetpgrp()\t"
+   "functions/tcsetpgrp.html\n"
+   "tdelete()\t"
+   "functions/tdelete.html\n"
+   "tee\t"
+   "utilities/tee.html\n"
+   "telldir()\t"
+   "functions/telldir.html\n"
+   "tempnam()\t"
+   "functions/tempnam.html\n"
+   "termios.h\t"
+   "basedefs/termios.h.html\n"
+   "test\t"
+   "utilities/test.html\n"
+   "tfind()\t"
+   "functions/tfind.html\n"
+   "tgamma()\t"
+   "functions/tgamma.html\n"
+   "tgammaf()\t"
+   "functions/tgammaf.html\n"
+   "tgammal()\t"
+   "functions/tgammal.html\n"
+   "tgmath.h\t"
+   "basedefs/tgmath.h.html\n"
+   "time\t"
+   "utilities/time.html\n"
+   "time()\t"
+   "functions/time.html\n"
+   "time.h\t"
+   "basedefs/time.h.html\n"
+   "timer_create()\t"
+   "functions/timer_create.html\n"
+   "timer_delete()\t"
+   "functions/timer_delete.html\n"
+   "timer_getoverrun()\t"
+   "functions/timer_getoverrun.html\n"
+   "timer_gettime()\t"
+   "functions/timer_gettime.html\n"
+   "timer_settime()\t"
+   "functions/timer_settime.html\n"
+   "times\t"
+   "utilities/V3_chap02.html#times\n"
+   "times()\t"
+   "functions/times.html\n"
+   "timezone\t"
+   "functions/timezone.html\n"
+   "tmpfile()\t"
+   "functions/tmpfile.html\n"
+   "tmpnam()\t"
+   "functions/tmpnam.html\n"
+   "toascii()\t"
+   "functions/toascii.html\n"
+   "tolower()\t"
+   "functions/tolower.html\n"
+   "tolower_l()\t"
+   "functions/tolower_l.html\n"
+   "touch\t"
+   "utilities/touch.html\n"
+   "toupper()\t"
+   "functions/toupper.html\n"
+   "toupper_l()\t"
+   "functions/toupper_l.html\n"
+   "towctrans()\t"
+   "functions/towctrans.html\n"
+   "towctrans_l()\t"
+   "functions/towctrans_l.html\n"
+   "towlower()\t"
+   "functions/towlower.html\n"
+   "towlower_l()\t"
+   "functions/towlower_l.html\n"
+   "towupper()\t"
+   "functions/towupper.html\n"
+   "towupper_l()\t"
+   "functions/towupper_l.html\n"
+   "tput\t"
+   "utilities/tput.html\n"
+   "tr\t"
+   "utilities/tr.html\n"
+   "trace.h\t"
+   "basedefs/trace.h.html\n"
+   "trap\t"
+   "utilities/V3_chap02.html#trap\n"
+   "true\t"
+   "utilities/true.html\n"
+   "trunc()\t"
+   "functions/trunc.html\n"
+   "truncate()\t"
+   "functions/truncate.html\n"
+   "truncf()\t"
+   "functions/truncf.html\n"
+   "truncl()\t"
+   "functions/truncl.html\n"
+   "tsearch()\t"
+   "functions/tsearch.html\n"
+   "tsort\t"
+   "utilities/tsort.html\n"
+   "tty\t"
+   "utilities/tty.html\n"
+   "ttyname()\t"
+   "functions/ttyname.html\n"
+   "ttyname_r()\t"
+   "functions/ttyname_r.html\n"
+   "twalk()\t"
+   "functions/twalk.html\n"
+   "type\t"
+   "utilities/type.html\n"
+   "tzname\t"
+   "functions/tzname.html\n"
+   "tzset()\t"
+   "functions/tzset.html\n"
+   "ulimit\t"
+   "utilities/ulimit.html\n"
+   "ulimit()\t"
+   "functions/ulimit.html\n"
+   "ulimit.h\t"
+   "basedefs/ulimit.h.html\n"
+   "umask\t"
+   "utilities/umask.html\n"
+   "umask()\t"
+   "functions/umask.html\n"
+   "unalias\t"
+   "utilities/unalias.html\n"
+   "uname\t"
+   "utilities/uname.html\n"
+   "uname()\t"
+   "functions/uname.html\n"
+   "uncompress\t"
+   "utilities/uncompress.html\n"
+   "unexpand\t"
+   "utilities/unexpand.html\n"
+   "unget\t"
+   "utilities/unget.html\n"
+   "ungetc()\t"
+   "functions/ungetc.html\n"
+   "ungetwc()\t"
+   "functions/ungetwc.html\n"
+   "uniq\t"
+   "utilities/uniq.html\n"
+   "unistd.h\t"
+   "basedefs/unistd.h.html\n"
+   "unlink\t"
+   "utilities/unlink.html\n"
+   "unlink()\t"
+   "functions/unlink.html\n"
+   "unlinkat()\t"
+   "functions/unlinkat.html\n"
+   "unlockpt()\t"
+   "functions/unlockpt.html\n"
+   "unset\t"
+   "utilities/V3_chap02.html#unset\n"
+   "unsetenv()\t"
+   "functions/unsetenv.html\n"
+   "uselocale()\t"
+   "functions/uselocale.html\n"
+   "utime()\t"
+   "functions/utime.html\n"
+   "utime.h\t"
+   "basedefs/utime.h.html\n"
+   "utimensat()\t"
+   "functions/utimensat.html\n"
+   "utimes()\t"
+   "functions/utimes.html\n"
+   "utmpx.h\t"
+   "basedefs/utmpx.h.html\n"
+   "uucp\t"
+   "utilities/uucp.html\n"
+   "uudecode\t"
+   "utilities/uudecode.html\n"
+   "uuencode\t"
+   "utilities/uuencode.html\n"
+   "uustat\t"
+   "utilities/uustat.html\n"
+   "uux\t"
+   "utilities/uux.html\n"
+   "va_arg()\t"
+   "functions/va_arg.html\n"
+   "va_copy()\t"
+   "functions/va_copy.html\n"
+   "va_end()\t"
+   "functions/va_end.html\n"
+   "va_start()\t"
+   "functions/va_start.html\n"
+   "val\t"
+   "utilities/val.html\n"
+   "vdprintf()\t"
+   "functions/vdprintf.html\n"
+   "vfprintf()\t"
+   "functions/vfprintf.html\n"
+   "vfscanf()\t"
+   "functions/vfscanf.html\n"
+   "vfwprintf()\t"
+   "functions/vfwprintf.html\n"
+   "vfwscanf()\t"
+   "functions/vfwscanf.html\n"
+   "vi\t"
+   "utilities/vi.html\n"
+   "vprintf()\t"
+   "functions/vprintf.html\n"
+   "vscanf()\t"
+   "functions/vscanf.html\n"
+   "vsnprintf()\t"
+   "functions/vsnprintf.html\n"
+   "vsprintf()\t"
+   "functions/vsprintf.html\n"
+   "vsscanf()\t"
+   "functions/vsscanf.html\n"
+   "vswprintf()\t"
+   "functions/vswprintf.html\n"
+   "vswscanf()\t"
+   "functions/vswscanf.html\n"
+   "vwprintf()\t"
+   "functions/vwprintf.html\n"
+   "vwscanf()\t"
+   "functions/vwscanf.html\n"
+   "wait\t"
+   "utilities/wait.html\n"
+   "wait()\t"
+   "functions/wait.html\n"
+   "waitid()\t"
+   "functions/waitid.html\n"
+   "waitpid()\t"
+   "functions/waitpid.html\n"
+   "wc\t"
+   "utilities/wc.html\n"
+   "wchar.h\t"
+   "basedefs/wchar.h.html\n"
+   "wcpcpy()\t"
+   "functions/wcpcpy.html\n"
+   "wcpncpy()\t"
+   "functions/wcpncpy.html\n"
+   "wcrtomb()\t"
+   "functions/wcrtomb.html\n"
+   "wcscasecmp()\t"
+   "functions/wcscasecmp.html\n"
+   "wcscasecmp_l()\t"
+   "functions/wcscasecmp_l.html\n"
+   "wcscat()\t"
+   "functions/wcscat.html\n"
+   "wcschr()\t"
+   "functions/wcschr.html\n"
+   "wcscmp()\t"
+   "functions/wcscmp.html\n"
+   "wcscoll()\t"
+   "functions/wcscoll.html\n"
+   "wcscoll_l()\t"
+   "functions/wcscoll_l.html\n"
+   "wcscpy()\t"
+   "functions/wcscpy.html\n"
+   "wcscspn()\t"
+   "functions/wcscspn.html\n"
+   "wcsdup()\t"
+   "functions/wcsdup.html\n"
+   "wcsftime()\t"
+   "functions/wcsftime.html\n"
+   "wcslen()\t"
+   "functions/wcslen.html\n"
+   "wcsncasecmp()\t"
+   "functions/wcsncasecmp.html\n"
+   "wcsncasecmp_l()\t"
+   "functions/wcsncasecmp_l.html\n"
+   "wcsncat()\t"
+   "functions/wcsncat.html\n"
+   "wcsncmp()\t"
+   "functions/wcsncmp.html\n"
+   "wcsncpy()\t"
+   "functions/wcsncpy.html\n"
+   "wcsnlen()\t"
+   "functions/wcsnlen.html\n"
+   "wcsnrtombs()\t"
+   "functions/wcsnrtombs.html\n"
+   "wcspbrk()\t"
+   "functions/wcspbrk.html\n"
+   "wcsrchr()\t"
+   "functions/wcsrchr.html\n"
+   "wcsrtombs()\t"
+   "functions/wcsrtombs.html\n"
+   "wcsspn()\t"
+   "functions/wcsspn.html\n"
+   "wcsstr()\t"
+   "functions/wcsstr.html\n"
+   "wcstod()\t"
+   "functions/wcstod.html\n"
+   "wcstof()\t"
+   "functions/wcstof.html\n"
+   "wcstoimax()\t"
+   "functions/wcstoimax.html\n"
+   "wcstok()\t"
+   "functions/wcstok.html\n"
+   "wcstol()\t"
+   "functions/wcstol.html\n"
+   "wcstold()\t"
+   "functions/wcstold.html\n"
+   "wcstoll()\t"
+   "functions/wcstoll.html\n"
+   "wcstombs()\t"
+   "functions/wcstombs.html\n"
+   "wcstoul()\t"
+   "functions/wcstoul.html\n"
+   "wcstoull()\t"
+   "functions/wcstoull.html\n"
+   "wcstoumax()\t"
+   "functions/wcstoumax.html\n"
+   "wcswidth()\t"
+   "functions/wcswidth.html\n"
+   "wcsxfrm()\t"
+   "functions/wcsxfrm.html\n"
+   "wcsxfrm_l()\t"
+   "functions/wcsxfrm_l.html\n"
+   "wctob()\t"
+   "functions/wctob.html\n"
+   "wctomb()\t"
+   "functions/wctomb.html\n"
+   "wctrans()\t"
+   "functions/wctrans.html\n"
+   "wctrans_l()\t"
+   "functions/wctrans_l.html\n"
+   "wctype()\t"
+   "functions/wctype.html\n"
+   "wctype.h\t"
+   "basedefs/wctype.h.html\n"
+   "wctype_l()\t"
+   "functions/wctype_l.html\n"
+   "wcwidth()\t"
+   "functions/wcwidth.html\n"
+   "what\t"
+   "utilities/what.html\n"
+   "who\t"
+   "utilities/who.html\n"
+   "wmemchr()\t"
+   "functions/wmemchr.html\n"
+   "wmemcmp()\t"
+   "functions/wmemcmp.html\n"
+   "wmemcpy()\t"
+   "functions/wmemcpy.html\n"
+   "wmemmove()\t"
+   "functions/wmemmove.html\n"
+   "wmemset()\t"
+   "functions/wmemset.html\n"
+   "wordexp()\t"
+   "functions/wordexp.html\n"
+   "wordexp.h\t"
+   "basedefs/wordexp.h.html\n"
+   "wordfree()\t"
+   "functions/wordfree.html\n"
+   "wprintf()\t"
+   "functions/wprintf.html\n"
+   "write\t"
+   "utilities/write.html\n"
+   "write()\t"
+   "functions/write.html\n"
+   "writev()\t"
+   "functions/writev.html\n"
+   "wscanf()\t"
+   "functions/wscanf.html\n"
+   "xargs\t"
+   "utilities/xargs.html\n"
+   "y0()\t"
+   "functions/y0.html\n"
+   "y1()\t"
+   "functions/y1.html\n"
+   "yacc\t"
+   "utilities/yacc.html\n"
+   "yn()\t"
+   "functions/yn.html\n"
+   "zcat\t"
+   "utilities/zcat.html\n")
+  "POSIX manual page data.")
 
 (provide 'posix-manual-data)
 
