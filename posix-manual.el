@@ -23,6 +23,7 @@
 (require 'posix-manual-data)
 
 (defun posix-manual--pages ()
+  "Get list of all POSIX manual pages."
   (save-match-data
     (let ((case-fold-search nil) (i 0) (pages '()))
       (while (string-match "^\\(.*?\\)\t" posix-manual-data--as-string i)
@@ -31,6 +32,7 @@
       pages)))
 
 (defun posix-manual--page-url (page)
+  "Get URL for POSIX manual PAGE."
   (save-match-data
     (let ((case-fold-search nil))
       (and (string-match (concat "^" (regexp-quote page) "\t\\(.*\\)$")
