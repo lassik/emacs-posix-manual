@@ -42,7 +42,7 @@
   (call-with-atomic-output-file
    "posix-manual-data.el"
    (lambda (out _)
-     (parameterize ((current-output-port out) (pretty-print-columns 78))
+     (parameterize ((current-output-port out))
        (display ";;; posix-manual-data.el --- POSIX manual page data")
        (displayln " -*- lexical-binding: t -*-")
        (displayln ";;")
@@ -66,7 +66,7 @@
        (displayln ")")
        (display "  ") (write "POSIX manual page data.") (displayln ")")
        (newline)
-       (pretty-write `(provide 'posix-manual-data))
+       (displayln "(provide 'posix-manual-data)")
        (newline)
        (displayln ";;; posix-manual-data.el ends here")))))
 
